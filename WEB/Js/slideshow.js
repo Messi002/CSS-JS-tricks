@@ -22,4 +22,14 @@ const slideLeft = () =>  {
     slides[current - 1].style.display = 'block';
 
 }
+
+
+//left arrow click
+const slideLeft = () =>  {
+    reset()
+    slides[current - 1].style.display = 'block';
+
+}
+
+
 // export { flowers };
