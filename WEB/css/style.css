@@ -1,3 +1,11 @@
+@keyframes fade {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 *,
 *::after,
 *::before {
@@ -47,17 +55,45 @@ body {
   border-radius: 3px 0 0 3px;
 }
 
+.myslides {
+  display: none;
+  animation: fade 1.5s;
+}
+.myslides__numberText {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 .myslides__img {
   width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: scale-down;
 }
 .myslides__captionText {
   color: #f2f2f2;
   font-size: 15px;
   padding: 8px 12px;
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   width: 100%;
   text-align: center;
+}
+
+.dot__element {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.dot__element:hover, .dot__element:active {
+  background-color: #717171;
 }
 
 /*# sourceMappingURL=style.css.map */
