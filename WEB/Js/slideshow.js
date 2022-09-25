@@ -35,6 +35,7 @@ const slideLeft = () =>  {
 pbtn.addEventListener('click', () =>{
     if (current === 0) {
         current = slides.length;
+        dot = dots.length;
     }
 
     slideLeft();
