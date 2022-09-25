@@ -8,11 +8,10 @@ let current = 0;
 //clear all images
 const reset = () => {
     for (let i = 0; i < slides.length; i++) {
-            slides[i].style.display ='none';        
+            slides[i].style.display ='none';
+            dots[i].className = dots[i].className.replace(" active", "");   
     }
-    for (let i = 0; i < dots.length; i++) {
-        dots[i].className += ' ';
-}
+  
 }
 
 //initial slide
@@ -26,7 +25,8 @@ const startSlide = () =>  {
 const slideLeft = () =>  {
     reset()
     slides[current-=1].style.display = 'block';
-    dots[current-=1].className += ' active';
+    // dots[current-=1].classList.add('active');
+    console.log(`value of dots ${dots[current-=1]}`);
 
 
 }
