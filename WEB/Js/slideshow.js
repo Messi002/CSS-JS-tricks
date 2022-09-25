@@ -5,14 +5,21 @@ let current = 0;
 
 //clear all images
 const reset = () => {
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < slides.length; i++) {
             slides[i].style.display ='none';        
     }
 }
 
 //initial slide
 const startSlide = () =>  {
-    
-}
+    reset()
+    slides[0].style.display = 'block';
 
+}
+//previous slide
+const slideLeft = () =>  {
+    reset()
+    slides[current - 1].style.display = 'block';
+
+}
 // export { flowers };
