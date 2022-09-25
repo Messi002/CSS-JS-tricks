@@ -53,7 +53,7 @@ body {
   left: 31%;
 }
 .slideshowContainer__next {
-  right: 0;
+  right: 31%;
   border-radius: 3px 0 0 3px;
 }
 
@@ -96,6 +96,11 @@ body {
 }
 .dot__element:hover, .dot__element:active {
   background-color: #717171;
+}
+
+.slideshowArea {
+  width: fit-content;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=style.css.map */
