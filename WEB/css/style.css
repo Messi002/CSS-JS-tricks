@@ -40,15 +40,24 @@ body {
   transform: translateX(-1rem);
 }
 .slideshowContainer__prev:hover, .slideshowContainer__next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 .slideshowContainer__next {
   right: 0;
   border-radius: 3px 0 0 3px;
 }
 
-.myslides {
-  display: none;
+.myslides__img {
+  width: 100%;
+}
+.myslides__captionText {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
