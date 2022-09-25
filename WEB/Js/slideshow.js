@@ -1,3 +1,7 @@
+let mySlides = document.querySelector('.myslides');
+let slideIndex = 1;
+showSlides(slideIndex);
 
 
-export { message, greet, flowers };
+
+// export { flowers };
