@@ -16,4 +16,22 @@ body {
   line-height: 1.6;
 }
 
+.slideshowContainer {
+  max-width: 112rem;
+  position: relative;
+  margin: auto;
+  background-color: orange;
+}
+.slideshowContainer__prev, .slideshowContainer__next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+}
+.myslides {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */

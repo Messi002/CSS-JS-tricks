@@ -1,4 +1,18 @@
 .slideshowContainer{
+    max-width: 112rem;
+    position: relative;
+    margin: auto;
+    background-color: orange;
+
+    &__prev, &__next{
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        
+    }
 
     &__prev{
 
@@ -10,7 +24,7 @@
 }
 
 .myslides{
-
+    display: none;
 
     &__numberText{
 
@@ -27,6 +41,6 @@
 
 .dot{
     &__element{
-        
+
     }
 }
