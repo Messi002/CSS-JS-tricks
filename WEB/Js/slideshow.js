@@ -25,6 +25,10 @@ const startSlide = () =>  {
 //previous slide
 const slideLeft = () =>  {
     reset()
+    if (current === 0) {
+        current = slides.length;
+        dot = dots.length;
+    }
     slides[current-=1].style.display = 'block';
     dots[dot -=1].className += " active";
 
@@ -33,10 +37,7 @@ const slideLeft = () =>  {
 
 //left arrow click
 pbtn.addEventListener('click', () =>{
-    if (current === 0) {
-        current = slides.length;
-        dot = dots.length;
-    }
+  
 
     slideLeft();
 })
@@ -45,6 +46,10 @@ pbtn.addEventListener('click', () =>{
 //next slide
 const slideRight = () =>  {
     reset()
+    if (current === slides.length -1) {
+        current = -1;
+        dot= -1;
+    }
     dots[dot +=1].className += " active";
     slides[current +=1].style.display = 'block';
 
@@ -53,15 +58,14 @@ const slideRight = () =>  {
 
 //right arrow click
 nbtn.addEventListener('click', () =>{
-    if (current === slides.length -1) {
-        current = -1;
-    }
-    if(dot === dots.length - 1){
-        dot= -1;
-    }
+
     slideRight();
 
 })
 startSlide()
+
+//Automatic SlideShow
+// id1 = setInterval(slideRight,2000)
+
 
 // export { flowers };
