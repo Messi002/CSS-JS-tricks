@@ -1,16 +1,63 @@
 .modalPic{
+width: 100%;
+max-width: 20rem;
+border-radius: 5px;
+cursor: pointer;
+transition: .3s;
 
+&:hover{
+    opacity: .7;
+}
+    
 }
 
+// MODAL BACKGROUND
 .modal{
+height: 100vh;
+width: 100vw;
+position: fixed;
+z-index: 3;
+top: 0;
+left: 0;
+padding: 100px;
+background-color: rgba($color: #000000, $alpha: .5);
 
     &__close{
-
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        &:hover, &:focus{
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
     }
-    &__content{
 
+    &__content{
+        display: block;
+        height: 50rem; //remove after
+        width: 100%;
+        margin: 0 auto;
+        margin-top: -5rem;
+        max-width: 700px;
+        background-color: white;
     }
     &__caption{
-        
+        margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+    }
+
+    &__content, &__caption{
+        animation: zoom .6s ease-in-out;
     }
 }
