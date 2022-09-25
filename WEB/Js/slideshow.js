@@ -3,7 +3,7 @@ let pbtn = document.querySelector('#prev');
 let nbtn = document.querySelector('#next');
 let dots = document.querySelectorAll('body > main > section > div.dot > span.dot__element');
 let current = 0;
-let dot=3;
+let dot=0;
 
 
 //clear all images
@@ -45,7 +45,8 @@ pbtn.addEventListener('click', () =>{
 //next slide
 const slideRight = () =>  {
     reset()
-    slides[current+=1].style.display = 'block';
+    dots[dot +=1].className += " active";
+    slides[current +=1].style.display = 'block';
 
 }
 
@@ -55,9 +56,10 @@ nbtn.addEventListener('click', () =>{
     if (current === slides.length -1) {
         current = -1;
     }
-    console.log(`value before ${current}`);
+    if(dot === dots.length - 1){
+        dot= -1;
+    }
     slideRight();
-    console.log(`value after ${current}`);
 
 })
 startSlide()
