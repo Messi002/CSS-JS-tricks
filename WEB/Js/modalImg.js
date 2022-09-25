@@ -6,13 +6,19 @@ let caption = document.querySelector('#modal__caption')
 
 //CLICKING ON IMAGE
 myImg.addEventListener('click', (e)=>{
-   e.stopPropagation,
+   e.stopPropagation(),
     modal.style.display = 'block'
-    console.log(myImg.alt);
-    caption.innerText += `${myImg.alt}`
+    console.log(caption);
+    img01.src = myImg.src;
+    caption.innerText = `${myImg.alt}`
    
 })
 
+//CLOSE BY CLICKING ON BLACK AREA
+modal.addEventListener('click', (e)=>{
+    e.stopPropagation(),
+    modal.style.display = 'none';
+})
 
 //CLOSING THE MODAL
 clos.addEventListener('click', ()=>{
