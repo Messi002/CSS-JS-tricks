@@ -49,6 +49,9 @@ body {
 .slideshowContainer__prev:hover, .slideshowContainer__next:hover {
   background-color: rgba(0, 0, 0, 0.2);
 }
+.slideshowContainer__prev {
+  left: 31%;
+}
 .slideshowContainer__next {
   right: 0;
   border-radius: 3px 0 0 3px;
@@ -67,8 +70,9 @@ body {
 }
 .myslides__img {
   width: 100%;
+  height: 80vh;
   display: block;
-  object-fit: scale-down;
+  object-fit: contain;
 }
 .myslides__captionText {
   color: #f2f2f2;
