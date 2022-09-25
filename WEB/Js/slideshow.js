@@ -25,11 +25,12 @@ const slideLeft = () =>  {
 
 
 //left arrow click
-const slideLeft = () =>  {
-    reset()
-    slides[current - 1].style.display = 'block';
-
-}
+pbtn.addEventListener('click', () =>{
+    if (current === 0) {
+        current = slides.length;
+    }
+    slideLeft();
+})
 
 
 // export { flowers };
