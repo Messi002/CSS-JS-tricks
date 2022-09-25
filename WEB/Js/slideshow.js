@@ -3,6 +3,7 @@ let pbtn = document.querySelector('#prev');
 let nbtn = document.querySelector('#next');
 let dots = document.querySelectorAll('body > main > section > div.dot > span.dot__element');
 let current = 0;
+let dot=3;
 
 
 //clear all images
@@ -25,9 +26,7 @@ const startSlide = () =>  {
 const slideLeft = () =>  {
     reset()
     slides[current-=1].style.display = 'block';
-    // dots[current-=1].classList.add('active');
-    console.log(`value of dots ${dots[current-=1]}`);
-
+    dots[dot -=1].className += " active";
 
 }
 
