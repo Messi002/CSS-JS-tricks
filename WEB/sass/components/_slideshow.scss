@@ -10,6 +10,7 @@
         top: 50%;
         width: auto;
         margin-top: -22px;
+        color: black;
         padding: 16px;
         font-weight: bold;
         font-size: 18px;
@@ -17,20 +18,24 @@
         border-radius: 0 3px 3px 0;
         user-select: none;
         
-
+        &:active{
+            transform: translateX(-1rem);
+        }
+        &:hover{
+            background-color: rgba($color: #000000, $alpha: .8);
+        }
 
     }
 
-    &__prev:hover{
-        color: red;
-    }
+    
 
     &__prev{
-
+   
     }
 
     &__next{
-
+        right: 0;
+        border-radius: 3px 0 0 3px;
     }
 }
 

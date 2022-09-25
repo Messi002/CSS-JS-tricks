@@ -28,6 +28,7 @@ body {
   top: 50%;
   width: auto;
   margin-top: -22px;
+  color: black;
   padding: 16px;
   font-weight: bold;
   font-size: 18px;
@@ -35,9 +36,17 @@ body {
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
-.slideshowContainer__prev:hover {
-  color: red;
+.slideshowContainer__prev:active, .slideshowContainer__next:active {
+  transform: translateX(-1rem);
 }
+.slideshowContainer__prev:hover, .slideshowContainer__next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.slideshowContainer__next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
 .myslides {
   display: none;
 }
