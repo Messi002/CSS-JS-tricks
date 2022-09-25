@@ -1,6 +1,7 @@
 let slides = document.querySelectorAll('.myslides');
 let pbtn = document.querySelector('#prev');
 let nbtn = document.querySelector('#next');
+let dots = document.querySelectorAll('body > main > section > div.dot > span.dot__element');
 let current = 0;
 
 
@@ -15,12 +16,15 @@ const reset = () => {
 const startSlide = () =>  {
     reset()
     slides[0].style.display = 'block';
+    dots[0].className += ' active';
 
 }
 //previous slide
 const slideLeft = () =>  {
     reset()
     slides[current-=1].style.display = 'block';
+    dots[current-=1].className += ' active';
+
 
 }
 
