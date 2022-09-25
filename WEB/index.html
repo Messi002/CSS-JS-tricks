@@ -34,8 +34,9 @@
 </div>
 
 <!-- next and previous buttons -->
-<a class="slideshowContainer__prev" onclick="plusSlides(-1)">&#10094;</a>
+<a class="slideshowContainer__prev" id="prev">&#10094;</a>
 <a class="slideshowContainer__next" onclick="plusSlides(+1)">&#10095;</a>
+<button id="out" onclick="listen(this)">Submit</button>
 
 <div class="dot">
     <span class="dot__element" onclick="currentSlide(1)"></span>
@@ -49,5 +50,12 @@
 </main>
     
 </body>
+<script>
+    function listen(get) {
+        console.log(get)
+        get.style.backgroundColor = 'red';
+        get.innerHTML = "Hii GFG , How r u???"
+    }
+</script>
 <script type="module" src="Js/index.js"></script>
 </html>
