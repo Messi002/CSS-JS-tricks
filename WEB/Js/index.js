@@ -1,4 +1,3 @@
-import sum, {num} from './slideshow.js';
+import * as slideshow from './slideshow.js';
 
-console.log(sum(5, 5)); 
-console.log(num);
+
