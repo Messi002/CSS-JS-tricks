@@ -19,21 +19,18 @@ const startSlide = () =>  {
 //previous slide
 const slideLeft = () =>  {
     reset()
-    slides[current - 1].style.display = 'block';
+    slides[current-=1].style.display = 'block';
 
 }
 
 
 //left arrow click
 pbtn.addEventListener('click', () =>{
-    console.log(current);
     if (current === 0) {
         current = slides.length;
     }
-    console.log(current);
 
     slideLeft();
-
 })
 
 startSlide()
