@@ -40,6 +40,6 @@ class User {
 
   @override
   String toString() {
-    return 'User(name: $name, id: $id)';
+    return '{"name": "$name", "id": $id}';
   }
 }
