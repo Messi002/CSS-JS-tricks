@@ -9,22 +9,24 @@ enum Weather {
 
 void main(List<String> args) {
   print('Weather Conditions');
+  print(Weather.cloudy.index);
 
   const weather = Weather.rainy;
 
   switch (weather) {
-    case value:
-      
+    case Weather.cloudy:
+      print('It is cloudy today');
       break;
-    case value:
-      
+    case Weather.rainy:
+      print('It is rainy today');
       break;
-      case value:
-      
+    case Weather.sunny:
+      print('It is sunny today');
       break;
-      case value:
-      
+    case Weather.windy:
+      print('Leave out the umbrella');
       break;
     default:
+      print('Strange, really strange');
   }
 }
