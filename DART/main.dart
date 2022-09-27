@@ -29,4 +29,7 @@ void main(List<String> args) {
     default:
       print('Strange, really strange');
   }
+
+  const firstName = 'Bob';
+  print(firstName);
 }
