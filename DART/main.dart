@@ -30,6 +30,11 @@ void main(List<String> args) {
       print('Strange, really strange');
   }
 
-  const firstName = 'Bob';
-  print(firstName);
+  User user = User();
+  print(user);
+}
+
+class User {
+  final name = 'Ram';
+  final id = 0;
 }
