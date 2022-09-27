@@ -37,4 +37,9 @@ void main(List<String> args) {
 class User {
   final name = 'Ram';
   final id = 0;
+
+  @override
+  String toString() {
+    return 'User(name: $name, id: $id)';
+  }
 }
