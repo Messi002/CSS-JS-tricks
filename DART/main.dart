@@ -44,4 +44,18 @@
 //   }
 // }
 
+Stream<int> boatSending() async* {
+  for (var i = 0; i < 10; i++) {
+    print('Boat $i sent...');
+    await Future.delayed(Duration(seconds: 3));
+    yield i;
+  }
+}
 
+void main(List<String> args) {
+  Stream stream = boatSending();
+
+  stream.listen((event) {
+    print('Boot $event received...');
+  });
+}
