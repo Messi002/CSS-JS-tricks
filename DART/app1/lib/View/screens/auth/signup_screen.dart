@@ -4,10 +4,8 @@ import 'package:app1/View/widgets/text_input_field.dart';
 import 'package:app1/constants.dart';
 import 'package:flutter/material.dart';
 
-
 class SignUpScreen extends StatelessWidget {
-
-    final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   SignUpScreen({super.key});
@@ -39,13 +37,15 @@ class SignUpScreen extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 64,
-                  backgroundImage: NetworkImage('https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png'),
+                  backgroundImage: NetworkImage(
+                      'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png'),
                   backgroundColor: Colors.black,
                 ),
                 Positioned(
-                  bottom: -10,
-                  left: 80,
-                  child: IconButton(onPressed: (){}, icon: Icon(Icons.add_a_photo)))
+                    bottom: -10,
+                    left: 80,
+                    child: IconButton(
+                        onPressed: () {}, icon: Icon(Icons.add_a_photo)))
               ],
             ),
             SizedBox(height: 25),
@@ -102,7 +102,9 @@ class SignUpScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
                 InkWell(
-                    onTap: () {}, //TODO: HERE
+                    onTap: () {
+                      Navigator.pop(context);
+                    }, //TODO: HERE
                     child: Text(
                       "Login",
                       style: TextStyle(fontSize: 20, color: kButtonColor),
@@ -113,6 +115,5 @@ class SignUpScreen extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

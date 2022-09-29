@@ -1,3 +1,4 @@
+import 'package:app1/View/screens/auth/signup_screen.dart';
 import 'package:app1/View/widgets/text_input_field.dart';
 import 'package:app1/constants.dart';
 import 'package:flutter/material.dart';
@@ -75,7 +76,12 @@ class LoginScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 20),
                 ),
                 InkWell(
-                    onTap: () {}, //TODO: HERE
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) =>
+                        SignUpScreen()
+                      ));
+                    }, //TODO: HERE
                     child: Text(
                       "Register",
                       style: TextStyle(fontSize: 20, color: kButtonColor),
