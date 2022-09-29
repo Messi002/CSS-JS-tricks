@@ -57,7 +57,7 @@ class SignUpScreen extends StatelessWidget {
                   labelText: "Username",
                   icon: Icons.person),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 15),
             Container(
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -66,7 +66,7 @@ class SignUpScreen extends StatelessWidget {
                   labelText: "Email",
                   icon: Icons.email_rounded),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 15),
             Container(
               width: MediaQuery.of(context).size.width,
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
