@@ -1,3 +1,4 @@
+import 'package:app1/Controller/auth_controller.dart';
 import 'package:app1/View/screens/auth/login_screen.dart';
 import 'package:app1/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -6,7 +7,7 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp().then((value) => Get.put(AuthController()));
   runApp(const MyApp());
 }
 
