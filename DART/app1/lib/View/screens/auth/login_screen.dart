@@ -87,7 +87,12 @@ class LoginScreen extends StatelessWidget {
                       style: TextStyle(fontSize: 20, color: kButtonColor),
                     ))
               ],
-            )
+            ),
+            const SizedBox(height: 20),
+            Text(
+                      "by MIRsquared",
+                      style: TextStyle(fontSize: 10, color: kButtonColor),
+                    )
           ],
         ),
       ),
