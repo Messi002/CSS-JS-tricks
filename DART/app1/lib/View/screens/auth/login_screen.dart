@@ -12,9 +12,10 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        margin: const EdgeInsets.only(top: 150),
+       
         alignment: Alignment.center,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
               'Tiktok Clone',
@@ -59,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
               ),
               child: InkWell(
-                onTap: null, //TODO: HERE
+                onTap: (){}, //TODO: HERE
                 child: const Center(child: Text('Login', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),))),
              ),
              const SizedBox(height: 15),
@@ -68,7 +69,7 @@ class LoginScreen extends StatelessWidget {
               children: [
                 const Text("Don't have an account?", style: TextStyle(fontSize: 20),),
                  InkWell(
-                  onTap: null, //TODO: HERE
+                  onTap: (){}, //TODO: HERE
                   child: Text("Register", style: TextStyle(fontSize: 20, color: kButtonColor),))
               ],
              )
