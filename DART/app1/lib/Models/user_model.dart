@@ -18,7 +18,7 @@ class UserModel {
   
 
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'name': name,
       'photoUrl': photoUrl,
@@ -37,6 +37,5 @@ class UserModel {
     );
   }
 
-  String toJson() => json.encode(toMap());
 
 }
