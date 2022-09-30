@@ -6,7 +6,21 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController {
+//returning to us an instance of the authcontroller
 static AuthController instance = Get.find();
+
+
+//used for keeping track of the image which acts like a stream
+late Rx<File?> _pickedImage;
+
+//for selecting an image
+void PickImage() async {
+final pickedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+if(pickedImage!=null){
+  Get.snackbar('Profile Picture', 'Successfully loaded...');
+}
+
+}
 
   //upload to firestorage
   Future<String> _uploadToStorage(File image) async {
@@ -29,19 +43,21 @@ static AuthController instance = Get.find();
           email.isNotEmpty &&
           password.isNotEmpty &&
           image != null) {
-        //save user to firebase
+        //save user credentials to firebase
         UserCredential userCred =
             await firebaseAuth.createUserWithEmailAndPassword(
           email: email,
           password: password,
         );
+        //getting the downloadUrl from fireStorage...
         String downloadUrl = await _uploadToStorage(image);
+        //using the created model to parse the object to json
         model.UserModel user = model.UserModel(
             email: email,
             name: username,
             uid: userCred.user!.uid,
             photoUrl: downloadUrl);
-
+      //saving the data to firestore
        await firestore.collection('users').doc(userCred.user!.uid).set(user.toJson());
       }else{
       Get.snackbar("Error creating account", 'Please Fill in all the fields...');

@@ -55,7 +55,8 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox(height: 10),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     child: TextInputField(
                         controller: _usernameController,
                         labelText: "Username",
@@ -64,7 +65,8 @@ class SignUpScreen extends StatelessWidget {
                   // SizedBox(height: 5),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     child: TextInputField(
                         controller: _emailController,
                         labelText: "Email",
@@ -73,7 +75,8 @@ class SignUpScreen extends StatelessWidget {
                   // SizedBox(height: 5),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     child: TextInputField(
                         controller: _passwordController,
                         labelText: "Password",
@@ -88,13 +91,16 @@ class SignUpScreen extends StatelessWidget {
                       borderRadius: const BorderRadius.all(Radius.circular(5)),
                     ),
                     child: InkWell(
-                        onTap: () {
-                          debugPrint('welceome');
-                        }, //TODO: HERE
+                        onTap: () => authController.registerUser(
+                            _usernameController.text.trim(),
+                            _emailController.text.trim(),
+                            _passwordController.text.trim(),
+                            image),
                         child: const Center(
                             child: Text(
                           'Register',
-                          style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w700),
                         ))),
                   ),
                   const SizedBox(height: 15),
