@@ -4,6 +4,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
+///[pages] to navigate to the different screens
+const pages = <Widget>[
+  Text('home screen'),
+  Text('search screen'),
+  Text('Add screen'),
+  Text('message screen'),
+  Text('profile screen'),
+];
+
 //COLORS
 const kBackgroundColor = Colors.black;
 var kButtonColor = Colors.red[400];
