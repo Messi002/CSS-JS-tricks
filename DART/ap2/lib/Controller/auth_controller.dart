@@ -1,5 +1,7 @@
 import 'dart:io';
 import 'package:ap2/Models/user_model.dart' as model;
+import 'package:ap2/View/screens/auth/login_screen.dart';
+import 'package:ap2/View/screens/home_screen.dart';
 import 'package:ap2/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -9,6 +11,30 @@ import 'package:image_picker/image_picker.dart';
 class AuthController extends GetxController {
 //returning to us an instance of the authcontroller
   static AuthController instance = Get.find();
+
+//making observable the user model from firebase
+  late Rx<User?> _user;
+
+//onready just like oninit
+
+  @override
+  void onReady() {
+    super.onReady();
+    //to know whether user is signed in
+    _user = Rx<User?>(firebaseAuth.currentUser);
+    //listen to changes from sign-in state
+    _user.bindStream(firebaseAuth.authStateChanges());
+    //if user is signed in then move to the home screen, not wanting to use getpages
+    ever(_user, _setInitialScreen);
+  }
+
+  _setInitialScreen(User? user) {
+    if (user == null) {
+      Get.offAll(() => LoginScreen());
+    } else {
+      Get.offAll(() => HomeScreen());
+    }
+  }
 
 //used for keeping track of the image which acts like a stream
   late Rx<File?> _pickedImage;
@@ -76,17 +102,15 @@ class AuthController extends GetxController {
   }
 
   ///[loginUser] section
-  void loginUser(String email, String password){
-    try{
-      if(  email.isNotEmpty &&
-          password.isNotEmpty){
-            print('welce');
-          }else{
-            Get.snackbar(
-            "Error logging in", 'Please Fill in all the fields...'); 
-          }
-    } catch (e){
-      Get.snackbar("Error logging in", e.toString()); 
+  void loginUser(String email, String password) {
+    try {
+      if (email.isNotEmpty && password.isNotEmpty) {
+        print('welce');
+      } else {
+        Get.snackbar("Error logging in", 'Please Fill in all the fields...');
+      }
+    } catch (e) {
+      Get.snackbar("Error logging in", e.toString());
     }
   }
 }
