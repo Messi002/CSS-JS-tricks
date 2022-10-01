@@ -15,7 +15,10 @@ class UpLoadVideoController extends GetxController {
   _uploadVideoToStorage(String id, String videoPath) async{
     ///to create the folder in the database
     Reference ref = firebaseStorage.ref().child('videos').child(id);
-    ref.putFile(await _compressVideo(videoPath));
+    UploadTask uploadTask = ref.putFile(await _compressVideo(videoPath));
+    TaskSnapshot snap = await uploadTask;
+    String downloadUrl = await snap.ref.getDownloadURL();
+    return downloadUrl;
 
   }
 
