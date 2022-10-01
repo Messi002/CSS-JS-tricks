@@ -1,4 +1,5 @@
 import 'package:ap2/Controller/auth_controller.dart';
+import 'package:ap2/View/screens/addvideo_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 const pages = <Widget>[
   Text('home screen'),
   Text('search screen'),
-  Text('Add screen'),
+  AddVideoScreen(),
   Text('message screen'),
   Text('profile screen'),
 ];

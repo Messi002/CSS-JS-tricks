@@ -17,7 +17,7 @@ class AuthController extends GetxController {
 //automaticatlly login the user or not 
   late Rx<User?> _user;
 
-//onready just like oninit
+//onready just like oninit being called on the _user to know whether it is null or not
 
   @override
   void onReady() {
