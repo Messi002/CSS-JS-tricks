@@ -12,7 +12,8 @@ class UpLoadVideoController extends GetxController {
   }
 
 
-  _uploadVideoToStorage(String id, String videoPath) async{
+//precise function to upload video to firestorage and returning downloadUrl
+  Future<String> _uploadVideoToStorage(String id, String videoPath) async{
     ///to create the folder in the database
     Reference ref = firebaseStorage.ref().child('videos').child(id);
     UploadTask uploadTask = ref.putFile(await _compressVideo(videoPath));
@@ -31,7 +32,8 @@ class UpLoadVideoController extends GetxController {
       //get id
       var allDocs = await firestore.collection('videos').get();
       int len = allDocs.docs.length;
-      _uploadVideoToStorage("Video $len", videoPath);
+      String videoUrl = await _uploadVideoToStorage("Video $len", videoPath);
+      _uploadImageToStorage("Video $len", videoPath);
     } catch (e) {}
   }
 }
