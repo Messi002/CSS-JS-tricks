@@ -5,11 +5,17 @@ import 'package:get/get.dart';
 
 class UpLoadVideoController extends GetxController {
 
+  //to compress video using a package called video_compress
+  _compressVideo()async{
+    final compressedVideo = await VideoCompress.compressVideo(videoPath, quality:VideoQuality.MediumQuality);
+    return compressedVideo!.file;
+  }
 
-  _uploadVideoToStorage(String id, String videoPath){
+
+  _uploadVideoToStorage(String id, String videoPath) async{
     ///to create the folder in the database
     Reference ref = firebaseStorage.ref().child('videos').child(id);
-    ref.putFile(_compressVideo(videoPath));
+    ref.putFile(await _compressVideo(videoPath));
 
   }
 
