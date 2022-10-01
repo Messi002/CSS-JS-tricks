@@ -1,4 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
+import 'dart:io';
 
 import 'package:ap2/View/screens/confirm_screen.dart';
 import 'package:ap2/constants.dart';
@@ -9,9 +10,15 @@ class AddVideoScreen extends StatelessWidget {
   const AddVideoScreen({super.key});
 
   pickVideo(ImageSource src, BuildContext context) async {
-    final video = await ImagePicker().pickVideo(source: src);
+    XFile? video = await ImagePicker().pickVideo(source: src);
     if (video != null) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => ConfirmScreen(videoFile: video., videoPath: '',) ));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ConfirmScreen(
+                    videoFile: File(video.path),
+                    videoPath: video.path,
+                  )));
     }
   }
 
