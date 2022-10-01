@@ -6,12 +6,13 @@ class TextInputField extends StatelessWidget {
   final String labelText;
   final bool isObscure;
   final IconData icon;
-  TextInputField({super.key, required this.controller, required this.labelText, this.isObscure = false, required this.icon});
+  const TextInputField({super.key, required this.controller, required this.labelText, this.isObscure = false, required this.icon});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       controller: controller,
+        obscureText: isObscure,
       decoration: InputDecoration(
           labelText: labelText,
           prefixIcon: Icon(icon),
@@ -22,7 +23,7 @@ class TextInputField extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5),
               borderSide: const BorderSide(color: kBorderColor))),
-      obscureText: isObscure,
+    
     );
   }
 }

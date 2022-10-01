@@ -116,7 +116,7 @@ class SignUpScreen extends StatelessWidget {
                       InkWell(
                           onTap: () {
                             Navigator.pop(context);
-                          }, //TODO: HERE
+                          },
                           child: Text(
                             "Login",
                             style: TextStyle(fontSize: 20, color: kButtonColor),

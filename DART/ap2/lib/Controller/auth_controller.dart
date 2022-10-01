@@ -5,6 +5,7 @@ import 'package:ap2/View/screens/home_screen.dart';
 import 'package:ap2/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -105,7 +106,7 @@ class AuthController extends GetxController {
   void loginUser(String email, String password) {
     try {
       if (email.isNotEmpty && password.isNotEmpty) {
-        print('welce');
+        print('error');
       } else {
         Get.snackbar("Error logging in", 'Please Fill in all the fields...');
       }
