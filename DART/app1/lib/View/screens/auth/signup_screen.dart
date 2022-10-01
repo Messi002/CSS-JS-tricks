@@ -49,7 +49,7 @@ class SignUpScreen extends StatelessWidget {
                           bottom: -10,
                           left: 80,
                           child: IconButton(
-                              onPressed: () {}, icon: Icon(Icons.add_a_photo)))
+                              onPressed: () => authController.pickImage(), icon: Icon(Icons.add_a_photo)))
                     ],
                   ),
                   SizedBox(height: 10),
@@ -95,7 +95,8 @@ class SignUpScreen extends StatelessWidget {
                             _usernameController.text.trim(),
                             _emailController.text.trim(),
                             _passwordController.text.trim(),
-                            image),
+                            authController.profilePhoto
+                            ),
                         child: const Center(
                             child: Text(
                           'Register',
