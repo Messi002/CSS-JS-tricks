@@ -80,6 +80,7 @@ class SignUpScreen extends StatelessWidget {
                     child: TextInputField(
                         controller: _passwordController,
                         labelText: "Password",
+                        isObscure: true,
                         icon: Icons.lock_rounded),
                   ),
                   SizedBox(height: 30),

@@ -26,7 +26,7 @@ class AuthController extends GetxController {
     _pickedImage = Rx<File?>(File(pickedImage!.path));
   }
 
-  //upload to firestorage
+  //upload to firebase_storage for pics
   Future<String> _uploadToStorage(File image) async {
     Reference ref = firebaseStorage
         .ref()
@@ -39,7 +39,7 @@ class AuthController extends GetxController {
     return downloadUrl;
   }
 
-  //registering the user
+  ///[Registering the user]
   void registerUser(
       String username, String email, String password, File? image) async {
     try {
@@ -53,15 +53,15 @@ class AuthController extends GetxController {
           email: email,
           password: password,
         );
-        //getting the downloadUrl from fireStorage...
+        //getting the downloadUrl from firebase_Storage...
         String downloadUrl = await _uploadToStorage(image);
-        //using the created model to parse the object to json
+        //using the created model to parse the object to json to send to our database
         model.UserModel user = model.UserModel(
             email: email,
             name: username,
             uid: userCred.user!.uid,
             photoUrl: downloadUrl);
-        //saving the data to firestore
+        //saving the data to firestore database where users are stored
         await firestore
             .collection('users')
             .doc(userCred.user!.uid)
@@ -72,6 +72,21 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       Get.snackbar("Error creating account", e.toString());
+    }
+  }
+
+  ///[loginUser] section
+  void loginUser(String email, String password){
+    try{
+      if(  email.isNotEmpty &&
+          password.isNotEmpty){
+            print('welce');
+          }else{
+            Get.snackbar(
+            "Error logging in", 'Please Fill in all the fields...'); 
+          }
+    } catch (e){
+      Get.snackbar("Error logging in", e.toString()); 
     }
   }
 }

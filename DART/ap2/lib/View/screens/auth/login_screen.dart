@@ -47,6 +47,7 @@ class LoginScreen extends StatelessWidget {
               child: TextInputField(
                   controller: _passwordController,
                   labelText: "Password",
+                  isObscure: true,
                   icon: Icons.lock_rounded),
             ),
             SizedBox(height: 30),
@@ -58,9 +59,7 @@ class LoginScreen extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
               ),
               child: InkWell(
-                  onTap: () {
-                    debugPrint('welceome');
-                  }, //TODO: HERE
+                  onTap: () => authController.loginUser(_emailController.text.trim(), _passwordController.text.trim()),
                   child: const Center(
                       child: Text(
                     'Login',
