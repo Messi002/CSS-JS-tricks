@@ -5,9 +5,19 @@ class AddVideoScreen extends StatelessWidget {
   const AddVideoScreen({super.key});
 
   showOptionsDialog(BuildContext context) {
-    return showDialog(context: context, builder: (context){
-
-    });
+    return showDialog(context: context, builder: (context) => SimpleDialog(
+      children: [
+        SimpleDialogOption(
+          onPressed: (){},
+          child: Row(
+            children: const [
+              Icon(Icons.image),
+               Text('Gallery', style: TextStyle(fontSize: 20),)
+            ],
+          ),
+        )
+      ],
+    ));
   }
 
   @override
