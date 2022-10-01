@@ -23,7 +23,24 @@ class UpLoadVideoController extends GetxController {
 
   }
 
-  //function to upload video...
+  ///function for generating [_uploadImageToStorage for thumbnail] for images... and uploading it to firestorage...
+    Future<String> _uploadImageToStorage(String id, String videoPath) async{
+    ///to create the folder in the database for thumbnails
+    Reference ref = firebaseStorage.ref().child('thumbnails').child(id);
+    UploadTask uploadTask = ref.putFile(await _getThumbnail(videoPath));
+    TaskSnapshot snap = await uploadTask;
+    String downloadUrl = await snap.ref.getDownloadURL();
+    return downloadUrl;
+
+  }
+
+  _getThumbnail(String videoPath) async{
+    final thumbnail = await VideoCompress.getFileThumbnail(videoPath);
+
+    return thumbnail;
+  }
+
+  //function to upload video and also thumbnails...
   uploadVideo(String songName, String caption, String videoPath) async {
     try {
       String uid = firebaseAuth.currentUser!.uid;
@@ -32,8 +49,11 @@ class UpLoadVideoController extends GetxController {
       //get id
       var allDocs = await firestore.collection('videos').get();
       int len = allDocs.docs.length;
+      //video for storage
       String videoUrl = await _uploadVideoToStorage("Video $len", videoPath);
-      _uploadImageToStorage("Video $len", videoPath);
+      //function for thumbnail
+      String thumbnail = await _uploadImageToStorage("Video $len", videoPath);
+      
     } catch (e) {}
   }
 }
