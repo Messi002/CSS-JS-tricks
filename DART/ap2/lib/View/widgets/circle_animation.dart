@@ -21,11 +21,7 @@ class _CircleAnimationState extends State<CircleAnimation>
     controller.repeat();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,5 +29,11 @@ class _CircleAnimationState extends State<CircleAnimation>
       turns: Tween(begin: 0.0, end: 1.0).animate(controller),
       child: widget.child,
     );
+  }
+
+    @override
+  void dispose() {
+    super.dispose();
+    controller.dispose();
   }
 }
