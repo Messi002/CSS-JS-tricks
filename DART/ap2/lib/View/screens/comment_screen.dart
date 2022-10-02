@@ -1,18 +1,20 @@
+import 'package:ap2/Controller/comment_controller.dart';
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
 
 class CommentScreen extends StatelessWidget {
-  const CommentScreen({super.key});
+  final String id;
+  CommentScreen({super.key, required this.id});
 
   final TextEditingController _commentController = TextEditingController();
   CommentController commentController = Get.put(CommentController());
 
   @override
   Widget build(BuildContext context) {
-     final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
     commentController.updatePostId(id);
     return Scaffold(
-      body:SingleChildScrollView(
+      body: SingleChildScrollView(
         child: SizedBox(
           width: size.width,
           height: size.height,
@@ -116,8 +118,8 @@ class CommentScreen extends StatelessWidget {
                   ),
                 ),
                 trailing: TextButton(
-                  onPressed: () =>
-                      commentController.postComment(_commentController.text),
+                  onPressed: () => commentController
+                      .postComment(_commentController.text.trim()),
                   child: const Text(
                     'Send',
                     style: TextStyle(
