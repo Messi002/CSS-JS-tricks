@@ -1,6 +1,7 @@
 import 'package:ap2/Controller/video_controller.dart';
 import 'package:ap2/View/widgets/circle_animation.dart';
 import 'package:ap2/View/widgets/video_player_item.dart';
+import 'package:ap2/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -80,6 +81,7 @@ class VideoScreen extends StatelessWidget {
             controller: PageController(initialPage: 0,viewportFraction: 1),
             scrollDirection: Axis.vertical,
             itemBuilder: (context,index){
+              //data here
               final data = videoController.videoList[index];
               return Stack(
                 children: [
@@ -157,16 +159,17 @@ class VideoScreen extends StatelessWidget {
                                     Column(
                                       children: [
                                         //liking functionality
+                                        //TODO:implementing functionality
                                         InkWell(
-                                          // onTap: () =>
-                                          //     videoController.likeVideo(data.id),
+                                          onTap: () =>
+                                              videoController.likeVideo(data.id),
                                           child: Icon(
                                             Icons.favorite,
                                             size: 40,
-                                            // color: data.likes.contains(
-                                            //         authController.user.uid)
-                                            //     ? Colors.red
-                                            //     : Colors.white,
+                                            color: data.likes.contains(
+                                                    authController.user!.uid)
+                                                ? Colors.red
+                                                : Colors.white,
                                           ),
                                         ),
                                         const SizedBox(height: 7),

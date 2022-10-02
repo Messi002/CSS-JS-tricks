@@ -13,9 +13,10 @@ class AuthController extends GetxController {
 //returning to us an instance of the authcontroller
   static AuthController instance = Get.find();
 
-//making observable the user model from firebase to know whether we can 
-//automaticatlly login the user or not 
+//making observable the user model from firebase to know whether we can
+//automaticatlly login the user or not
   late Rx<User?> _user;
+  User? get user => _user.value;
 
 //onready just like oninit being called on the _user to know whether it is null or not
 
