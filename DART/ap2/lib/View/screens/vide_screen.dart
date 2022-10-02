@@ -7,6 +7,7 @@ class VideoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = mediaQuery.of(context).size;
     return Scaffold(
       body: PageView.builder(
         itemCount: ,
@@ -74,7 +75,7 @@ Text(
                           ),
 Container(
   width: 100,
-                            margin: EdgeInsets.only(top: size.height / 5),
+ margin: EdgeInsets.only(top: size.height / 5),
   child: Column(
     children: [
 
