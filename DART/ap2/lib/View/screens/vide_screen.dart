@@ -1,10 +1,12 @@
+import 'package:ap2/Controller/video_controller.dart';
 import 'package:ap2/View/widgets/circle_animation.dart';
 import 'package:ap2/View/widgets/video_player_item.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 class VideoScreen extends StatelessWidget {
-  const VideoScreen({super.key});
+   VideoScreen({super.key});
  final VideoController videoController = Get.put(VideoController());
 
   buildProfile(String profilePhoto) {

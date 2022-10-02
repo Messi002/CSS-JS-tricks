@@ -7,7 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 ///[pages] to navigate to the different screens
-const pages = <Widget>[
+List pages = <Widget>[
   VideoScreen(),
   Text('search screen'),
   AddVideoScreen(),
