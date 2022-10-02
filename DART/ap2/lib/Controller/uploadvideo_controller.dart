@@ -72,7 +72,8 @@ class UploadVideoController extends GetxController {
           .collection('videos')
           .doc('Video $len')
           .set(videoModel.toJson());
-      Get.snackbar('Done', "Upload Successful");
+      //taking us back to the add video screen
+
       Get.back();
     } catch (e) {
       Get.snackbar('Error Uploading Video', e.toString());

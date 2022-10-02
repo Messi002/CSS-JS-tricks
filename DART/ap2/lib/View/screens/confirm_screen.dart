@@ -20,7 +20,9 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   late VideoPlayerController controller;
   final TextEditingController _songController = TextEditingController();
   final TextEditingController _captionController = TextEditingController();
-  UploadVideoController uploadVideoController = Get.put(UploadVideoController());
+  bool isLoading = false;
+  UploadVideoController uploadVideoController =
+      Get.put(UploadVideoController());
 
   @override
   void initState() {
@@ -31,7 +33,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
     controller.initialize();
     controller.play();
     controller.setVolume(1);
-    controller.setLooping(true);
+    controller.setLooping(false);
   }
 
   @override
@@ -69,12 +71,29 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                         icon: Icons.closed_caption_off_rounded),
                   ),
                   const SizedBox(height: 10),
-                  ElevatedButton(
-                      onPressed: () => uploadVideoController.uploadVideo(_songController.text.trim(), _captionController.text.trim(), widget.videoPath),
-                      child: const Text(
-                        'Share!',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      ))
+                  isLoading
+                      ? const ElevatedButton(
+                          onPressed: null,
+                          child: Text(
+                            'uploading video...',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ))
+                      : ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              isLoading = true;
+                            });
+
+                            uploadVideoController.uploadVideo(
+                                _songController.text.trim(),
+                                _captionController.text.trim(),
+                                widget.videoPath);
+                           
+                          },
+                          child: const Text(
+                            'Share!',
+                            style: TextStyle(fontSize: 20, color: Colors.white),
+                          ))
                 ],
               ),
             ),
