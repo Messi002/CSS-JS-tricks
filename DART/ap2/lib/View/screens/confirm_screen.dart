@@ -1,13 +1,16 @@
 import 'dart:io';
 
+import 'package:ap2/Controller/uploadvideo_controller.dart';
 import 'package:ap2/View/widgets/text_input_field.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 class ConfirmScreen extends StatefulWidget {
   final File videoFile;
   final String videoPath;
-  const ConfirmScreen({super.key, required this.videoFile, required this.videoPath});
+  const ConfirmScreen(
+      {super.key, required this.videoFile, required this.videoPath});
 
   @override
   State<ConfirmScreen> createState() => _ConfirmScreenState();
@@ -17,6 +20,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
   late VideoPlayerController controller;
   final TextEditingController _songController = TextEditingController();
   final TextEditingController _captionController = TextEditingController();
+  UploadVideoController uploadVideoController = Get.put(UploadVideoController());
 
   @override
   void initState() {
@@ -66,8 +70,8 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
-                      onPressed: (){},
-                      child:const Text(
+                      onPressed: () => uploadVideoController.uploadVideo(_songController.text.trim(), _captionController.text.trim(), widget.videoPath),
+                      child: const Text(
                         'Share!',
                         style: TextStyle(fontSize: 20, color: Colors.white),
                       ))
@@ -79,7 +83,8 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
       ),
     );
   }
-    @override
+
+  @override
   void dispose() {
     super.dispose();
     controller.dispose();

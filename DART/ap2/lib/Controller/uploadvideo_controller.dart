@@ -5,7 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get/get.dart';
 import 'package:video_compress/video_compress.dart';
 
-class UpLoadVideoController extends GetxController {
+class UploadVideoController extends GetxController {
   //to compress video using a package called video_compress
   _compressVideo(videoPath) async {
     final compressedVideo = await VideoCompress.compressVideo(videoPath,
