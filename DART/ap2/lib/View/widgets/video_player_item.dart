@@ -15,9 +15,17 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
   @override
   void initState() {
     super.initState();
-    _videoPlayerController = VideoPlayerController.network(widget.videoUrl)..initialize().then((value){
-      
-    });
+    _videoPlayerController = VideoPlayerController.network(widget.videoUrl)
+      ..initialize().then((value) {
+        _videoPlayerController.play();
+        _videoPlayerController.setVolume(1);
+      });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _videoPlayerController.dispose();
   }
 
   @override
@@ -27,7 +35,7 @@ class _VideoPlayerItemState extends State<VideoPlayerItem> {
       width: size.width,
       height: size.height,
       decoration: const BoxDecoration(color: Colors.black),
-      child: VideoPlayer(controller),
+      child: VideoPlayer(_videoPlayerController),
     );
   }
 }
