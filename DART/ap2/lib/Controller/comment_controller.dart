@@ -13,43 +13,59 @@ class CommentController extends GetxController {
     getComments();
   }
 
-  getComments() async {}
+  getComments() async {
+    _comments.bindStream(firestore
+        .collection('videos')
+        .doc(_postId)
+        .collection('comments')
+        .snapshots()
+        .map((QuerySnapshot query) {
+      List<CommentModel> retValue = [];
+      for (var element in query.docs) {
+        retValue.add(CommentModel.fromSnap(element));
+      }
+      return retValue;
+    }));
+  }
 
   postComment(String commentText) async {
     try {
       if (commentText.isNotEmpty) {
-      DocumentSnapshot userDoc = await firestore
-          .collection('users')
-          .doc(authController.user!.uid)
-          .get();
-      var allDocs = await firestore
-          .collection('videos')
-          .doc(_postId)
-          .collection('comments')
-          .get();
-      int len = allDocs.docs.length;
-      CommentModel comment = CommentModel(
-        datePublished: DateTime.now(),
-        username: (userDoc.data() as Map<String, dynamic>)['name'],
-        comment: commentText.trim(),
-        likes: [],
-        photoUrl: (userDoc.data() as Map<String, dynamic>)['photoUrl'],
-        uid: authController.user!.uid,
-        id: 'Comment $len',
-      );
+        DocumentSnapshot userDoc = await firestore
+            .collection('users')
+            .doc(authController.user!.uid)
+            .get();
+        var allDocs = await firestore
+            .collection('videos')
+            .doc(_postId)
+            .collection('comments')
+            .get();
+        int len = allDocs.docs.length;
+        CommentModel comment = CommentModel(
+          datePublished: DateTime.now(),
+          username: (userDoc.data() as Map<String, dynamic>)['name'],
+          comment: commentText.trim(),
+          likes: [],
+          photoUrl: (userDoc.data() as Map<String, dynamic>)['photoUrl'],
+          uid: authController.user!.uid,
+          id: 'Comment $len',
+        );
 
-      await firestore
-          .collection('videos')
-          .doc(_postId)
-          .collection('comments')
-          .doc('Comments $len')
-          .set(comment.toJson());
-    }
+        await firestore
+            .collection('videos')
+            .doc(_postId)
+            .collection('comments')
+            .doc('Comments $len')
+            .set(comment.toJson());
 
+        DocumentSnapshot doc =
+            await firestore.collection('videos').doc(_postId).get();
+        await firestore.collection('videos').doc(_postId).update({
+          'commentCount': (doc.data()! as dynamic)['commentCount'] + 1,
+        });
+      }
     } catch (e) {
       Get.snackbar('Error while Commenting', e.toString());
     }
-
-    
   }
 }

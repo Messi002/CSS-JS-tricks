@@ -29,7 +29,7 @@ class CommentScreen extends StatelessWidget {
                         return ListTile(
                           leading: CircleAvatar(
                             backgroundColor: Colors.black,
-                            backgroundImage: NetworkImage(comment.profilePhoto),
+                            backgroundImage: NetworkImage(comment.photoUrl),
                           ),
                           title: Row(
                             children: [
