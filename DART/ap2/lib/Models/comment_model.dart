@@ -6,7 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CommentModel {
   String username;
   String comment;
-  String datePublished;
+  DateTime datePublished;
   List likes;
   String photoUrl;
   String uid;
@@ -45,7 +45,7 @@ class CommentModel {
     return CommentModel(
       username: snapshot['username'] as String,
       comment: snapshot['comment'] as String,
-      datePublished: snapshot['datePublished'] as String,
+      datePublished: snapshot['datePublished'] as DateTime,
       likes: snapshot['likes'] as List,
       photoUrl: snapshot['photoUrl'] as String,
       uid: snapshot['uid'] as String,

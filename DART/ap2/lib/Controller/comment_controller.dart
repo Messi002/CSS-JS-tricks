@@ -27,7 +27,14 @@ class CommentController extends GetxController {
           .collection('comments')
           .get();
       int len = allDocs.docs.length;
-      CommentModel comment = CommentModel(datePublished: datePublished, username: username, comment: comment, likes: likes, photoUrl: photoUrl, uid: uid, id: id)
+      CommentModel comment = CommentModel(
+          datePublished: DateTime.now(),
+          username: (userDoc.data() as Map<String, dynamic>)['name'],
+          comment: commentText.trim(),
+          likes: [],
+          photoUrl: (userDoc.data() as Map<String, dynamic>)['photoUrl'],
+          uid: authController.user!.uid,
+          id: 'Comment $len');
     }
   }
 }
