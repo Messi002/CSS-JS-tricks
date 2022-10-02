@@ -1,3 +1,4 @@
+import 'package:ap2/View/widgets/circle_animation.dart';
 import 'package:ap2/View/widgets/video_player_item.dart';
 import 'package:flutter/material.dart';
 
