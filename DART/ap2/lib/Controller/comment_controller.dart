@@ -16,7 +16,8 @@ class CommentController extends GetxController {
   getComments() async {}
 
   postComment(String commentText) async {
-    if (commentText.isNotEmpty) {
+    try {
+      if (commentText.isNotEmpty) {
       DocumentSnapshot userDoc = await firestore
           .collection('users')
           .doc(authController.user!.uid)
@@ -28,13 +29,27 @@ class CommentController extends GetxController {
           .get();
       int len = allDocs.docs.length;
       CommentModel comment = CommentModel(
-          datePublished: DateTime.now(),
-          username: (userDoc.data() as Map<String, dynamic>)['name'],
-          comment: commentText.trim(),
-          likes: [],
-          photoUrl: (userDoc.data() as Map<String, dynamic>)['photoUrl'],
-          uid: authController.user!.uid,
-          id: 'Comment $len');
+        datePublished: DateTime.now(),
+        username: (userDoc.data() as Map<String, dynamic>)['name'],
+        comment: commentText.trim(),
+        likes: [],
+        photoUrl: (userDoc.data() as Map<String, dynamic>)['photoUrl'],
+        uid: authController.user!.uid,
+        id: 'Comment $len',
+      );
+
+      await firestore
+          .collection('videos')
+          .doc(_postId)
+          .collection('comments')
+          .doc('Comments $len')
+          .set(comment.toJson());
     }
+
+    } catch (e) {
+      Get.snackbar('Error while Commenting', e.toString());
+    }
+
+    
   }
 }
