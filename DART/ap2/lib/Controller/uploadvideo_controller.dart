@@ -65,8 +65,17 @@ class UpLoadVideoController extends GetxController {
           caption: caption,
           thumbnail: thumbnail,
           //this is to query the database and get the photoUrl using the userDoc.data()!
-          profilePhoto: (userDoc.data()! as Map<String, dynamic>)['photoUrl']
-          );
-    } catch (e) {}
+          profilePhoto: (userDoc.data()! as Map<String, dynamic>)['photoUrl']);
+
+      //saving now to firestore not firebase_storage
+      await firestore
+          .collection('videos')
+          .doc('Video $len')
+          .set(videoModel.toJson());
+      Get.snackbar('Done', "Upload Successful");
+      Get.back();
+    } catch (e) {
+      Get.snackbar('Error Uploading Video', e.toString());
+    }
   }
 }
