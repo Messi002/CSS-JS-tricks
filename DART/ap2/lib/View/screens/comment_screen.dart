@@ -1,6 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:ap2/Controller/comment_controller.dart';
+import 'package:ap2/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:timeago/timeago.dart' as tago;
+import 'package:intl/intl.dart';
 
 class CommentScreen extends StatelessWidget {
   final String id;
@@ -13,6 +18,7 @@ class CommentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     commentController.updatePostId(id);
+
     return Scaffold(
       body: SingleChildScrollView(
         child: SizedBox(
@@ -75,15 +81,25 @@ class CommentScreen extends StatelessWidget {
                             ],
                           ),
                           trailing: InkWell(
-                            onTap: () =>
-                                commentController.likeComment(comment.id),
+                            onTap: () async {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text('deleted')));
+                              // /videos/Video 0/comments/Comments 0
+                              await commentController.deleteComment(comment.id);
+                              // await firestore
+                              //     .collection('videos')
+                              //     .doc('Video 1')
+                              //     .collection('comments')
+                              //     .doc('Comments 1')
+                              //     .delete();
+                            },
                             child: Icon(
-                              Icons.favorite,
+                              Icons.close,
                               size: 25,
-                              color: comment.likes
-                                      .contains(authController.user.uid)
-                                  ? Colors.red
-                                  : Colors.white,
+                              // color: comment.likes
+                              //         .contains(authController.user?.uid)
+                              //     ? Colors.red
+                              //     : Colors.white,
                             ),
                           ),
                         );
@@ -136,3 +152,21 @@ class CommentScreen extends StatelessWidget {
     );
   }
 }
+
+
+// InkWell(
+//                                 onTap: () {
+//                                   ScaffoldMessenger.of(context).showSnackBar(
+//                                       SnackBar(
+//                                           content: Text('heart icon pressed')));
+//                                   commentController.likeComment(comment.id);
+//                                 },
+//                                 child: Icon(
+//                                   Icons.favorite,
+//                                   size: 25,
+//                                   color: comment.likes
+//                                           .contains(authController.user?.uid)
+//                                       ? Colors.red
+//                                       : Colors.white,
+//                                 ),
+//                               ),

@@ -1,6 +1,7 @@
 import 'package:ap2/Models/comment_model.dart';
 import 'package:ap2/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
 class CommentController extends GetxController {
@@ -8,10 +9,12 @@ class CommentController extends GetxController {
   List<CommentModel> get comments => _comments.value;
 
   String _postId = "";
-  updatePostId(String id) {
+   updatePostId(String id) {
     _postId = id;
     getComments();
   }
+
+
 
   getComments() async {
     _comments.bindStream(firestore
@@ -67,5 +70,62 @@ class CommentController extends GetxController {
     } catch (e) {
       Get.snackbar('Error while Commenting', e.toString());
     }
+  }
+
+  //   likeComment(String id) async {
+  //   DocumentSnapshot doc = await firestore.collection('videos').doc(_postId).collection('comments').doc(id).get();
+  //   var uid = authController.user!.uid;
+
+  //   if ((doc.data()! as dynamic)['likes'].contains(uid)) {
+  //     await firestore.collection('videos').doc(_postId).collection('comments').doc(id).update({
+  //       'likes' : FieldValue.arrayRemove([uid])
+  //     });
+  //   }else{
+  //    await firestore.collection('videos').doc(_postId).collection('comments').doc(id).update({
+  //       'likes' : FieldValue.arrayUnion([uid])
+  //     });
+  //   }
+  // }
+
+  likeComment(String id) async {
+    DocumentSnapshot doc = await firestore
+        .collection('videos')
+        .doc(_postId)
+        .collection('comments')
+        .doc(id)
+        .get();
+
+    var uid = authController.user!.uid;
+
+    if ((doc.data()! as dynamic)('likes').contains(uid)) {
+      await firestore
+          .collection('videos')
+          .doc(_postId)
+          .collection('comments')
+          .doc(id)
+          .update({
+        'likes': FieldValue.arrayRemove([uid]),
+      });
+    } else {
+      await firestore
+          .collection('videos')
+          .doc(_postId)
+          .collection('comments')
+          .doc(id)
+          .update({
+        'likes': FieldValue.arrayUnion([uid]),
+      });
+    }
+  }
+
+  deleteComment(String id) async {
+  
+
+    await firestore
+        .collection('videos')
+        .doc(_postId)
+        .collection('comments')
+        .doc(id)
+        .delete();
   }
 }

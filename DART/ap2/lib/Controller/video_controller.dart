@@ -29,12 +29,12 @@ class VideoController extends GetxController {
 
     if ((doc.data()! as dynamic)['likes'].contains(uid)) {
       await firestore.collection('videos').doc(id).update({
-        'likes' : FieldValue.arrayRemove([uid])
+        'likes': FieldValue.arrayRemove([uid])
       });
-    }else{
+    } else {
       await firestore.collection('videos').doc(id).update({
-        'likes' : FieldValue.arrayUnion([uid])
-            });
+        'likes': FieldValue.arrayUnion([uid])
+      });
     }
   }
 }

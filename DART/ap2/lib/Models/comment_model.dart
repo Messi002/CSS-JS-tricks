@@ -1,17 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:core';
+import 'package:intl/intl.dart';
 
 class CommentModel {
   String username;
   String comment;
-  DateTime datePublished;
+  final datePublished;
   List likes;
   String photoUrl;
   String uid;
   String id;
-
 
   CommentModel({
     required this.datePublished,
@@ -22,10 +22,6 @@ class CommentModel {
     required this.uid,
     required this.id,
   });
-
-  
-
-
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
@@ -40,17 +36,15 @@ class CommentModel {
   }
 
   static CommentModel fromSnap(DocumentSnapshot snap) {
-
     var snapshot = snap.data() as Map<String, dynamic>;
     return CommentModel(
       username: snapshot['username'] as String,
       comment: snapshot['comment'] as String,
-      datePublished: snapshot['datePublished'] as DateTime,
+      datePublished: snapshot['datePublished'],
       likes: snapshot['likes'] as List,
       photoUrl: snapshot['photoUrl'] as String,
       uid: snapshot['uid'] as String,
       id: snapshot['id'] as String,
     );
   }
-
 }
