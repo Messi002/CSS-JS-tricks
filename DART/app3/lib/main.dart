@@ -1,4 +1,5 @@
 import 'package:app3/blocs/bloc_exports.dart';
+import 'package:app3/models/task.dart';
 import 'package:app3/screens/task_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => TasksBloc(),
+      create: (context) => TasksBloc()..add(AddTask(task: TaskModel(title: 'Yes'))),
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
