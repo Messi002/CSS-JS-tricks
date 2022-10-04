@@ -16,15 +16,7 @@ class TasksScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: Column(
-                  children: [
-                   const Text('Add Task...',style: TextStyle(fontSize: 14),),
-                   const SizedBox(height: 16),
-                    TextField(
-                      controller: _titleController,
-                    ),
-                  ],
-                ),
+                child: AddTaskWidget(titleController: _titleController),
               ),
             ));
   }
@@ -58,12 +50,55 @@ class TasksScreen extends StatelessWidget {
             ],
           ),
           floatingActionButton: FloatingActionButton(
-            onPressed: ()=> _addTask(context),
+            onPressed: () => _addTask(context),
             tooltip: 'Add Task',
             child: const Icon(Icons.add),
           ),
         );
       },
+    );
+  }
+}
+
+class AddTaskWidget extends StatelessWidget {
+  const AddTaskWidget({
+    Key? key,
+    required TextEditingController titleController,
+  })  : _titleController = titleController,
+        super(key: key);
+
+  final TextEditingController _titleController;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      child: Column(
+        children: [
+          const Text(
+            'Add Task...',
+            style: TextStyle(fontSize: 14),
+          ),
+          const SizedBox(height: 16),
+          TextField(
+            autofocus: true,
+            controller: _titleController,
+            decoration: InputDecoration(
+                hintText: 'start typing...',
+                label: Text('Title'),
+                border: OutlineInputBorder()),
+          ),
+          TextButton(
+              onPressed: () => Navigator.pop(context), child: Text('Cancel')),
+          ElevatedButton(
+              onPressed: () {
+                var task = TaskModel(title: _titleController.text.trim());
+                context.read<TasksBloc>().add(AddTask(task: task));
+                Navigator.of(context).pop();
+              },
+              child: Text('Add Task'))
+        ],
+      ),
     );
   }
 }
