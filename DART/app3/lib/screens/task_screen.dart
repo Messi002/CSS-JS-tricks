@@ -4,6 +4,8 @@ import 'package:app3/widgets/task_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../widgets/add_task_widget.dart';
+
 class TasksScreen extends StatelessWidget {
   TasksScreen({Key? key}) : super(key: key);
 
