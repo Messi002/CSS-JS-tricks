@@ -52,7 +52,7 @@ class TaskModel extends Equatable{
   }
   
   @override
-  List<Object?> get props => [this.title, this.isDeleted, this.isDone];
+  List<Object?> get props => [title, isDeleted, isDone];
 
   
 }
