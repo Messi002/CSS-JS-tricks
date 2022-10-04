@@ -35,13 +35,17 @@ class TasksScreen extends StatelessWidget {
           ),
           Expanded(
             child: ListView.builder(
-              shrinkWrap: true,
+                shrinkWrap: true,
                 itemCount: taskList.length,
                 itemBuilder: (BuildContext context, int index) {
                   var task = taskList[index];
                   return ListTile(
                     title: Text(task.title),
-                    trailing: Checkbox(value: task.isDone, onChanged:(value){}  ),
+                    trailing: Checkbox(
+                        value: task.isDone,
+                        onChanged: (value) {
+                          // value!;
+                        }),
                   );
                 }),
           )
