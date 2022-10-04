@@ -5,7 +5,7 @@ class TasksState extends Equatable {
 
   //initializing the taskstate to an empty array
   const TasksState({
-    this.allTasks=const [],
+    this.allTasks=const <TaskModel>[],
   });
 
   @override
