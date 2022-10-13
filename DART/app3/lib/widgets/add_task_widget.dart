@@ -3,15 +3,18 @@ import 'package:app3/models/task.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+class AddTaskWidget extends StatefulWidget {
 
-class AddTaskWidget extends StatelessWidget {
-  const AddTaskWidget({
-    Key? key,
-    required TextEditingController titleController,
-  })  : _titleController = titleController,
-        super(key: key);
+  AddTaskWidget({
+    super.key,
+  });
 
-  final TextEditingController _titleController;
+  @override
+  State<AddTaskWidget> createState() => _AddTaskWidgetState();
+}
+
+class _AddTaskWidgetState extends State<AddTaskWidget> {
+  final TextEditingController _titleController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

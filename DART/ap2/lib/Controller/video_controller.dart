@@ -38,3 +38,31 @@ class VideoController extends GetxController {
     }
   }
 }
+
+
+
+//to be able to present a static screen using a fututre without the stream method below
+// Stream<List<Post>> returnStream() {
+  //   var stream = Stream<List<Post>>.fromFuture(returnCaption());
+  //   return stream;
+  // }
+
+  // Future<List<Post>> returnCaption() async {
+  //   try {
+  //     return await _firestore
+  //         .collection('posts')
+  //         .get()
+  //         .then((QuerySnapshot query) {
+  //       List<Post> retValue = [];
+  //       for (var element in query.docs) {
+  //         retValue.add(Post.fromJson(
+  //             path: 'posts', json: element.data()! as Map<String, dynamic>));
+  //       }
+  //       print(retValue);
+  //       retVal = retValue;
+  //       return retVal;
+  //     });
+  //   } catch (e) {
+  //     throw Exception(e.toString());
+  //   }
+  // }
