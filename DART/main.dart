@@ -63,24 +63,29 @@
 // class User {
 //   User(int id, String name) {
 //     this.id: id
-//     this.name:name
+//    this.name:name
 //   }
 //   int id = 0;
 //   String name = '';
 // }
 
 // void main(List<String> args) {
-  // final user = User()
-  // ..name = 'Austin'
-  // ..id = 0;
+// final user = User()
+// ..name = 'Austin'
+// ..id = 0;
 
-  // print(user.id);
+// print(user.id);
 // }
 
-class Email{
-  var _add= '';
+class Email {
+  String _add = '';
 
   String get value => _add;
-  Set value(String addre) => _add = addre;
+  set value(String addre) => _add = addre;
 }
 
+void main() {
+  final email = Email();
+  email.value = 'rostandmessi2@gmail.com';
+  
+}
