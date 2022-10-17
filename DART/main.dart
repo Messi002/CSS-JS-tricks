@@ -90,8 +90,17 @@
 //   print(email.value);
 // }
 
-void main(){
+void main() {
   var steaks = <String>[];
+
+  steaks.add('cookies');
+  steaks.add('cupcakes');
+  steaks.add('donuts');
+  steaks.add('pie');
+  steaks.forEach((element) {
+    print(element);
+  });
 }
 /*********/
-///Array methods: .first, .last, .add, .remove
+///Array methods: .first, .last, .add, .remove, .indexOf.
+///use isEmpty not isNotEmpty
