@@ -103,7 +103,7 @@ void main() {
 
   const patries = ['cookies', 'croissant'];
   const candy = ['Junior mintss', "twizzlers"];
-  const List? names = null;
+  late List? names;
 
   const deserts = ['yes or no', ...candy, ...patries, ...?names];
 
