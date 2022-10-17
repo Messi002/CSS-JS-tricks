@@ -77,15 +77,21 @@
 // print(user.id);
 // }
 
-class Email {
-  String _add = '';
+// class Email {
+//   String _add = '';
 
-  String get value => _add;
-  set value(String addre) => _add = addre;
-}
+//   String get value => _add;
+//   set value(String addre) => _add = addre;
+// }
 
-void main() {
-  final email = Email();
-  email.value = 'rostandmessi2@gmail.com';
-  
+// void main() {
+//   final email = Email();
+//   email.value = 'rostandmessi2@gmail.com';
+//   print(email.value);
+// }
+
+void main(){
+  var steaks = <String>[];
 }
+/*********/
+///Array methods: .first, .last, .add, .remove
