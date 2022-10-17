@@ -100,6 +100,14 @@ void main() {
   steaks.forEach((element) {
     print(element);
   });
+
+  const patries = ['cookies', 'croissant'];
+  const candy = ['Junior mintss', "twizzlers"];
+  const List? names = null;
+
+  const deserts = ['yes or no', ...candy, ...patries, ...?names];
+
+  print(deserts);
 }
 /*********/
 ///Array methods: .first, .last, .add, .remove, .indexOf.
