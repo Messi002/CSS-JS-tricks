@@ -109,12 +109,21 @@ void main() {
 
   // deserts.forEach(print);
 
-  final Set setA = {1, 2, 3, 4, 5, 6, 7, 8};
-  final Set setB = {2, 3, 5, 6, 10};
+//   final Set setA = {1, 2, 3, 4, 5, 6, 7, 8};
+//   final Set setB = {2, 3, 5, 6, 10};
 
-  final Set setC = setA.intersection(setB);
+//   final Set setC = setA.intersection(setB);
 
-  print(setC);
+//   setB.remove(5);
+//   print(setB);
+
+  final Map Num = {
+    '1' : 'One',
+    '2' : 'Two',
+    '3' : 'Three'
+  };
+
+  print(Num[4] ?? Num);
 }
 /*********/
 ///Array methods: .first, .last, .add, .remove, .indexOf.
