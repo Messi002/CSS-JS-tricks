@@ -117,13 +117,17 @@ void main() {
 //   setB.remove(5);
 //   print(setB);
 
-  final Map Num = {
-    '1' : 'One',
-    '2' : 'Two',
-    '3' : 'Three'
-  };
+  // final Map Num = {'1': 'One', '2': 'Two', '3': 'Three'};
 
-  print(Num[4] ?? Num);
+  // print(Num[4] ?? Num);
+  // Num.forEach((key, value) {
+  //   print('$key -> $value');
+  // });
+
+  List fig = [1, 2, 3, 4, 5, 6, 7];
+  final squares = fig.map((e) => e * 2);
+  print(squares);
+  print(squares.toList());
 }
 /*********/
 ///Array methods: .first, .last, .add, .remove, .indexOf.
