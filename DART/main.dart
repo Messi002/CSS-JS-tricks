@@ -91,23 +91,30 @@
 // }
 
 void main() {
-  var steaks = <String>[];
+  // var steaks = <String>[];
 
-  steaks.add('cookies');
-  steaks.add('cupcakes');
-  steaks.add('donuts');
-  steaks.add('pie');
-  steaks.forEach((element) {
-    print(element);
-  });
+  // steaks.add('cookies');
+  // steaks.add('cupcakes');
+  // steaks.add('donuts');
+  // steaks.add('pie');
+  // steaks.forEach((element) {
+  //   print(element);
+  // });
 
-  const patries = ['cookies', 'croissant'];
-  const candy = ['Junior mintss', "twizzlers"];
-  late List? names;
+  // const patries = ['cookies', 'croissant'];
+  // const candy = ['Junior mintss', "twizzlers"];
+  // List? names;
 
-  const deserts = ['yes or no', ...candy, ...patries, ...?names];
+  // List? deserts = ['yes or no', ...candy, ...patries, ...?names];
 
-  print(deserts);
+  // deserts.forEach(print);
+
+  final Set setA = {1, 2, 3, 4, 5, 6, 7, 8};
+  final Set setB = {2, 3, 5, 6, 10};
+
+  final Set setC = setA.intersection(setB);
+
+  print(setC);
 }
 /*********/
 ///Array methods: .first, .last, .add, .remove, .indexOf.
