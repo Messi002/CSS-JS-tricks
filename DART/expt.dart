@@ -4,7 +4,7 @@ void main() {
     {'product_type': 'Anhänger', 'colour': 'Blau'},
   ];
   List? userPref = [
-    'Anhänger',
+    'Anhänger','Rosa','Rosatd'
     //  'Rosatd'
   ];
 
@@ -17,13 +17,12 @@ void main() {
 
   List filtered = colorType.where((item) => item == item).toList();
 
-  int pdtLen = userPref.length;
-  List? got = [];
+
 
   // print("${colorType[0]['colour']}");
-
+  int pdtLen = userPref.length;
   var fetp;
-  print("${fetp}");
+
   switch (pdtLen) {
     case 1:
       // final got = colorType.where((elt) => elt['product_type'])
@@ -34,11 +33,16 @@ void main() {
 
       break;
     case 2:
-      print('number $pdtLen here');
-
+        var fet = colorType
+          .where((element) => element['product_type'] == userPref[0] || element['product_type'] == userPref[1])
+          .toList();
+      fetp = fet;
       break;
     case 3:
-      print('number $pdtLen here');
+      var fet = colorType
+          .where((element) => element['product_type'] == userPref[0] || element['product_type'] == userPref[1] || element['product_type'] == userPref[2])
+          .toList();
+      fetp = fet;
 
       break;
     case 4:
@@ -56,7 +60,7 @@ void main() {
     default:
       print('null list');
   }
-
+  print("${fetp}");
   // for (int i = 0; i < colorType.length; i++){
   //   print('$i');
   //   if(colorType[i]['colour'] == userPref[i] || colorType[i]['colour'] == userPref[i+1]){
