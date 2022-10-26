@@ -3,8 +3,9 @@ void main() {
     {'product_type': 'Ohrring', 'colour': 'silberfarben'},
     {'product_type': 'Anhänger', 'colour': 'Blau'},
   ];
-  // List? userPref = ['Anhänger', 'Rosatd'];
-  List userPref = List.filled(3, 'old');
+  List? userPref = ['Anhänger',
+  //  'Rosatd'
+   ];
 
   List colorType = [
     {'product_type': 'Anhänger', 'colour': 'silberfarben'},
@@ -16,10 +17,14 @@ void main() {
   List filtered = colorType.where((item) => item == item).toList();
 
   int pdtLen = userPref.length;
+  List? got = [];
 
   switch (pdtLen) {
     case 1:
-      print('number $pdtLen here');
+      // final got = colorType.where((elt) => elt['product_type'])
+      for (int i = 0; i < colorType.length; i++) {
+        print("${colorType.where((element) => element['colour'] == 'Blau')}");
+      }
       break;
     case 2:
       print('number $pdtLen here');
