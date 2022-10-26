@@ -3,9 +3,10 @@ void main() {
     {'product_type': 'Ohrring', 'colour': 'silberfarben'},
     {'product_type': 'Anhänger', 'colour': 'Blau'},
   ];
-  List? userPref = ['Anhänger',
-  //  'Rosatd'
-   ];
+  List? userPref = [
+    'Anhänger',
+    //  'Rosatd'
+  ];
 
   List colorType = [
     {'product_type': 'Anhänger', 'colour': 'silberfarben'},
@@ -19,12 +20,18 @@ void main() {
   int pdtLen = userPref.length;
   List? got = [];
 
+  // print("${colorType[0]['colour']}");
+
+  var fetp;
+  print("${fetp}");
   switch (pdtLen) {
     case 1:
       // final got = colorType.where((elt) => elt['product_type'])
-      for (int i = 0; i < colorType.length; i++) {
-        print("${colorType.where((element) => element['colour'] == 'Blau')}");
-      }
+      var fet = colorType
+          .where((element) => element['product_type'] == userPref[0])
+          .toList();
+      fetp = fet;
+
       break;
     case 2:
       print('number $pdtLen here');
