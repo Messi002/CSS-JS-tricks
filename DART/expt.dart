@@ -3,7 +3,8 @@ void main() {
     {'product_type': 'Ohrring', 'colour': 'silberfarben'},
     {'product_type': 'Anhänger', 'colour': 'Blau'},
   ];
-  List? userPref = ['Anhänger', 'Rosatd'];
+  // List? userPref = ['Anhänger', 'Rosatd'];
+  List userPref = List.filled(3, 'old');
 
   List colorType = [
     {'product_type': 'Anhänger', 'colour': 'silberfarben'},
