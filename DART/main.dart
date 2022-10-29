@@ -133,10 +133,7 @@
 ///Array methods: .first, .last, .add, .remove, .indexOf.
 ///use isEmpty not isNotEmpty
 
-class Calculator with Adder {
-  
-
-}
+class Calculator with Adder {}
 
 mixin Adder {
   add(a, b) {
@@ -144,8 +141,19 @@ mixin Adder {
   }
 }
 
+String EncodedString(String input) {
+  final output = StringBuffer();
+  for (final codePoint in input.runes) {
+    output.writeCharCode(codePoint + 1);
+  }
+  return output.toString();
+}
+
 void main(List<String> args) {
   Calculator calc = Calculator();
 
   calc.add(2, 3);
+  final original = 'ghi';
+  final secret = EncodedString(original);
+  print("$secret");
 }
