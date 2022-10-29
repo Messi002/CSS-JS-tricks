@@ -90,7 +90,7 @@
 //   print(email.value);
 // }
 
-void main() {
+// void main() {
   // var steaks = <String>[];
 
   // steaks.add('cookies');
@@ -124,11 +124,22 @@ void main() {
   //   print('$key -> $value');
   // });
 
-  List fig = [1, 2, 3, 4, 5, 6, 7];
-  final squares = fig.map((e) => e * 2);
-  print(squares);
-  print(squares.toList());
-}
+  // List fig = [1, 2, 3, 4, 5, 6, 7];
+  // final squares = fig.map((e) => e * 2);
+  // print(squares);
+  // print(squares.toList());
+// }
 /*********/
 ///Array methods: .first, .last, .add, .remove, .indexOf.
 ///use isEmpty not isNotEmpty
+
+
+ void main(List<String> args) {
+
+
+
+
+
+ 
+  
+}

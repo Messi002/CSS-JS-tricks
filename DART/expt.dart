@@ -1,10 +1,11 @@
 void main() {
-  List productType = [
-    {'product_type': 'Ohrring', 'colour': 'silberfarben'},
-    {'product_type': 'Anhänger', 'colour': 'Blau'},
-  ];
+  // List productType = [
+  //   {'product_type': 'Ohrring', 'colour': 'silberfarben'},
+  //   {'product_type': 'Anhänger', 'colour': 'Blau'},
+  // ];
+  //user pref from db
   List? userPref = [
-    'Anhänger','Rosa','Rosatd'
+    'Anhänger','Ohrring'
     //  'Rosatd'
   ];
 
@@ -15,7 +16,7 @@ void main() {
     {'product_type': 'Ohrring', 'colour': 'goldfarben'}
   ];
 
-  List filtered = colorType.where((item) => item == item).toList();
+  // List filtered = colorType.where((item) => item == item).toList();
 
 
 
@@ -60,6 +61,7 @@ void main() {
     default:
       print('null list');
   }
+
   print("${fetp}");
   // for (int i = 0; i < colorType.length; i++){
   //   print('$i');
@@ -70,4 +72,8 @@ void main() {
   // }
 
   // print("${gottenProducts.toList()}");
+
+
+
+
 }
