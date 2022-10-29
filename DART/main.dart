@@ -91,23 +91,23 @@
 // }
 
 // void main() {
-  // var steaks = <String>[];
+// var steaks = <String>[];
 
-  // steaks.add('cookies');
-  // steaks.add('cupcakes');
-  // steaks.add('donuts');
-  // steaks.add('pie');
-  // steaks.forEach((element) {
-  //   print(element);
-  // });
+// steaks.add('cookies');
+// steaks.add('cupcakes');
+// steaks.add('donuts');
+// steaks.add('pie');
+// steaks.forEach((element) {
+//   print(element);
+// });
 
-  // const patries = ['cookies', 'croissant'];
-  // const candy = ['Junior mintss', "twizzlers"];
-  // List? names;
+// const patries = ['cookies', 'croissant'];
+// const candy = ['Junior mintss', "twizzlers"];
+// List? names;
 
-  // List? deserts = ['yes or no', ...candy, ...patries, ...?names];
+// List? deserts = ['yes or no', ...candy, ...patries, ...?names];
 
-  // deserts.forEach(print);
+// deserts.forEach(print);
 
 //   final Set setA = {1, 2, 3, 4, 5, 6, 7, 8};
 //   final Set setB = {2, 3, 5, 6, 10};
@@ -117,29 +117,35 @@
 //   setB.remove(5);
 //   print(setB);
 
-  // final Map Num = {'1': 'One', '2': 'Two', '3': 'Three'};
+// final Map Num = {'1': 'One', '2': 'Two', '3': 'Three'};
 
-  // print(Num[4] ?? Num);
-  // Num.forEach((key, value) {
-  //   print('$key -> $value');
-  // });
+// print(Num[4] ?? Num);
+// Num.forEach((key, value) {
+//   print('$key -> $value');
+// });
 
-  // List fig = [1, 2, 3, 4, 5, 6, 7];
-  // final squares = fig.map((e) => e * 2);
-  // print(squares);
-  // print(squares.toList());
+// List fig = [1, 2, 3, 4, 5, 6, 7];
+// final squares = fig.map((e) => e * 2);
+// print(squares);
+// print(squares.toList());
 // }
 /*********/
 ///Array methods: .first, .last, .add, .remove, .indexOf.
 ///use isEmpty not isNotEmpty
 
-
- void main(List<String> args) {
-
-
-
-
-
- 
+class Calculator with Adder {
   
+
+}
+
+mixin Adder {
+  add(a, b) {
+    print('${a + b}');
+  }
+}
+
+void main(List<String> args) {
+  Calculator calc = Calculator();
+
+  calc.add(2, 3);
 }
