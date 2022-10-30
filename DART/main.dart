@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 // enum Weather {
@@ -217,13 +218,13 @@ enum ProgrammingLanguages {
 //   print(contents);
 // }
 
-Future<void> main() async {
-  final file = File('assets/text.txt');
-  final stream = file.openRead();
-  // stream.listen((event) {
-  //   print(event.length);
-  // });
-  await for (var data in stream) {
-    print(data);
-  }
-}
+// Future<void> main() async {
+//   final file = File('assets/text.txt');
+//   final stream = file.openRead();
+//   // stream.listen((event) {
+//   //   print(event.length);
+//   // });
+//   await for (var data in stream.transform(utf8.decoder)) {
+//     print(data);
+//   }
+// }
