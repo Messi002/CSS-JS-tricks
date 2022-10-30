@@ -1,4 +1,4 @@
-// import 'dart:io';
+import 'dart:io';
 
 // enum Weather {
 //   sunny,
@@ -191,16 +191,16 @@ enum ProgrammingLanguages {
 //   Calculator calc = Calculator();
 
 //   calc.add(2, 3);
-  // final original = 'ghi';
-  // final secret = EncodedString(original);
-  // print("$secret");
+// final original = 'ghi';
+// final secret = EncodedString(original);
+// print("$secret");
 
-  // final secret = 'I like extensions!'.encoded;
-  // print('$secret');
-  // print(secret.decoded);
+// final secret = 'I like extensions!'.encoded;
+// print('$secret');
+// print(secret.decoded);
 
-  // final language = ProgrammingLanguages.javascript;
-  // print(language.IsStronglyType);
+// final language = ProgrammingLanguages.javascript;
+// print(language.IsStronglyType);
 
 //   print('Before future');
 //   final futureNum = Future<int>.delayed(Duration(seconds: 10), () => 48).
@@ -209,5 +209,10 @@ enum ProgrammingLanguages {
 //   .whenComplete(() => print('Future completed'));
 //   print('After future');
 
-
 // }
+
+Future<void> main() async {
+  final file = File('assets/text.txt');
+  final contents = await file.readAsString();
+  print(contents);
+}
