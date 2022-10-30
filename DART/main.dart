@@ -132,6 +132,38 @@
 /*********/
 ///Array methods: .first, .last, .add, .remove, .indexOf.
 ///use isEmpty not isNotEmpty
+///
+extension on ProgrammingLanguages {
+  bool get IsStronglyType {
+    switch (this) {
+      case ProgrammingLanguages.dart:
+      case ProgrammingLanguages.swift:
+        return true;
+      case ProgrammingLanguages.javascript:
+        return false;
+      default:
+        throw ArgumentError('Invalid language', 'Language not accepted');
+    }
+  }
+}
+
+extension on String {
+  String get encoded {
+    return _code(4);
+  }
+
+  String get decoded {
+    return _code(-4);
+  }
+
+  String _code(int step) {
+    final output = StringBuffer();
+    for (final codePoint in runes) {
+      output.writeCharCode(codePoint + step);
+    }
+    return output.toString();
+  }
+}
 
 class Calculator with Adder {}
 
@@ -149,11 +181,28 @@ String EncodedString(String input) {
   return output.toString();
 }
 
+enum ProgrammingLanguages {
+  dart,
+  swift,
+  javascript,
+}
+
 void main(List<String> args) {
   Calculator calc = Calculator();
 
   calc.add(2, 3);
-  final original = 'ghi';
-  final secret = EncodedString(original);
-  print("$secret");
+  // final original = 'ghi';
+  // final secret = EncodedString(original);
+  // print("$secret");
+
+  // final secret = 'I like extensions!'.encoded;
+  // print('$secret');
+  // print(secret.decoded);
+
+  final language = ProgrammingLanguages.javascript;
+  // print(language.IsStronglyType);
+
+  final futureNum = Future<int>.delayed(Duration(seconds: 3), () => 48);
+
+  print(futureNum);
 }
