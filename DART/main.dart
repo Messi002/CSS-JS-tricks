@@ -187,10 +187,10 @@ enum ProgrammingLanguages {
   javascript,
 }
 
-void main(List<String> args) {
-  Calculator calc = Calculator();
+// void main(List<String> args) {
+//   Calculator calc = Calculator();
 
-  calc.add(2, 3);
+//   calc.add(2, 3);
   // final original = 'ghi';
   // final secret = EncodedString(original);
   // print("$secret");
@@ -199,10 +199,15 @@ void main(List<String> args) {
   // print('$secret');
   // print(secret.decoded);
 
-  final language = ProgrammingLanguages.javascript;
+  // final language = ProgrammingLanguages.javascript;
   // print(language.IsStronglyType);
 
-  final futureNum = Future<int>.delayed(Duration(seconds: 3), () => 48);
+//   print('Before future');
+//   final futureNum = Future<int>.delayed(Duration(seconds: 10), () => 48).
+//   then((value) => print(value))
+//   .catchError((error) => print(error))
+//   .whenComplete(() => print('Future completed'));
+//   print('After future');
 
-  print(futureNum);
-}
+
+// }
