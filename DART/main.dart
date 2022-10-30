@@ -211,8 +211,19 @@ enum ProgrammingLanguages {
 
 // }
 
+// Future<void> main() async {
+//   final file = File('assets/text.txt');
+//   final contents = await file.readAsString();
+//   print(contents);
+// }
+
 Future<void> main() async {
   final file = File('assets/text.txt');
-  final contents = await file.readAsString();
-  print(contents);
+  final stream = file.openRead();
+  // stream.listen((event) {
+  //   print(event.length);
+  // });
+  await for (var data in stream) {
+    print(data);
+  }
 }
