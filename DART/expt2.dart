@@ -27,11 +27,21 @@
 
 // }
 
-void main() {
-  List<Map> color = [{'id': 'gold', 'label':'gold'},{'id': 'red', 'label':'red'},{'id': 'green', 'label':'green'},{'id': 'yellow', 'label':'yellow'}];
+// void main() {
+//   List<Map> color = [{'id': 'gold', 'label':'gold'},{'id': 'red', 'label':'red'},{'id': 'green', 'label':'green'},{'id': 'yellow', 'label':'yellow'}];
 
-  List<Map> listed =
-      color.where((element) => element['id'] == 'gold' || element['id'] == 'yellow').toList();
+//   List<Map> listed =
+//       color.where((element) => element['id'] == 'gold' || element['id'] == 'yellow').toList();
 
-  print("${listed}");
-}
+//   print("${listed}");
+// }
+
+
+https://console.firebase.google.com/project/sajent-club/firestore/data/~2Fusers~2FklwYlfYMkNbgM80Pvy3Qdvv9YGx2
+
+
+https://github.com/World-Charity-Tour/sajent-club-mobile/pull/62
+
+https://mail.google.com/mail/u/0/#inbox/FMfcgzGqRPzfpPWnjpRxwVLdKKwzcpMN
+
+https://www.notion.so/camsol/Friend-Request-1c9352db8c064f7b915f341f278510bc

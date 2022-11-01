@@ -31,7 +31,7 @@ class CounterIncrementPressed extends CounterEvent {}
 class CounterBloc extends Bloc<CounterEvent, int> {
   CounterBloc() : super(0) {
     // ignore: invalid_use_of_visible_for_testing_member
-    on<CounterIncrementPressed>((event, state) => emit((1)));
+    on<CounterIncrementPressed>((event, state) => emit((state as int)));
   }
 
   @override
