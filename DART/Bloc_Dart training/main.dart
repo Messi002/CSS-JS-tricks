@@ -33,6 +33,13 @@ class CounterBloc extends Bloc<CounterEvent, int> {
     // ignore: invalid_use_of_visible_for_testing_member
     on<CounterIncrementPressed>((event, state) => emit((1)));
   }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    super.onError(error, stackTrace);
+    print('This is an error');
+    print("$error, $stackTrace");
+  }
 }
 
 Future<void> main() async {
@@ -41,11 +48,11 @@ Future<void> main() async {
   print(bloc.state);
   bloc.add(CounterIncrementPressed());
   await Future.delayed(Duration(seconds: 3));
-    print(bloc.state);
-    bloc.add(CounterIncrementPressed());
+  print(bloc.state);
+  bloc.add(CounterIncrementPressed());
   await Future.delayed(Duration(seconds: 3));
-    print(bloc.state);
-    bloc.add(CounterIncrementPressed());
+  print(bloc.state);
+  bloc.add(CounterIncrementPressed());
   await Future.delayed(Duration(seconds: 3));
   print(bloc.state);
   await bloc.close();
