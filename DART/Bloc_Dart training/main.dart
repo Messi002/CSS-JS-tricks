@@ -24,29 +24,31 @@ import 'dart:async';
 //   cubit.close();
 // }
 
-
 abstract class CounterEvent {}
 
-class CounterIncrementPressed extends CounterEvent{}
+class CounterIncrementPressed extends CounterEvent {}
 
-class CounterBloc extends Bloc<CounterEvent, int>{
-  CounterBloc() : super(0){
-      // ignore: invalid_use_of_visible_for_testing_member
-      on<CounterIncrementPressed>((event, state) => emit(1));
-
+class CounterBloc extends Bloc<CounterEvent, int> {
+  CounterBloc() : super(0) {
+    // ignore: invalid_use_of_visible_for_testing_member
+    on<CounterIncrementPressed>((event, state) => emit((1)));
   }
-
-
 }
 
-
-
 Future<void> main() async {
+  final bloc = CounterBloc();
 
-
-
-
-  
+  print(bloc.state);
+  bloc.add(CounterIncrementPressed());
+  await Future.delayed(Duration(seconds: 3));
+    print(bloc.state);
+    bloc.add(CounterIncrementPressed());
+  await Future.delayed(Duration(seconds: 3));
+    print(bloc.state);
+    bloc.add(CounterIncrementPressed());
+  await Future.delayed(Duration(seconds: 3));
+  print(bloc.state);
+  await bloc.close();
 }
 
 
