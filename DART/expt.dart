@@ -4,7 +4,7 @@ void main() {
   //   {'product_type': 'Anhänger', 'colour': 'Blau'},
   // ];
   //user pref from db
-  List? userPref = [
+  List userPref = [
     'Anhänger','Ohrring'
     //  'Rosatd'
   ];
