@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (context) => CounterCubit(),
-        child: CounterView(),
+        child: const CounterView(),
       ),
     );
   }
