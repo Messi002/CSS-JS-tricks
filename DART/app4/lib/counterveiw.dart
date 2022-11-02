@@ -17,13 +17,14 @@ class CounterView extends StatelessWidget {
         ),
       ),
       floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           FloatingActionButton(
             key: const Key('counterview_increment_floatingactionbutton'),
             onPressed: () => context.read<CounterCubit>().increment(),
             child: const Icon(Icons.add),
             ),
-  const Spacer(),
+            SizedBox(height: 30,),
           FloatingActionButton(
             key: const Key('counterview_decrement_floatingactionbutton'),
             onPressed: () => context.read<CounterCubit>().decrement(),
