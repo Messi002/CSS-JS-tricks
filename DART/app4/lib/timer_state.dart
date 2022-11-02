@@ -14,7 +14,6 @@ class TimerInitial extends TimerState {
   String toString() => 'TimerInitial { duration: $duration }';
 }
 
-
 class TimerRunInProgress extends TimerState {
   const TimerRunInProgress(super.duration);
   @override
@@ -28,7 +27,7 @@ class TimerRunPause extends TimerState {
 }
 
 class TimerRunComplete extends TimerState {
-  const TimerRunComplete(super.duration);
+  const TimerRunComplete() : super(0);
   @override
   String toString() => 'TimerRunComplete { duration: $duration }';
 }

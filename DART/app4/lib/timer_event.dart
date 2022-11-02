@@ -27,7 +27,7 @@ class TimerReset extends TimerEvent {
 }
 
 
-class TimerTicked extends Equatable {
+class TimerTicked extends TimerEvent {
   const TimerTicked({required this.duration});
   final int duration;
 
