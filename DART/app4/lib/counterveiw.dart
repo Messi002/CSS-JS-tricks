@@ -16,6 +16,21 @@ class CounterView extends StatelessWidget {
           },
         ),
       ),
+      floatingActionButton: Column(
+        children: [
+          FloatingActionButton(
+            key: const Key('counterview_increment_floatingactionbutton'),
+            onPressed: () => context.read<CounterCubit>().increment(),
+            child: const Icon(Icons.add),
+            ),
+  const Spacer(),
+          FloatingActionButton(
+            key: const Key('counterview_decrement_floatingactionbutton'),
+            onPressed: () => context.read<CounterCubit>().decrement(),
+            child: const Icon(Icons.remove),
+            ),
+        ],
+      ),
     );
   }
 }
