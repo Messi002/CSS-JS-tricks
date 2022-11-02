@@ -1,4 +1,5 @@
- import 'package:bloc/bloc.dart';
+import 'package:bloc/bloc.dart';
+import 'package:flutter/foundation.dart';
 
 class CounterObserver extends BlocObserver {
   @override
@@ -9,19 +10,25 @@ class CounterObserver extends BlocObserver {
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    // TODO: implement onError
     super.onError(bloc, error, stackTrace);
+     if (kDebugMode) {
+       print("$bloc, $error  $stackTrace");
+     }
   }
 
   @override
-  void onChange(BlocBase bloc, Change change) {
+  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     super.onChange(bloc, change);
-    // TODO: implement onChange
+    if (kDebugMode) {
+      print("$bloc, $change");
+    }
   }
 
   @override
   void onTransition(Bloc bloc, Transition transition) {
     super.onTransition(bloc, transition);
-    // TODO: implement onChange
+    if (kDebugMode) {
+      print("$bloc, $transition");
+    }
   }
 }
