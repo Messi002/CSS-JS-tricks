@@ -1,3 +1,4 @@
+import 'package:app4/posts/models/post.dart';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:equatable/equatable.dart';
