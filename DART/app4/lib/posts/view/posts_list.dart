@@ -38,18 +38,38 @@ class _PostsListState extends State<PostsList> {
               return const Center(child: Text('no posts'));
             }
             return ListView.builder(
-              controller: _scrollController,
-              itemCount: state.hasReachedMax ? state.posts.length : state.posts.length + 1,
-              itemBuilder: (context, index) {
-              return index >= state.posts.length
-                  ? BottomLoader()
-                  : PostListItem(post: state.posts[index]);
-                
-            });
+                controller: _scrollController,
+                itemCount: state.hasReachedMax
+                    ? state.posts.length
+                    : state.posts.length + 1,
+                itemBuilder: (context, index) {
+                  return index >= state.posts.length
+                      ? BottomLoader()
+                      : PostListItem(post: state.posts[index]);
+                });
           case PostStatus.initial:
             return const Center(child: CircularProgressIndicator());
         }
       },
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _scrollController
+      ..removeListener(_onScroll)
+      ..dispose();
+  }
+
+  void _onScroll() {
+    if (_isBottom()) context.read<PostBloc>().add(PostFetched());
+  }
+
+  bool _isBottom() {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.offset;
+    return currentScroll >= (maxScroll * 0.9);
   }
 }
