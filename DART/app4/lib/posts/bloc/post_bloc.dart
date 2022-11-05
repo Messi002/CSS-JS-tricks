@@ -1,6 +1,10 @@
-import 'package:app4/posts/models/post.dart';
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:http/http.dart' as http;
+
+import 'package:app4/posts/models/post.dart';
 import 'package:equatable/equatable.dart';
 
 part 'post_event.dart';
@@ -12,4 +16,6 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       // TODO: implement event handler
     });
   }
+
+final http.Client httpClient;
 }
