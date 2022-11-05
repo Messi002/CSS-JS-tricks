@@ -1,9 +1,11 @@
-import 'dart:io';
+import 'dart:convert';
+import 'dart:async';
 
 import 'package:app4/posts/models/post.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 import 'package:equatable/equatable.dart';
@@ -22,8 +24,7 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) =>
 class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc({required this.httpClient}) : super(const PostState()) {
     on<PostFetched>(_onPostFetched,
-    
-    );
+        transformer: throttleDroppable(throttleDuration));
   }
 
   Future<void> _onPostFetched(
@@ -50,4 +51,23 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   }
 
   final http.Client httpClient;
+
+  Future<List<Post>> _fetchPosts([int startIndex = 0]) async {
+    final response = await httpClient.get(
+      Uri.https(
+        'jsonplaceholder.typicode.com',
+        '/posts',
+        <String, String>{'_start': '$startIndex', '_limit': '$_postLimit'},
+      ),
+    );
+    if (response.statusCode == 200) {
+      final body = json.decode(response.body) as List;
+      debugPrint('$body');
+      return body.map((dynamic json) {
+        final map = json as Map<String, dynamic>;
+        Post(id: map["id"], title: map["title"], body: map["body"]);
+      }).toList();
+    }
+    throw Exception('Error fetching posts');
+  }
 }
