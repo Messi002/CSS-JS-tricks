@@ -11,11 +11,25 @@ part 'post_event.dart';
 part 'post_state.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
-  PostBloc() : super(PostInitial()) {
-    on<PostEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+  PostBloc({required this.httpClient}) : super(const PostState()) {
+    on<PostFetched>(_onPostFetched);
   }
 
-final http.Client httpClient;
+  Future<void> _onPostFetched(
+      PostFetched event, Emitter<PostState> emit) async {
+    if (state.hasReachedMax) return;
+
+    try {
+      if (state.status == PostStatus.initial) {
+        final posts = await _fetchPosts();
+        return emit(state.copyWith(
+            status: PostStatus.success, hasReachedMax: false, posts: posts));
+      }
+
+      final posts = await _fetchPosts(state.posts.length);
+      return emit();
+    } catch (e) {}
+  }
+
+  final http.Client httpClient;
 }
