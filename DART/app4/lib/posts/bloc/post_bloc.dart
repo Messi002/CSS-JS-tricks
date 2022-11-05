@@ -1,14 +1,17 @@
 import 'dart:io';
 
+import 'package:app4/posts/models/post.dart';
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
-
-import 'package:app4/posts/models/post.dart';
 import 'package:equatable/equatable.dart';
+import 'package:stream_transform/stream_transform.dart';
 
 part 'post_event.dart';
 part 'post_state.dart';
+
+const throttleDuration = Duration(milliseconds: 100);
 
 class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc({required this.httpClient}) : super(const PostState()) {
