@@ -52,12 +52,12 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
   final http.Client httpClient;
 
-  Future<List<Post>> _fetchPosts([int startIndex = 0]) async {
+  Future<List<Post>> _fetchPosts([int startIndex = 0, int postLimit = 20]) async {
     final response = await httpClient.get(
       Uri.https(
         'jsonplaceholder.typicode.com',
         '/posts',
-        <String, String>{'_start': '$startIndex', '_limit': '$_postLimit'},
+        <String, String>{'_start': '$startIndex', '_limit': '$postLimit'},
       ),
     );
     if (response.statusCode == 200) {
@@ -65,7 +65,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       debugPrint('$body');
       return body.map((dynamic json) {
         final map = json as Map<String, dynamic>;
-        Post(id: map["id"], title: map["title"], body: map["body"]);
+        return Post(id: map["id"], title: map["title"], body: map["body"]);
       }).toList();
     }
     throw Exception('Error fetching posts');
