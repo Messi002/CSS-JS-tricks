@@ -1,3 +1,4 @@
+import 'package:app4/posts/view/posts_page.dart';
 import 'package:app4/simple_bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
           secondary: Color.fromRGBO(72, 74, 126, 1),
         ),
       ),
-      home: PostsPage(),
+      home: const PostsPage(),
     );
   }
 }

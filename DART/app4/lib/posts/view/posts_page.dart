@@ -1,4 +1,5 @@
 import 'package:app4/posts/bloc/post_bloc.dart';
+import 'package:app4/posts/view/posts_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -13,7 +14,8 @@ class PostsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Posts')),
       body: BlocProvider(
-        create: (context) => PostBloc(httpClient: http.Client())..add(PostFetched()),
+        create: (context) =>
+            PostBloc(httpClient: http.Client())..add(PostFetched()),
         child: const PostsList(),
       ),
     );
