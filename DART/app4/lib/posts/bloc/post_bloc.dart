@@ -27,8 +27,15 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       }
 
       final posts = await _fetchPosts(state.posts.length);
-      return emit();
-    } catch (e) {}
+      return emit(posts.isEmpty
+          ? state.copyWith(hasReachedMax: true)
+          : state.copyWith(
+              status: PostStatus.success,
+              hasReachedMax: false,
+              posts: List.of(state.posts)..addAll(posts)));
+    } catch (_) {
+      emit(state.copyWith(status: PostStatus.failure));
+    }
   }
 
   final http.Client httpClient;
