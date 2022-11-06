@@ -39,9 +39,9 @@ class Cat extends CanRun {
 }
 
 void testIt() {
-  final cat = Cat();
+  const cat = Cat();
   cat.type.log();
-  final dog = Dog();
+  const dog = Dog();
   dog.type.log();
 }
 
