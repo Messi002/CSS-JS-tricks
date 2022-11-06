@@ -36,12 +36,3 @@
 //   print("${listed}");
 // }
 
-
-https://console.firebase.google.com/project/sajent-club/firestore/data/~2Fusers~2FklwYlfYMkNbgM80Pvy3Qdvv9YGx2
-
-
-https://github.com/World-Charity-Tour/sajent-club-mobile/pull/62
-
-https://mail.google.com/mail/u/0/#inbox/FMfcgzGqRPzfpPWnjpRxwVLdKKwzcpMN
-
-https://www.notion.so/camsol/Friend-Request-1c9352db8c064f7b915f341f278510bc
