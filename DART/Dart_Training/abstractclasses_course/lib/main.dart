@@ -5,6 +5,18 @@ extension Log on Object {
   void log() => devtools.log(toString());
 }
 
+abstract class CanRun {
+  void run();
+}
+
+class Cat extends CanRun{
+  @override
+  void run() {
+    // TODO: implement run
+  }
+
+}
+
 void main() {
   runApp(const MyApp());
 }
@@ -30,7 +42,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      body: Container(),
     );
   }
 }
