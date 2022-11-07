@@ -8,8 +8,10 @@ extension Log on Object {
 enum Type { cat, dog }
 
 abstract class CanRun {
-  final Type type;
-  const CanRun({required this.type});
+  // final Type type;
+  // const CanRun({required this.type});
+
+
   // String get type {
   //   if (this is Cat) {
   //     return 'Cat';
@@ -18,18 +20,19 @@ abstract class CanRun {
   //   }
   // }
 
-  @mustCallSuper
+
+  // @mustCallSuper
   void run() {
-    'CanRun run function is being called'.log();
+    'Running...'.log();
   }
 }
 
 class Dog extends CanRun {
-  const Dog() : super(type: Type.dog);
+  // const Dog() : super(type: Type.dog);
 }
 
 class Cat extends CanRun {
-  const Cat() : super(type: Type.cat);
+  // const Cat() : super(type: Type.cat);
 
   @override
   void run() {
@@ -39,10 +42,10 @@ class Cat extends CanRun {
 }
 
 void testIt() {
-  const cat = Cat();
-  cat.type.log();
-  const dog = Dog();
-  dog.type.log();
+  // const cat = Cat();
+  // cat.type.log();
+  // const dog = Dog();
+  // dog.type.log();
 }
 
 void main() {
