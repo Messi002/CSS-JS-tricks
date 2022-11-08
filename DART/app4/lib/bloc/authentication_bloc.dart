@@ -38,4 +38,20 @@ class AuthenticationBloc
     _authenticationRepository.dispose();
     return super.close();
   }
+
+  Future<void> _onAuthenticationStatusChanged(
+    AuthenticationStatusChanged event,
+    Emitter<AuthenticationState> emit,
+  ) async {
+    switch (event.status) {
+      case AuthenticationStatus.unauthenticated:
+        return emit(const AuthenticationState.unauthenticated());
+      case AuthenticationStatus.authenticated:
+        final user = _tryGetUser();
+        return 
+      case AuthenticationStatus.unknown:
+        break;
+      default:
+    }
+  }
 }
