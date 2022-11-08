@@ -47,11 +47,21 @@ class AuthenticationBloc
       case AuthenticationStatus.unauthenticated:
         return emit(const AuthenticationState.unauthenticated());
       case AuthenticationStatus.authenticated:
-        final user = _tryGetUser();
-        return 
+        final user =await _tryGetUser();
+        return emit(user != null
+            ? AuthenticationState.authenticated(user)
+            : const AuthenticationState.unauthenticated());
       case AuthenticationStatus.unknown:
-        break;
-      default:
+        return emit(const AuthenticationState.unknown());
+    }
+  }
+
+  Future<UserModel?> _tryGetUser() async {
+    try {
+      final user = await _userRepository.getUser();
+      return user;
+    } catch (_) {
+      return null;
     }
   }
 }
