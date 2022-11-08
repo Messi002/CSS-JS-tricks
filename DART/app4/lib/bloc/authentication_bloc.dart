@@ -14,7 +14,10 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   AuthenticationBloc({
     required AuthenticationRepository authenticationRepository,
     required UserRepository userRepository
-  }) : super(const AuthenticationInitial()) {
+  }) : 
+  _authenticationRepository = authenticationRepository,
+  _userRepository = userRepository,
+  super(const AuthenticationState.unauthenticated()) {
     on<AuthenticationEvent>((event, emit) {
       // TODO: implement event handler
     });
