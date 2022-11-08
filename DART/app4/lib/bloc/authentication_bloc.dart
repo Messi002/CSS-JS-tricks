@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:html';
 
 import 'package:app4/authentication_repository.dart';
@@ -10,20 +11,19 @@ import 'package:meta/meta.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
-  AuthenticationBloc({
-    required AuthenticationRepository authenticationRepository,
-    required UserRepository userRepository
-  }) : 
-  _authenticationRepository = authenticationRepository,
-  _userRepository = userRepository,
-  super(const AuthenticationState.unauthenticated()) {
-    on<AuthenticationEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+class AuthenticationBloc
+    extends Bloc<AuthenticationEvent, AuthenticationState> {
+  AuthenticationBloc(
+      {required AuthenticationRepository authenticationRepository,
+      required UserRepository userRepository})
+      : _authenticationRepository = authenticationRepository,
+        _userRepository = userRepository,
+        super(const AuthenticationState.unauthenticated()) {
+    on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
+        on<AuthenticationLogoutRequested>(_onAuthenticationLogoutRequested);
   }
 
-    final AuthenticationRepository _authenticationRepository;
+  final AuthenticationRepository _authenticationRepository;
   final UserRepository _userRepository;
   late StreamSubscription<AuthenticationStatus>
       _authenticationStatusSubscription;
