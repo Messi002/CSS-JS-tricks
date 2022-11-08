@@ -1,3 +1,5 @@
+// ignore_for_file: unused_field
+
 import 'dart:async';
 import 'dart:html';
 
@@ -20,11 +22,20 @@ class AuthenticationBloc
         _userRepository = userRepository,
         super(const AuthenticationState.unauthenticated()) {
     on<AuthenticationStatusChanged>(_onAuthenticationStatusChanged);
-        on<AuthenticationLogoutRequested>(_onAuthenticationLogoutRequested);
+    on<AuthenticationLogOutRequest>(_onAuthenticationLogoutRequested);
+    _authenticationStatusSubscription = _authenticationRepository.status
+        .listen((status) => add(AuthenticationStatusChanged(status)));
   }
 
   final AuthenticationRepository _authenticationRepository;
   final UserRepository _userRepository;
   late StreamSubscription<AuthenticationStatus>
       _authenticationStatusSubscription;
+
+  @override
+  Future<void> close() {
+    _authenticationStatusSubscription.cancel();
+    _authenticationRepository.dispose();
+    return super.close();
+  }
 }
