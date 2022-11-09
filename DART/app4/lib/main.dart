@@ -52,21 +52,25 @@ class _AppViewState extends State<AppView> {
     return MaterialApp(
       navigatorKey: _navigatorKey,
       builder: (context, child) {
-        return BlocListener<AuthenticationBloc, AuthenticationState>(listener: (context, state){
+        return BlocListener<AuthenticationBloc, AuthenticationState>(
+            listener: (context, state) {
           switch (state.status) {
-            case value:
-              
+            case AuthenticationStatus.authenticated:
+              _navigator.pushAndRemoveUntil<void>(
+                  HomePage.route(), (route) => false);
               break;
-             case value:
-              
+            case AuthenticationStatus.unauthenticated:
+              _navigator.pushAndRemoveUntil(Login.route(), (route) => false);
               break;
-             case value:
-              
+            case AuthenticationStatus.unknown:
               break;
-            default:
           }
-        });
+        },
+        child: child,
+        
+        );
       },
+      onGenerateRoute: (_)=>SplashPage.route(),
     );
   }
 }
