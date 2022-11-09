@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp(
+    authenticationRepository : AuthenticationRepository(),
+    userRepository: UserRepository(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
