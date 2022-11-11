@@ -20,4 +20,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
 
   final AuthenticationRepository _authenticationRepository;
+
+
+  void _onUsernameChanged(){
+    Login
+  }
 }
