@@ -22,7 +22,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthenticationRepository _authenticationRepository;
 
 
-  void _onUsernameChanged(){
-    Login
+  void _onUsernameChanged(
+    LoginUsernameChanged event,
+    Emitter<LoginState> emit
+  ){
+    final username = Username.dirty(event.username);
+    emit(state.copyWith(
+      username : username,
+      status : Formz.validate([state.password, username]);
+    ));
+
   }
 }
