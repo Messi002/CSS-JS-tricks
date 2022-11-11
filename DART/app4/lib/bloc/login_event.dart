@@ -22,4 +22,9 @@ class LoginPasswordChanged extends LoginEvent{
   const LoginPasswordChanged(this.password);
 
   final String password;
+
+  @override
+  List<Object> get props => [password];
 }
+
+class LoginSu
