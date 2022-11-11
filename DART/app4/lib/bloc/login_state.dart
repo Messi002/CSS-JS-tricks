@@ -11,6 +11,21 @@ class LoginState extends Equatable{
   final FormzStatus status;
   final UserModel username;
   final Password password;
+
+  LoginState copyWith({
+    FormzStatus? status,
+    UserModel? username,
+    Password? password
+  }){
+
+return LoginState(
+  status : status ?? this.status,
+  username : username ?? this.username,
+  password : password ?? this.password,
+);
+
+
+  };
 }
 
 // class LoginInitial extends LoginState {}
