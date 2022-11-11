@@ -42,7 +42,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     final password = Password.dirty(event.password);
     emit(state.copyWith(
-      password : password
+      password : password,
+      status : Formz.validate([password, state.username]);
     ));
   }
 
