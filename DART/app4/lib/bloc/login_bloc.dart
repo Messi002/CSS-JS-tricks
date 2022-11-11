@@ -50,7 +50,17 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   Future<void>  _onSubmitted(
     LoginSubmitted event,
     Emitter<LoginState> emit,
-  )
+  ) async {
+if(state.status.isValidate){
+  emit(state.copyWith(status: FormzStatus.submissionInProgress));
+  try{
+
+  } catch (_){
+    emit(state.copyWith(status : FormzStatus.submissionFailure));
+  }
+}
+
+  }
 
 }
 
