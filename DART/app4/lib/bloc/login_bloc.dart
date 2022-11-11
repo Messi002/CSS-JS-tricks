@@ -8,9 +8,16 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginInitial()) {
+  LoginBloc({
+    required AuthenticationRepository authenticationRepository
+  }) : 
+  _authenticationRepository = authenticationRepository,
+  super(const LoginState()) {
     on<LoginEvent>((event, emit) {
       // TODO: implement event handler
     });
   }
+
+
+  final AuthenticationRepository _authenticationRepository;
 }
