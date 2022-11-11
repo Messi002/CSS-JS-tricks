@@ -7,6 +7,10 @@ class LoginState extends Equatable{
     this.username = const Username.pure(),
     this.password = const Password.pure()
   });
+
+  final FormzStatus status;
+  final UserModel username;
+  final Password password;
 }
 
 // class LoginInitial extends LoginState {}
