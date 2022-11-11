@@ -47,5 +47,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     ));
   }
 
+  Future<void>  _onSubmitted(
+    LoginSubmitted event,
+    Emitter<LoginState> emit,
+  )
+
 }
 
