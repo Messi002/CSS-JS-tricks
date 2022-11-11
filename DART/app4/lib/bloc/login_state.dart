@@ -25,7 +25,10 @@ return LoginState(
 );
 
 
-  };
+  }
+
+  @override
+  List<Object> get props => [status, username, password];
 }
 
 // class LoginInitial extends LoginState {}
