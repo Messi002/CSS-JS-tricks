@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-const names = ['Austin', 'Messi', 'Rostand'];
+const names = ['Austin', 'Messi', 'Rostand','Gareth'];
 
 extension RandomElement<T> on Iterable<T> {
   T getRandomElement() => elementAt(math.Random().nextInt(length));
