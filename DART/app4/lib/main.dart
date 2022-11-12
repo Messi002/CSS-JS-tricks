@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:bloc/bloc.dart';
+import 'dart:math' as math show Random;
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +14,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-       
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(),
     );
   }
+}
+
+const names = ['Austin', 'Messi', 'Rostand'];
+
+extension RandomElement<T> on Iterable<T> {
+  T getRandomElement() => elementAt(math.Random().nextInt(length));
 }
 
 class MyHomePage extends StatelessWidget {
