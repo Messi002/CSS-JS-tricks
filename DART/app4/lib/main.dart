@@ -67,6 +67,22 @@ class _MyHomePageState extends State<MyHomePage> {
           final button = TextButton(
               onPressed: () => cubit.pickRandomNames(),
               child: const Text('pick a random name'));
+
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return button;
+            case ConnectionState.waiting:
+              return button;
+            case ConnectionState.active:
+              return Column(
+                children: <Widget>[
+                  Text(snapshot.data ?? ' '),
+                  button
+                ],
+              );
+            case ConnectionState.done:
+              return const SizedBox();
+          }
         },
       ),
     );
