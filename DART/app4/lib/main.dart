@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'dart:html';
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
@@ -97,6 +98,15 @@ Future<Iterable<Person>> getPersons(String url) => HttpClient()
 @immutable
 class FetchedResults {
   final Iterable<Person> persons;
+  final bool isRetrievedFromCache;
+  const FetchedResults({
+    required this.persons,
+    required this.isRetrievedFromCache,
+  });
+
+  @override
+  String toString() =>
+      'FetchResult (isRetrievedFromCahce = $isRetrievedFromCache';
 }
 
 class MyHomePage extends StatelessWidget {
