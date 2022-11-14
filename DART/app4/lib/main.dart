@@ -105,7 +105,12 @@ class FetchedResults {
   });
 
   @override
-  String toString() => 'FetchResult (isRetrievedFromCahce = $isRetrievedFromCache, persons = $persons';
+  String toString() =>
+      'FetchResult (isRetrievedFromCahce = $isRetrievedFromCache, persons = $persons';
+}
+
+class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
+  PersonBloc() : super(null);
 }
 
 class MyHomePage extends StatelessWidget {
