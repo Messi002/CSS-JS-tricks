@@ -109,7 +109,10 @@ class FetchedResults {
       'FetchResult (isRetrievedFromCahce = $isRetrievedFromCache, persons = $persons';
 }
 
-
+class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
+  final Map<PersonUrl, Iterable<Person>> _cache = {};
+  PersonBloc() : super(null);
+}
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
