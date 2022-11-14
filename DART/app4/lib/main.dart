@@ -105,8 +105,7 @@ class FetchedResults {
   });
 
   @override
-  String toString() =>
-      'FetchResult (isRetrievedFromCahce = $isRetrievedFromCache';
+  String toString() => 'FetchResult (isRetrievedFromCahce = $isRetrievedFromCache, persons = $persons';
 }
 
 class MyHomePage extends StatelessWidget {

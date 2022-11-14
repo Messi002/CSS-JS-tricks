@@ -88,3 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+
+Learned in the UX/UI bootcamp on week 1 - Qualitative methods, interviews
+Also camsol general sturcture and impact on site map
