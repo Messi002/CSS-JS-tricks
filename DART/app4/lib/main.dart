@@ -110,6 +110,7 @@ class FetchedResults {
 }
 
 class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
+  final Map<PersonUrl, Iterable<Person>> _cache = {};
   PersonBloc() : super(null);
 }
 
