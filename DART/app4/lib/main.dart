@@ -114,7 +114,9 @@ class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
   PersonBloc() : super(null) {
     on<LoadPersonAction>(
       (event, emit) {
-        final url = 
+        final url = event.url;
+        if (_cache.containsKey(url)) ;
+        //we have the value in the cache;
       },
     );
   }
