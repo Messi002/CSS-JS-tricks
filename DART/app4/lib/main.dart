@@ -89,12 +89,16 @@ class Person {
 
 //converting data
 Future<Iterable<Person>> getPersons(String url) => HttpClient()
-    .getUrl(Uri.parse(url))
-    .then((req) => req.close()) //close request to get response
-    .then((resp) => resp.transform(utf8.decoder).join()) //future of string
-    .then((str) => json.decode(str) as List<dynamic>) //future of list
-    .then((list) => list.map((e) => Person.fromJson(e))); //future of iterable
+ 
 
+@immutable
+class FetchedResults {
+  final Iterable<Person> persons;
+  final bool isRetrievedFromCache;
+  const FetchedResults({
+    required this.persons,
+    required this.isRetrievedFromCache,
+  });
 
   @override
   String toString() =>
