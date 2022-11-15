@@ -111,16 +111,7 @@ class FetchedResults {
 
 class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
   final Map<PersonUrl, Iterable<Person>> _cache = {};
-  PersonBloc() : super(null) {
-    on<LoadPersonAction>(
-      (event, emit) {
-        final url = event.url;
-        if (_cache.containsKey(url)) ;
-        //we have the value in the cache;
-      },
-    );
-  }
-}
+
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
