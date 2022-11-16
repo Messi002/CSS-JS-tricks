@@ -168,7 +168,10 @@ class MyHomePage extends StatelessWidget {
                   child: const Text("Load json #2")),
             ],
           ),
-          BlocBuilder<PersonBloc, FetchedResults?>(builder: (context, state) {
+          BlocBuilder<PersonBloc, FetchedResults?>(
+              buildWhen: (previousResult, currentResult) {
+            return previousResult?.persons != currentResult?.persons;
+          }, builder: (context, state) {
             return Container();
           })
         ],
