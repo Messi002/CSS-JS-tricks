@@ -172,7 +172,21 @@ class MyHomePage extends StatelessWidget {
               buildWhen: (previousResult, currentResult) {
             return previousResult?.persons != currentResult?.persons;
           }, builder: (context, state) {
-            return Container();
+            final persons = state?.persons;
+            if (persons == null) {
+              return const SizedBox();
+            }
+            return Expanded(
+              child: ListView.builder(
+                  itemCount: persons.length,
+                  itemBuilder: (context, index) {
+                    final person = persons[index]!;
+                    debugPrint("This is for null coming up :$person");
+                    return ListTile(
+                      title: Text(person.name.toString()),
+                    );
+                  }),
+            );
           })
         ],
       ),
