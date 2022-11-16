@@ -148,6 +148,16 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Home Page')),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              TextButton(onPressed: () {}, child: const Text("Load json #1")),
+              TextButton(onPressed: () {}, child: const Text("Load json #2")),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
