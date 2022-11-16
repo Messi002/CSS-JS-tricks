@@ -35,7 +35,7 @@ abstract class LoadAction {
 }
 
 @immutable
-abstract class LoadPersonAction implements LoadAction {
+class LoadPersonAction implements LoadAction {
   final PersonUrl url;
   const LoadPersonAction({required this.url}) : super();
 }
@@ -152,10 +152,25 @@ class MyHomePage extends StatelessWidget {
         children: [
           Row(
             children: [
-              TextButton(onPressed: () {}, child: const Text("Load json #1")),
-              TextButton(onPressed: () {}, child: const Text("Load json #2")),
+              TextButton(
+                  onPressed: () {
+                    context
+                        .read<PersonBloc>()
+                        .add(const LoadPersonAction(url: PersonUrl.person1));
+                  },
+                  child: const Text("Load json #1")),
+              TextButton(
+                  onPressed: () {
+                    context
+                        .read<PersonBloc>()
+                        .add(const LoadPersonAction(url: PersonUrl.person2));
+                  },
+                  child: const Text("Load json #2")),
             ],
           ),
+          BlocBuilder<PersonBloc, FetchedResults?>(builder: (context, state) {
+            return Container();
+          })
         ],
       ),
     );
