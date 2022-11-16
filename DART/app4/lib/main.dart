@@ -115,8 +115,13 @@ class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
     on<LoadPersonAction>(
       (event, emit) {
         final url = event.url;
-        if (_cache.containsKey(url)) ;
-        //we have the value in the cache;
+        if (_cache.containsKey(url)) {
+          //we have the value in the cache;
+          final cachedPersons = _cache[url]!;
+          //TODO: print cached persons and cache url
+          final result = FetchedResults(
+              persons: cachedPersons, isRetrievedFromCache: true);
+        }
       },
     );
   }
