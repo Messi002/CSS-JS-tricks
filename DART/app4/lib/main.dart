@@ -113,7 +113,7 @@ class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
   final Map<PersonUrl, Iterable<Person>> _cache = {};
   PersonBloc() : super(null) {
     on<LoadPersonAction>(
-      (event, emit) {
+      (event, emit) async {
         final url = event.url;
         if (_cache.containsKey(url)) {
           //we have the value in the cache;
@@ -121,6 +121,13 @@ class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
           //TODO: print cached persons and cache url
           final result = FetchedResults(
               persons: cachedPersons, isRetrievedFromCache: true);
+          emit(result);
+        } else {
+          final persons = await getPersons(url.urlString);
+          _cache[url] = persons;
+          //TODO: print _cache
+           final result = FetchedResults(
+              persons: persons, isRetrievedFromCache: true);
         }
       },
     );
