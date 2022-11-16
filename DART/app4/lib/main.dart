@@ -12,34 +12,33 @@ extension Log on Object {
   void log() => devtools.log(toString());
 }
 
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: BlocProvider(
+        create: (_) => PersonBloc(),
+        child: const MyHomePage(),
+      ),
+    );
+  }
+}
 
 @immutable
 abstract class LoadAction {
   const LoadAction();
 }
 
-@immutable
-class LoadPersonAction implements LoadAction {
-  final PersonUrl url;
-  const LoadPersonAction({required this.url}) : super();
-}
-
-enum PersonUrl { person1, person2 }
-
-extension UrlString on PersonUrl {
-  String get urlString {
-    switch (this) {
-      case PersonUrl.person1:
-        return 'http://127.0.0.1:5500/app4/api/person1.json';
-      case PersonUrl.person2:
-        return 'http://127.0.0.1:5500/app4/api/person2.json';
-    }
-  }
-}
-
-extension Subscript<T> on Iterable<T> {
-  T? operator [](int index) => length > index ? elementAt(index) : null;
-}
 
 @immutable
 class Person {
