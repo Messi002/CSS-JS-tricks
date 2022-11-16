@@ -1,0 +1,47 @@
+void loadData() async {
+    try {
+      List<ShortProfile> friends = [];
+      final result = await CustomFirestore.userRef.get();
+      // List<UserModel> users = [];
+
+      final users = UserModel.fromJson(result.data()!).friendUIDs;
+      debugPrint("Getting the friends $users");
+      // final response =
+      //     await CoreConfig.currentConfig.apiClient.getUserApi().getFriends();
+
+      // if (response.data != null) {
+      //   friends = response.data!
+      //       .map((friend) => ShortProfile(
+      //             uid: friend.uid!,
+      //             firstName: friend.firstName!,
+      //             username: friend.username!,
+      //             profileImage: friend.profilePicture,
+      //           ))
+      //       .toList();
+      // }
+
+      // TODO(leonfriedrichsen): remove test data
+      /*friends.add(
+        const ShortProfile(
+          uid: 'g9bKEVLuvpeauU3FzxX8Ws5RPRj2',
+          firstName: 'Leon',
+          username: 'leonfriedrichsen',
+          profileImage:
+              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80',
+        ),
+      );
+
+      friends.add(
+        const ShortProfile(
+          uid: 'g9bKEVLuvpeauU3FzxX8Ws5RPRj2',
+          firstName: 'Leon',
+          username: 'leonfriedrichsen',
+          profileImage: null,
+        ),
+      );*/
+
+      emit(FriendsLoaded(friends: friends, filteredList: friends));
+    } catch (e, stackTrace) {
+      emit(FriendsError(GlobalErrorData(e, stackTrace: stackTrace)));
+    }
+  }

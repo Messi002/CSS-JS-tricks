@@ -6,6 +6,11 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:developer' as devtools show log;
+
+extension Log on Object {
+  void log() => devtools.log(toString());
+}
 
 void main() {
   runApp(const MyApp());
@@ -135,6 +140,7 @@ class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
           //TODO: print _cache
           final result =
               FetchedResults(persons: persons, isRetrievedFromCache: true);
+          emit(result);
         }
       },
     );
