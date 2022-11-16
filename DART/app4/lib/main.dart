@@ -21,7 +21,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: BlocProvider(
+        create: (_) => PersonBloc(),
+        child: const MyHomePage(),
+      ),
     );
   }
 }
@@ -48,6 +51,10 @@ extension UrlString on PersonUrl {
         return 'http://127.0.0.1:5500/app4/api/person2.json';
     }
   }
+}
+
+extension Subscript<T> on Iterable<T> {
+  T? operator [](int index) => length > index ? elementAt(index) : null;
 }
 
 @immutable
@@ -126,8 +133,8 @@ class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
           final persons = await getPersons(url.urlString);
           _cache[url] = persons;
           //TODO: print _cache
-           final result = FetchedResults(
-              persons: persons, isRetrievedFromCache: true);
+          final result =
+              FetchedResults(persons: persons, isRetrievedFromCache: true);
         }
       },
     );
