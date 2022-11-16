@@ -99,13 +99,7 @@ class Person {
   String toString() => 'Person(name: $name, age: $age)';
 }
 
-//converting data
-Future<Iterable<Person>> getPersons(String url) => HttpClient()
-    .getUrl(Uri.parse(url))
-    .then((req) => req.close()) //close request to get response
-    .then((resp) => resp.transform(utf8.decoder).join()) //future of string
-    .then((str) => json.decode(str) as List<dynamic>) //future of list
-    .then((list) => list.map((e) => Person.fromJson(e))); //future of iterable
+
 
 @immutable
 class FetchedResults {
