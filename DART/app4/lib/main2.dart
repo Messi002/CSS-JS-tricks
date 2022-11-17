@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocProvider(
-        create: (context) => PersonBloc(),
-        child: MyHomePage(),
+        create: (_) => PersonBloc(),
+        child: const MyHomePage(),
       ),
     );
   }
@@ -154,10 +154,35 @@ class MyHomePage extends StatelessWidget {
         children: [
           Row(
             children: [
-              TextButton(onPressed: () {}, child: Text('Load person1')),
+              TextButton(
+                  onPressed: () {
+                    context
+                        .read<PersonBloc>()
+                        .add(LoadPersonAction(url: PersonsUrl.person1));
+                  },
+                  child: Text('Load person1')),
               TextButton(onPressed: () {}, child: Text('Load person2'))
             ],
           ),
+          BlocBuilder<PersonBloc, FetchedResults?>(
+            builder: (context, state) {
+              final Aperson = state?.persons;
+              if (Aperson == null) {
+                return const SizedBox();
+              }
+              return Expanded(
+                  child: ListView.builder(
+                      itemCount: Aperson.length,
+                      itemBuilder: (context, int index) {
+                        final Bperson = Aperson[index]!;
+
+                        return ListTile(
+                          title: Text(Bperson.name.toString()),
+                          subtitle: Text(Bperson.age.toString()),
+                        );
+                      }));
+            },
+          )
         ],
       ),
     );
