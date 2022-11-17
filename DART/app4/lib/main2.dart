@@ -1,5 +1,8 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
 import 'dart:developer' as devtools show log;
+
+import 'package:flutter/material.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -41,7 +44,44 @@ extension UrlString on PersonsUrl {
 class Person {
   final String name;
   final int age;
-}
+  Person({
+    required this.name,
+    required this.age,
+  });
+
+  Person copyWith({
+    String? name,
+    int? age,
+  }) {
+    return Person(
+      name: name ?? this.name,
+      age: age ?? this.age,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'name': name,
+      'age': age,
+    };
+  }
+
+  factory Person.fromJson(Map<String, dynamic> json) {
+    return Person(
+      name: json['name'] as String,
+      age: json['age'] as int,
+    );
+  }
+
+  @override
+  String toString() => 'Person(name: $name, age: $age)';
+
+  }
+
+  @immutable
+  abstract class LoadAction{}
+
+  class LoadPersonAction implements LoadAction{}
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
