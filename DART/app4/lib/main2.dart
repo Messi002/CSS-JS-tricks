@@ -44,6 +44,10 @@ extension UrlString on PersonsUrl {
   }
 }
 
+extension SubScript<T> on Iterable<T> {
+  T? operator [](int index) => length > index ? elementAt(index) : null;
+}
+
 class Person {
   final String name;
   final int age;
