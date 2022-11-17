@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:developer' as devtools show log;
 import 'dart:io';
 
+import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
@@ -100,20 +101,36 @@ Future<Iterable<Person>> getPersons(String url) => HttpClient()
 
 @immutable
 class FetchedResults {
-  final Map isRetrievedFromCache;
+  final bool isRetrievedFromCache;
   final Iterable<Person> persons;
-  
-  FetchedResults({
+
+  const FetchedResults({
     required this.isRetrievedFromCache,
     required this.persons,
   });
 
-
-
   @override
-  String toString() => 'FetchedResults(isRetrievedFromCache: $isRetrievedFromCache, persons: $persons)';
+  String toString() =>
+      'FetchedResults(isRetrievedFromCache: $isRetrievedFromCache, persons: $persons)';
 }
 
+class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
+  final Map<PersonsUrl, Iterable<Person>> _cache = {};
+  PersonBloc() : super(null) {
+    on<LoadPersonAction>((event, emit) async {
+      final url = event.url;
+      if (_cache.containsKey(url)) {
+        final cachedPersons = 
+      } else {
+        final persons = await getPersons(url.urlString);
+        _cache[url] = persons;
+        final result =
+            FetchedResults(isRetrievedFromCache: false, persons: persons);
+        emit(result);
+      }
+    });
+  }
+}
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
