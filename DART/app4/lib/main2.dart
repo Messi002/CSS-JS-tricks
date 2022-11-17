@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:developer' as devtools show log;
 import 'dart:io';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 extension Log on Object {
@@ -85,17 +86,34 @@ abstract class LoadAction {
 
 class LoadPersonAction implements LoadAction {
   final PersonsUrl url;
- const LoadPersonAction({
+  const LoadPersonAction({
     required this.url,
-  }): super();
+  }) : super();
 }
 
-
 Future<Iterable<Person>> getPersons(String url) => HttpClient()
-  .getUrl(Uri.parse(url))
-  .then((req) => req.close())
-  .then((res) => res.transform(utf8.decoder).join())
-  .then((str) => jsonDecode(str))
+    .getUrl(Uri.parse(url))
+    .then((req) => req.close())
+    .then((res) => res.transform(utf8.decoder).join())
+    .then((str) => jsonDecode(str) as List<dynamic>)
+    .then((list) => list.map((e) => Person.fromJson(e)));
+
+@immutable
+class FetchedResults {
+  final Map isRetrievedFromCache;
+  final Iterable<Person> persons;
+  
+  FetchedResults({
+    required this.isRetrievedFromCache,
+    required this.persons,
+  });
+
+
+
+  @override
+  String toString() => 'FetchedResults(isRetrievedFromCache: $isRetrievedFromCache, persons: $persons)';
+}
+
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
