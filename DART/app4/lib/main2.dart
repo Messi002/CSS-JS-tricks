@@ -120,7 +120,10 @@ class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
     on<LoadPersonAction>((event, emit) async {
       final url = event.url;
       if (_cache.containsKey(url)) {
-        final cachedPersons = 
+        final cachedPersons = _cache[url]!;
+        final result =
+            FetchedResults(isRetrievedFromCache: true, persons: cachedPersons);
+        emit(result);
       } else {
         final persons = await getPersons(url.urlString);
         _cache[url] = persons;
