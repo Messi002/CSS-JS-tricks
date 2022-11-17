@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
-import 'dart:html';
+import 'dart:developer' as devtools show log;
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'dart:developer' as devtools show log;
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -19,6 +19,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,39 +35,27 @@ class MyApp extends StatelessWidget {
   }
 }
 
-@immutable
-abstract class LoadAction {
-  const LoadAction();
-}
+enum PersonsUrl { person1, person2 }
 
-@immutable
-class LoadPersonAction implements LoadAction {
-  final PersonUrl url;
-  const LoadPersonAction({required this.url}) : super();
-}
-
-enum PersonUrl { person1, person2 }
-
-extension UrlString on PersonUrl {
+extension UrlString on PersonsUrl {
   String get urlString {
     switch (this) {
-      case PersonUrl.person1:
+      case PersonsUrl.person1:
         return 'http://127.0.0.1:5500/app4/api/person1.json';
-      case PersonUrl.person2:
+      case PersonsUrl.person2:
         return 'http://127.0.0.1:5500/app4/api/person2.json';
     }
   }
 }
 
-extension Subscript<T> on Iterable<T> {
+extension SubScript<T> on Iterable<T> {
   T? operator [](int index) => length > index ? elementAt(index) : null;
 }
 
-@immutable
 class Person {
   final String name;
   final int age;
-  const Person({
+  Person({
     required this.name,
     required this.age,
   });
@@ -99,51 +88,58 @@ class Person {
   String toString() => 'Person(name: $name, age: $age)';
 }
 
-//converting data
+@immutable
+abstract class LoadAction {
+  const LoadAction();
+}
+
+class LoadPersonAction implements LoadAction {
+  final PersonsUrl url;
+  const LoadPersonAction({
+    required this.url,
+  }) : super();
+}
+
 Future<Iterable<Person>> getPersons(String url) => HttpClient()
     .getUrl(Uri.parse(url))
-    .then((req) => req.close()) //close request to get response
-    .then((resp) => resp.transform(utf8.decoder).join()) //future of string
-    .then((str) => json.decode(str) as List<dynamic>) //future of list
-    .then((list) => list.map((e) => Person.fromJson(e))); //future of iterable
+    .then((req) => req.close())
+    .then((res) => res.transform(utf8.decoder).join())
+    .then((str) => jsonDecode(str) as List<dynamic>)
+    .then((list) => list.map((e) => Person.fromJson(e)));
 
 @immutable
 class FetchedResults {
-  final Iterable<Person> persons;
   final bool isRetrievedFromCache;
+  final Iterable<Person> persons;
+
   const FetchedResults({
-    required this.persons,
     required this.isRetrievedFromCache,
+    required this.persons,
   });
 
   @override
   String toString() =>
-      'FetchResult (isRetrievedFromCahce = $isRetrievedFromCache, persons = $persons';
+      'FetchedResults(isRetrievedFromCache: $isRetrievedFromCache, persons: $persons)';
 }
 
 class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
-  final Map<PersonUrl, Iterable<Person>> _cache = {};
+  final Map<PersonsUrl, Iterable<Person>> _cache = {};
   PersonBloc() : super(null) {
-    on<LoadPersonAction>(
-      (event, emit) async {
-        final url = event.url;
-        if (_cache.containsKey(url)) {
-          //we have the value in the cache;
-          final cachedPersons = _cache[url]!;
-          //TODO: print cached persons and cache url
-          final result = FetchedResults(
-              persons: cachedPersons, isRetrievedFromCache: true);
-          emit(result);
-        } else {
-          final persons = await getPersons(url.urlString);
-          _cache[url] = persons;
-          //TODO: print _cache
-          final result =
-              FetchedResults(persons: persons, isRetrievedFromCache: true);
-          emit(result);
-        }
-      },
-    );
+    on<LoadPersonAction>((event, emit) async {
+      final url = event.url;
+      if (_cache.containsKey(url)) {
+        final cachedPersons = _cache[url]!;
+        final result =
+            FetchedResults(isRetrievedFromCache: true, persons: cachedPersons);
+        emit(result);
+      } else {
+        final persons = await getPersons(url.urlString);
+        _cache[url] = persons;
+        final result =
+            FetchedResults(isRetrievedFromCache: false, persons: persons);
+        emit(result);
+      }
+    });
   }
 }
 
@@ -153,7 +149,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Page')),
+      appBar: AppBar(title: const Text('AppBar')),
       body: Column(
         children: [
           Row(
@@ -162,38 +158,31 @@ class MyHomePage extends StatelessWidget {
                   onPressed: () {
                     context
                         .read<PersonBloc>()
-                        .add(const LoadPersonAction(url: PersonUrl.person1));
+                        .add(LoadPersonAction(url: PersonsUrl.person1));
                   },
-                  child: const Text("Load json #1")),
-              TextButton(
-                  onPressed: () {
-                    context
-                        .read<PersonBloc>()
-                        .add(const LoadPersonAction(url: PersonUrl.person2));
-                  },
-                  child: const Text("Load json #2")),
+                  child: Text('Load person1')),
+              TextButton(onPressed: () {}, child: Text('Load person2'))
             ],
           ),
           BlocBuilder<PersonBloc, FetchedResults?>(
-              buildWhen: (previousResult, currentResult) {
-            return previousResult?.persons != currentResult?.persons;
-          }, builder: (context, state) {
-            final persons = state?.persons;
-            if (persons == null) {
-              return const SizedBox();
-            }
-            return Expanded(
-              child: ListView.builder(
-                  itemCount: persons.length,
-                  itemBuilder: (context, index) {
-                    final person = persons[index]!;
-                    debugPrint("This is for null coming up :$person");
-                    return ListTile(
-                      title: Text(person.name.toString()),
-                    );
-                  }),
-            );
-          })
+            builder: (context, state) {
+              final Aperson = state?.persons;
+              if (Aperson == null) {
+                return const SizedBox();
+              }
+              return Expanded(
+                  child: ListView.builder(
+                      itemCount: Aperson.length,
+                      itemBuilder: (context, int index) {
+                        final Bperson = Aperson[index]!;
+
+                        return ListTile(
+                          title: Text(Bperson.name.toString()),
+                          subtitle: Text(Bperson.age.toString()),
+                        );
+                      }));
+            },
+          )
         ],
       ),
     );
