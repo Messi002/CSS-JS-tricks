@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 import 'dart:developer' as devtools show log;
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 
@@ -75,13 +76,26 @@ class Person {
 
   @override
   String toString() => 'Person(name: $name, age: $age)';
+}
 
-  }
+@immutable
+abstract class LoadAction {
+  const LoadAction();
+}
 
-  @immutable
-  abstract class LoadAction{}
+class LoadPersonAction implements LoadAction {
+  final PersonsUrl url;
+ const LoadPersonAction({
+    required this.url,
+  }): super();
+}
 
-  class LoadPersonAction implements LoadAction{}
+
+Future<Iterable<Person>> getPersons(String url) => HttpClient()
+  .getUrl(Uri.parse(url))
+  .then((req) => req.close())
+  .then((res) => res.transform(utf8.decoder).join())
+  .then((str) => jsonDecode(str))
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
