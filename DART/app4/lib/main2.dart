@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'dart:developer' as devtools show log;
+
+extension Log on Object {
+  void log() => devtools.log(toString());
+}
 
 void main() {
   runApp(const MyApp());
@@ -26,11 +31,16 @@ extension UrlString on PersonsUrl {
   String get urlString {
     switch (this) {
       case PersonsUrl.person1:
-         return 'http://127.0.0.1:5500/app4/api/person1.json';
+        return 'http://127.0.0.1:5500/app4/api/person1.json';
       case PersonsUrl.person2:
         return 'http://127.0.0.1:5500/app4/api/person2.json';
     }
   }
+}
+
+class Person {
+  final String name;
+  final int age;
 }
 
 class MyHomePage extends StatelessWidget {
