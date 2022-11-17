@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -26,7 +27,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: BlocProvider(
+        create: (context) => PersonBloc(),
+        child: MyHomePage(),
+      ),
     );
   }
 }
@@ -144,6 +148,18 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(title: const Text('AppBar')),
+      body: Column(
+        children: [
+          Row(
+            children: [
+              TextButton(onPressed: () {}, child: Text('Load person1')),
+              TextButton(onPressed: () {}, child: Text('Load person2'))
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
