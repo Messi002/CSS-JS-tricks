@@ -35,18 +35,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-enum PersonsUrl { person1, person2 }
-
-extension UrlString on PersonsUrl {
-  String get urlString {
-    switch (this) {
-      case PersonsUrl.person1:
-        return 'http://127.0.0.1:5500/app4/api/person1.json';
-      case PersonsUrl.person2:
-        return 'http://127.0.0.1:5500/app4/api/person2.json';
-    }
-  }
-}
 
 extension SubScript<T> on Iterable<T> {
   T? operator [](int index) => length > index ? elementAt(index) : null;
