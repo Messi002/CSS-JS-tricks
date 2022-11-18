@@ -65,26 +65,7 @@ class FetchedResults {
       'FetchedResults(isRetrievedFromCache: $isRetrievedFromCache, persons: $persons)';
 }
 
-class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
-  final Map<PersonsUrl, Iterable<Person>> _cache = {};
-  PersonBloc() : super(null) {
-    on<LoadPersonAction>((event, emit) async {
-      final url = event.url;
-      if (_cache.containsKey(url)) {
-        final cachedPersons = _cache[url]!;
-        final result =
-            FetchedResults(isRetrievedFromCache: true, persons: cachedPersons);
-        emit(result);
-      } else {
-        final persons = await getPersons(url.urlString);
-        _cache[url] = persons;
-        final result =
-            FetchedResults(isRetrievedFromCache: false, persons: persons);
-        emit(result);
-      }
-    });
-  }
-}
+
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
