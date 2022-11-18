@@ -53,7 +53,7 @@ void main() {
     );
 
 
-//fetch mock data (person1) and comparte it with FetchResult
+// fetch mock data (person2) and comparte it with FetchResult
     blocTest(
       'Mock retrieving persons from second iterable',
       build: () => bloc,
