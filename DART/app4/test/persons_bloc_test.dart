@@ -1,3 +1,4 @@
+import 'package:app4/bloc/bloc_actions.dart';
 import 'package:app4/bloc/person.dart';
 import 'package:app4/bloc/persons_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -29,10 +30,22 @@ void main() {
       bloc = PersonBloc();
     });
 
+    //testing initial state
+
     blocTest<PersonBloc, FetchedResults?>(
       'testing initial state',
       build: () => bloc,
       verify: (bloc) => bloc.state == null,
     );
-  });
+
+    //fetch mock data (person1) and comparte it with FetchResult
+    blocTest(
+      'Mock retrieving persons from first iterable',
+      build: () => bloc,
+      act: (bloc){
+        bloc.add(const LoadPersonAction(url: 'dummy_data_1', loader: mockGetPersons1));
+      }
+
+    );
+  },);
 }
