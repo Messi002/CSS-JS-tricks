@@ -50,20 +50,6 @@ Future<Iterable<Person>> getPersons(String url) => HttpClient()
     .then((str) => jsonDecode(str) as List<dynamic>)
     .then((list) => list.map((e) => Person.fromJson(e)));
 
-@immutable
-class FetchedResults {
-  final bool isRetrievedFromCache;
-  final Iterable<Person> persons;
-
-  const FetchedResults({
-    required this.isRetrievedFromCache,
-    required this.persons,
-  });
-
-  @override
-  String toString() =>
-      'FetchedResults(isRetrievedFromCache: $isRetrievedFromCache, persons: $persons)';
-}
 
 
 
