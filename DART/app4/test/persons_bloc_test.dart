@@ -43,7 +43,8 @@ void main() {
       'Mock retrieving persons from first iterable',
       build: () => bloc,
       act: (bloc){
-        bloc.add(const LoadPersonAction(url: 'dummy_data_1', loader: mockGetPersons1));
+        bloc.add(const LoadPersonAction(url: 'dummy_url_1', loader: mockGetPersons1));
+        bloc.add(const LoadPersonAction(url: 'dummy_url_1', loader: mockGetPersons1));
       }
 
     );
