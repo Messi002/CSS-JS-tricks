@@ -45,8 +45,27 @@ void main() {
       act: (bloc){
         bloc.add(const LoadPersonAction(url: 'dummy_url_1', loader: mockGetPersons1));
         bloc.add(const LoadPersonAction(url: 'dummy_url_1', loader: mockGetPersons1));
-      }
-
+      },
+    expect: () => [
+      const FetchedResults(isRetrievedFromCache: false, persons: mockedPersons1),
+      const FetchedResults(isRetrievedFromCache: true, persons: mockedPersons1),
+    ],
     );
+
+
+//fetch mock data (person1) and comparte it with FetchResult
+    blocTest(
+      'Mock retrieving persons from second iterable',
+      build: () => bloc,
+      act: (bloc){
+        bloc.add(const LoadPersonAction(url: 'dummy_url_2', loader: mockGetPersons2));
+        bloc.add(const LoadPersonAction(url: 'dummy_url_2', loader: mockGetPersons2));
+      },
+    expect: () => [
+      const FetchedResults(isRetrievedFromCache: false, persons: mockedPersons2),
+      const FetchedResults(isRetrievedFromCache: true, persons: mockedPersons2),
+    ],
+    );
+
   },);
 }
