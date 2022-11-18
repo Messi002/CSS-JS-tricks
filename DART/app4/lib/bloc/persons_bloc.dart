@@ -1,5 +1,8 @@
 import 'package:app4/bloc/person.dart';
 import 'package:flutter/foundation.dart' show immutable;
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc_actions.dart';
 
 extension IsEqualToIgnoringOrdering<T> on Iterable<T> {
   bool isEqualToIgnoringOrdering(Iterable<T> other) =>
@@ -22,16 +25,16 @@ class FetchedResults {
       'FetchedResults(isRetrievedFromCache: $isRetrievedFromCache, persons: $persons)';
 
   @override
-  bool operator == (covariant FetchedResults other) =>
+  bool operator ==(covariant FetchedResults other) =>
       persons.isEqualToIgnoringOrdering(other.persons) &&
       isRetrievedFromCache == other.isRetrievedFromCache;
-      
-      
-      
+
+  @override
+  int get hashCode => Object.hash(persons, isRetrievedFromCache);
 }
 
 class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
-  final Map<PersonsUrl, Iterable<Person>> _cache = {};
+  final Map<String, Iterable<Person>> _cache = {};
   PersonBloc() : super(null) {
     on<LoadPersonAction>((event, emit) async {
       final url = event.url;
@@ -41,7 +44,8 @@ class PersonBloc extends Bloc<LoadAction, FetchedResults?> {
             FetchedResults(isRetrievedFromCache: true, persons: cachedPersons);
         emit(result);
       } else {
-        final persons = await getPersons(url.urlString);
+        final loader = event.loader;
+        final persons = await loader(url);
         _cache[url] = persons;
         final result =
             FetchedResults(isRetrievedFromCache: false, persons: persons);

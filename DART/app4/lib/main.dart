@@ -3,10 +3,14 @@ import 'dart:convert';
 import 'dart:developer' as devtools show log;
 import 'dart:io';
 
+import 'package:app4/bloc/bloc_actions.dart';
 import 'package:bloc/bloc.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/person.dart';
+import 'bloc/persons_bloc.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -35,13 +39,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 extension SubScript<T> on Iterable<T> {
   T? operator [](int index) => length > index ? elementAt(index) : null;
 }
-
-
-
 
 Future<Iterable<Person>> getPersons(String url) => HttpClient()
     .getUrl(Uri.parse(url))
@@ -49,9 +49,6 @@ Future<Iterable<Person>> getPersons(String url) => HttpClient()
     .then((res) => res.transform(utf8.decoder).join())
     .then((str) => jsonDecode(str) as List<dynamic>)
     .then((list) => list.map((e) => Person.fromJson(e)));
-
-
-
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -68,10 +65,14 @@ class MyHomePage extends StatelessWidget {
                   onPressed: () {
                     context
                         .read<PersonBloc>()
-                        .add(LoadPersonAction(url: PersonsUrl.person1));
+                        .add(const LoadPersonAction(url: persons1Url, loader: getPersons));
                   },
-                  child: Text('Load person1')),
-              TextButton(onPressed: () {}, child: Text('Load person2'))
+                  child: const Text('Load person1')),
+              TextButton(onPressed: () {
+                 context
+                        .read<PersonBloc>()
+                        .add(const LoadPersonAction(url: persons2Url, loader: getPersons));
+              }, child: const Text('Load person2'))
             ],
           ),
           BlocBuilder<PersonBloc, FetchedResults?>(
