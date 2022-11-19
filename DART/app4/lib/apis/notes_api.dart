@@ -2,8 +2,8 @@ import 'package:app4/models.dart';
 import 'package:flutter/foundation.dart' show immutable;
 
 @immutable
-abstract class NotesApiProtocol {
-  const NotesApiProtocol();
+abstract class NotesProtocolApi {
+  const NotesProtocolApi();
 
   Future<Iterable<Note>?> getNotes({
     required LoginHandle loginHandle,
@@ -11,7 +11,7 @@ abstract class NotesApiProtocol {
 }
 
 @immutable
-class NoteApi implements NotesApiProtocol {
+class NoteApi implements NotesProtocolApi {
   @override
   Future<Iterable<Note>?> getNotes({required LoginHandle loginHandle}) =>
       Future.delayed(

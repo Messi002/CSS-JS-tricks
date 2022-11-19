@@ -2,8 +2,8 @@ import 'package:app4/models.dart';
 import 'package:flutter/foundation.dart' show immutable;
 
 @immutable
-abstract class LoginProtocolApi {
-  const LoginProtocolApi();
+abstract class LoginApiProtocol {
+  const LoginApiProtocol();
 
   Future<LoginHandle?> login({
     required String email,
@@ -12,7 +12,7 @@ abstract class LoginProtocolApi {
 }
 
 @immutable
-class LoginApi implements LoginProtocolApi {
+class LoginApi implements LoginApiProtocol {
   //for creating a singleton...
   const LoginApi._sharedInstance();
   static const LoginApi _shared = LoginApi._sharedInstance();
