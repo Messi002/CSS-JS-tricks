@@ -230,6 +230,13 @@ enum ProgrammingLanguages {
 //   }
 // }
 
+void playHide(SendPort sendPort) {
+  var counting = 0;
+  for (var i = 0; i < 1000000000; i++) {
+    counting = i;
+  }
+  sendPort.send('$counting! Ready or not Here I come... :)');
+}
 
 Future<void> main() async {
   ReceivePort receivePort = ReceivePort();
