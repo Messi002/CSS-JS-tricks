@@ -1,5 +1,8 @@
-import 'dart:_http';
+import 'dart:convert';
+import 'dart:io';
 import 'dart:developer' as devtools show log;
+
+import 'package:meta/meta.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -48,6 +51,22 @@ extension GetOnUri on Object {
       HttpClient().getUrl(Uri.parse(url)).then((req) => req.close());
 }
 
+mixin CanMakeGetCall {
+  String get url;
+
+  @useResult
+  Future<String> getString() =>
+      getUrl(url).then((res) => res.transform(utf8.decoder).join());
+}
+
+@immutable
+class GetPeople with CanMakeGetCall {
+  const GetPeople();
+
+  @override
+  String get url => 'http://127.0.0.1:5500/person.json';
+}
+
 mixin CanRun on Animal {
   int get speed;
 
@@ -66,11 +85,13 @@ class Cat extends Animal with CanRun {
   int speed = 10;
 }
 
-void testIt() {
+void testIt() async {
   // final cat = Cat();
   // cat.run();
   // cat.speed = 20;
   // cat.run();
+  final people = await const GetPeople().getString();
+  people.log();
 }
 
 void main() {
