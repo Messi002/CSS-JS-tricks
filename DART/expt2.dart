@@ -1,3 +1,9 @@
+import 'dart:developer' as devtools show log;
+
+extension Log on Object {
+  void log() => devtools.log(toString());
+}
+
 // void main() {
 //   List<String> colours = ['silberfarben', 'Blau', 'goldfarben'];
 //   List<String> product = ['Anhänger', 'Ohrring', 'Rosa'];
@@ -36,3 +42,8 @@
 //   print("${listed}");
 // }
 
+
+
+void main(){
+
+}
