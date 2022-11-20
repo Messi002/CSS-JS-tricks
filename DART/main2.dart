@@ -238,7 +238,17 @@ void playHide(SendPort sendPort) {
   sendPort.send('$counting! Ready or not Here I come... :)');
 }
 
+Future<void> main() async {
+  ReceivePort receivePort = ReceivePort();
 
+  final createdIsolate = await Isolate.spawn(playHide, receivePort.sendPort);
+
+  receivePort.listen((message) {
+    print(message);
+    receivePort.close();
+    createdIsolate.kill();
+  });
+}
 
 
 
