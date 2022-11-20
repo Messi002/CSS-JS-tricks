@@ -167,7 +167,13 @@ extension on String {
   }
 }
 
+class Calculator with Adder {}
 
+mixin Adder {
+  add(a, b) {
+    print('${a + b}');
+  }
+}
 
 String EncodedString(String input) {
   final output = StringBuffer();
