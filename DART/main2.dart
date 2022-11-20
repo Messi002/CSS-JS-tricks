@@ -27,24 +27,7 @@ import 'dart:isolate';
 //       break;
 //     case Weather.windy:
 //       print('Leave out the umbrella');
-//       break;
-//     default:
-//       print('Strange, really strange');
-//   }
 
-//   User user = User();
-//   print(user);
-// }
-
-// class User {
-//   final name = 'Ram';
-//   final id = 0;
-
-//   @override
-//   String toString() {
-//     return '{"name": "$name", "id": $id}';
-//   }
-// }
 
 // Stream<int> boatSending() async* {
 //   for (var i = 1 ; i < 11; i++) {
