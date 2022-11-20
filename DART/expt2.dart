@@ -42,8 +42,22 @@ extension Log on Object {
 //   print("${listed}");
 // }
 
+void testIt() {}
 
+mixin CanRun {
+  int get speed;
 
-void main(){
+  void run() {
+    'Running at the speed of $speed'.log();
+  }
+}
 
+class Cat with CanRun{
+  @override
+  int get speed => throw UnimplementedError();
+
+}
+
+void main() {
+  testIt();
 }
