@@ -1,3 +1,4 @@
+import 'dart:_http';
 import 'dart:developer' as devtools show log;
 
 extension Log on Object {
@@ -42,26 +43,34 @@ extension Log on Object {
 //   print("${listed}");
 // }
 
-mixin CanRun {
+extension GetOnUri on Object {
+  Future<HttpClientResponse> getUrl(String url) =>
+      HttpClient().getUrl(Uri.parse(url)).then((req) => req.close());
+}
+
+mixin CanRun on Animal {
   int get speed;
 
   void run() {
     'Running at the speed of $speed'.log();
-  print('Running at the speed of $speed');
-
+    print('Running at the speed of $speed');
   }
 }
 
-class Cat with CanRun {
+class Animal {
+  const Animal();
+}
+
+class Cat extends Animal with CanRun {
   @override
   int speed = 10;
 }
 
 void testIt() {
-  final cat = Cat();
-  cat.run();
-  cat.speed = 20;
-  cat.run();
+  // final cat = Cat();
+  // cat.run();
+  // cat.speed = 20;
+  // cat.run();
 }
 
 void main() {
