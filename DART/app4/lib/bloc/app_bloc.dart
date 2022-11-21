@@ -18,10 +18,16 @@ class AppBloc extends Bloc<AppAction, AppState> {
       (event, emit) async {
         //start loading
         emit(const AppState(isLoading: true));
-        
+
         //login user in
-        final loginHandle = await loginApi.login(email: event.email, password: event.password);
+        final loginHandle =
+            await loginApi.login(email: event.email, password: event.password);
+
+        emit(AppState(isLoading: false, loginError: loginHandle == null ? LoginErrors.invalidHandle : null,
+        loginHandle: loginHandle, fetchNotes: null,),);
       },
     );
+    //next action here....
+    on<>
   }
 }
