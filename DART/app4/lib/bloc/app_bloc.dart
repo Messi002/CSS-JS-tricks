@@ -50,6 +50,7 @@ class AppBloc extends Bloc<AppAction, AppState> {
       }
       //we have a valid login handle and want to fetch notes...
       final notes = await noteApi.getNotes(loginHandle: loginHandle!);
+      emit(AppState(isLoading: false, fetchNotes: notes, loginHandle: loginHandle));
     });
   }
 }
