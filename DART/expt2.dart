@@ -92,6 +92,7 @@ void testIt() async {
   // cat.run();
   final people = await const GetPeople().getString();
   people.log();
+  print(people.toString());
 }
 
 void main() {
