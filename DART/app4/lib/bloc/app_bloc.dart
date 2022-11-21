@@ -3,6 +3,7 @@ import 'package:app4/apis/login_api.dart';
 import 'package:app4/apis/notes_api.dart';
 import 'package:app4/bloc/actions.dart';
 import 'package:app4/bloc/app_state.dart';
+import 'package:app4/models.dart';
 import 'package:bloc/bloc.dart';
 
 class AppBloc extends Bloc<AppAction, AppState> {
@@ -17,8 +18,9 @@ class AppBloc extends Bloc<AppAction, AppState> {
       (event, emit) async {
         //start loading
         emit(const AppState(isLoading: true));
-        //login user in
         
+        //login user in
+        final loginHandle = await loginApi.login(email: event.email, password: event.password);
       },
     );
   }
