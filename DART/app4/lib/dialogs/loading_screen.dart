@@ -30,6 +30,15 @@ class LoadingScreen {
     final overlay = OverlayEntry(builder: (context) {
       return Material(
         color: Colors.black.withAlpha(150),
+        child: Center(
+          child: Container(
+            constraints: BoxConstraints(
+              maxWidth: size.width * 0.8,
+              maxHeight: size.height * 0.8,
+              minWidth: size.width * 0.5,
+            ),
+          ),
+        ),
       );
     },);
   }
