@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:app4/dialogs/loading_screen_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class LoadingScreen {
@@ -20,5 +21,16 @@ class LoadingScreen {
   }) {
     final _text = StreamController<String>();
     _text.add(text);
+
+    final state = Overlay.of(context);
+    final renderBox = context.findRenderObject() as RenderBox;
+    final size = renderBox.size;
+
+    //displaying here
+    final overlay = OverlayEntry(builder: (context) {
+      return Material(
+        color: Colors.black.withAlpha(150),
+      );
+    },);
   }
 }
