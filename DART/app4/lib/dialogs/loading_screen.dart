@@ -22,8 +22,16 @@ class LoadingScreen {
     if (_controller?.update(text) ?? false) {
       return;
     } else {
-      _controller = _showOverlay(context: context, text: text);
+      _controller = _showOverlay(
+        context: context,
+        text: text,
+      );
     }
+  }
+
+  void hide() {
+    _controller?.close();
+    _controller = null;
   }
 
   LoadingScreenController _showOverlay({
