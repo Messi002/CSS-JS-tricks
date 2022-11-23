@@ -1,3 +1,4 @@
+import 'package:app4/strings.dart';
 import 'package:flutter/material.dart';
 
 class EmailTextField extends StatelessWidget {
@@ -7,6 +8,13 @@ class EmailTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return TextField(
+      controller: emailController,
+      keyboardType: TextInputType.emailAddress,
+      autocorrect: false,
+  decoration: InputDecoration(
+    hintText: enterYourEmailHere,
+  ),
+    );
   }
 }
