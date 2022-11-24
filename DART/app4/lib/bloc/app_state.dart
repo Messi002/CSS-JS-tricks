@@ -4,20 +4,6 @@ import 'dart:convert';
 import 'package:app4/models.dart';
 import 'package:flutter/foundation.dart' show immutable;
 
-@immutable
-class AppState {
-  final bool isLoading;
-  final LoginErrors? loginError;
-  final LoginHandle? loginHandle;
-  final Iterable<Note>? fetchNotes;
-
-//TODO; if faced with some type of errors add required to all the variables below
-  const AppState({
-    required this.isLoading,
-    this.loginError,
-    this.loginHandle,
-    this.fetchNotes,
-  });
 
   const AppState.empty()
       : isLoading = false,
