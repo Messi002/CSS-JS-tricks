@@ -13,19 +13,7 @@ class LoginHandle {
     required this.token,
   });
 
-  const LoginHandle.fooBar() : token = 'austingareth';
-
-  @override
-  bool operator ==(covariant LoginHandle other) => token == other.token;
-
-  @override
-  int get hashCode => token.hashCode;
-
-  @override
-  String toString() {
-    return 'LoginHandle (token = $token)';
-  }
-}
+  c
 
 enum LoginErrors { invalidHandle }
 
