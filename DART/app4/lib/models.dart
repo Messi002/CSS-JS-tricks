@@ -46,8 +46,4 @@ class Note {
     return other.title == title;
   }
 
-  @override
-  int get hashCode => title.hashCode;
-}
-
-final mockNotes = Iterable.generate(3, (i) => Note(title: 'Note ${i + 1}'));
+ 
