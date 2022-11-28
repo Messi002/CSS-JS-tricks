@@ -35,6 +35,8 @@ class LoginButton extends StatelessWidget {
               ok: true,
             },
           );
+        } else {
+          onLoginTapped(email, password);
         }
       },
       child: const Text(login),
