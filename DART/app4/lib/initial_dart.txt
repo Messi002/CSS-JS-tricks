@@ -49,5 +49,4 @@ void loadData() async {
 
 
 
-Sajent Club task done for getting friends from the API
-Day 4: Divergent Thinking - Mind Mapping & Brainstorming
+

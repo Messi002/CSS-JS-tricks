@@ -1,18 +1,18 @@
 Magic mental activity called decision.
 
 Decisions, or the lack of them, are responsible for the breaking or making of many a
-career. Individuals who have become very procient at making decisions, without
-being inuenced by the opinions of others, are the same people whose annual
-incomes fall into the six and seven gure category.
+career. Individuals who have become very proficient at making decisions, without
+being influenced by the opinions of others, are the same people whose annual
+incomes fall into the six and seven category.
 
 So, how is a person expected to develop this mental ability? Quite simply, you must
-do it on your own. However, I think it’s important to understand that it’s not dicult
+do it on your own. However, I think it’s important to understand that it’s not difficult
 to learn how to make wise decisions. 
 
  No one can see
 you making decisions but they will almost always see the results of your decisions.
 The person who fails to develop their ability to make decisions is doomed because
-indecision sets up internal conicts which can, without warning, escalate into all out
+indecision sets up internal conflicts which can, without warning, escalate into all out
 mental and emotional wars. Psychiatrists have a name to describe these internal
 wars, it is ambivalence. My Oxford Dictionary tells me that ambivalence is the co-
 existence in one person of opposite feelings toward the same objective
@@ -55,3 +55,10 @@ Put this valuable information to use and recognize the greatness, which exists w
 you. You have limitless resources of potential and ability waiting to be developed.
 Start today - there’s never any time better than the present. Be all that you are
 capable of being.
+
+
+
+ Realm: Websocket: Expected HTTP response 101 Switching Protocols, but received: HTTP/1.1 401 Unauthorized
+
+
+Realm: Connection[1]: Connection closed due to error
