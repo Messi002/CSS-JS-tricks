@@ -27,6 +27,14 @@ class LoginHandle {
   }
 }
 
+enum LoginErrors { invalidHandle }
+
+@immutable
+class Note {
+  final String title;
+  const Note({
+    required this.title,
+  });
 
   @override
   String toString() => 'Note(title: $title)';
