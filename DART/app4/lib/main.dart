@@ -1,5 +1,10 @@
+import 'package:app4/apis/login_api.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'bloc/app_bloc.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
@@ -30,6 +35,12 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return BlocProvider(
+      create: (context) => AppBloc(
+        loginApi: LoginApi(),
+        notesApi : NotesApi(),
+      ),
+      child : Scaffold(appBar: AppBar(title: const Text('Home Page')),),
+    );
   }
 }
