@@ -18,6 +18,7 @@ class LoginView extends HookWidget {
         children: [
           EmailTextField(emailController: emailController),
           PasswordTextField(passwordController: passwordController),
+          LoginButton(emailController: emailController, passwordController: passwordController, onLoginTapped: onLoginTapped,),
         ],
       ),
     );
