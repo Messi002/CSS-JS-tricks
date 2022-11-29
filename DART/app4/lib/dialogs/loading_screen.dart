@@ -69,7 +69,22 @@ class LoadingScreen {
                     mainAxisAlignment: MainAxisAlignment.center,
                     // ignore: prefer_const_literals_to_create_immutables
                     children: <Widget>[
-                   
+                      const SizedBox(height: 10),
+                      const CircularProgressIndicator(),
+                      const SizedBox(height: 20),
+                      StreamBuilder(
+                        stream: _text.stream,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              snapshot.data!,
+                              textAlign: TextAlign.center,
+                            );
+                          } else {
+                            return Container();
+                          }
+                        },
+                      )
                     ],
                   ),
                 ),
