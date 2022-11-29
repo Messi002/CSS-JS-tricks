@@ -47,7 +47,17 @@ class LoadingScreen {
 
     //displaying here
     final overlay = OverlayEntry(
-   on(
+      builder: (context) {
+        return Material(
+          color: Colors.black.withAlpha(150),
+          child: Center(
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: size.width * 0.8,
+                maxHeight: size.height * 0.8,
+                minWidth: size.width * 0.5,
+              ),
+              decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(10.0),
               ),
@@ -59,22 +69,7 @@ class LoadingScreen {
                     mainAxisAlignment: MainAxisAlignment.center,
                     // ignore: prefer_const_literals_to_create_immutables
                     children: <Widget>[
-                      const SizedBox(height: 10),
-                      const CircularProgressIndicator(),
-                      const SizedBox(height: 20),
-                      StreamBuilder(
-                        stream: _text.stream,
-                        builder: (context, snapshot) {
-                          if (snapshot.hasData) {
-                            return Text(
-                              snapshot.data!,
-                              textAlign: TextAlign.center,
-                            );
-                          } else {
-                            return Container();
-                          }
-                        },
-                      )
+                   
                     ],
                   ),
                 ),
