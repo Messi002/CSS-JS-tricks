@@ -11,4 +11,16 @@ class LoginView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final emailController = useTextEditingController();
-    fi
+    final passwordController = useTextEditingController();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          EmailTextField(emailController: emailController),
+          PasswordTextField(passwordController: passwordController),
+          LoginButton(emailController: emailController, passwordController: passwordController, onLoginTapped: onLoginTapped,),
+        ],
+      ),
+    );
+  }
+}
