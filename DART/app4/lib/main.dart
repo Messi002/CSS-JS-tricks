@@ -6,13 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/app_bloc.dart';
 
-extension Log on Object {
-  void log() => devtools.log(toString());
-}
 
-void main() {
-  runApp(const MyApp());
-}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
