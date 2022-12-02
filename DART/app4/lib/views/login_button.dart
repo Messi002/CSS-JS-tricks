@@ -25,3 +25,21 @@ class LoginButton extends StatelessWidget {
       onPressed: () {
         final email = emailController.text;
         final password = passwordController.text;
+
+        if (email.isEmpty || password.isEmpty) {
+          showGenericDialog(
+            context: context,
+            title: emailAndPasswordEmptyDialogTitle,
+            content: emailOrPasswordEmptyDescription,
+            optionsBuilder: () => {
+              ok: true,
+            },
+          );
+        } else {
+          onLoginTapped(email, password);
+        }
+      },
+      child: const Text(login),
+    );
+  }
+}
