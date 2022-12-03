@@ -1,4 +1,6 @@
 import 'package:app4/apis/login_api.dart';
+import 'package:app4/apis/notes_api.dart';
+import 'package:app4/bloc/app_state.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
@@ -34,17 +36,26 @@ class MyApp extends StatelessWidget {
 
 
 
-// class MyHomePage extends StatelessWidget {
-//   const MyHomePage({super.key});
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return BlocProvider(
-//       create: (context) => AppBloc(
-//         // loginApi: LoginApi(),
-//         // notesApi : NotesApi(),
-//       ),
-//       child : Scaffold(appBar: AppBar(title: const Text('Home Page')),),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => AppBloc(
+        loginApi: LoginApi(),
+        noteApi : NotesApi(),
+      ),
+      child : Scaffold(appBar: AppBar(title: const Text('Home Page')),
+      body: BlocConsumer<AppBloc, AppState>(
+        listener: (context, appState) {
+          // TODO: implement listener
+        },
+        builder: (context, appState) {
+          return Container();
+        },
+      ),
+      ),
+    );
+  }
+}

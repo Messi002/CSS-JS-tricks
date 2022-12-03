@@ -11,7 +11,7 @@ abstract class NotesProtocolApi {
 }
 
 @immutable
-class NoteApi implements NotesProtocolApi {
+class NotesApi implements NotesProtocolApi {
   @override
   Future<Iterable<Note>?> getNotes({required LoginHandle loginHandle}) =>
       Future.delayed(
