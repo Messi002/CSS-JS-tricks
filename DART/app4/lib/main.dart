@@ -1,6 +1,7 @@
 import 'package:app4/apis/login_api.dart';
 import 'package:app4/apis/notes_api.dart';
 import 'package:app4/bloc/app_state.dart';
+import 'package:app4/dialogs/generic_dialog.dart';
 import 'package:app4/dialogs/loading_screen.dart';
 import 'package:app4/strings.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,16 @@ class MyHomePage extends StatelessWidget {
               LoadingScreen.instance().show(context: context, text: pleaseWait);
             } else {
               LoadingScreen.instance().hide();
+            }
+            //showing errors
+            final loginError = appState.loginError;
+            if (loginError != null) {
+              showGenericDialog(
+                context: context,
+                title: loginErrorDialogTitle,
+                content: loginErrorDialogContent,
+                optionsBuilder: () => {ok: true},
+              );
             }
           },
           builder: (context, appState) {
