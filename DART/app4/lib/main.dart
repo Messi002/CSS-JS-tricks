@@ -30,17 +30,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AppBloc(
-        loginApi: LoginApi(),
-        notesApi : NotesApi(),
-      ),
-      child : Scaffold(appBar: AppBar(title: const Text('Home Page')),),
-    );
-  }
-}
+
+
+
+// class MyHomePage extends StatelessWidget {
+//   const MyHomePage({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider(
+//       create: (context) => AppBloc(
+//         // loginApi: LoginApi(),
+//         // notesApi : NotesApi(),
+//       ),
+//       child : Scaffold(appBar: AppBar(title: const Text('Home Page')),),
+//     );
+//   }
+// }
