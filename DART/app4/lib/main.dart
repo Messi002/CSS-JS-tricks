@@ -1,9 +1,12 @@
 import 'package:app4/apis/login_api.dart';
 import 'package:app4/apis/notes_api.dart';
+import 'package:app4/bloc/actions.dart';
 import 'package:app4/bloc/app_state.dart';
 import 'package:app4/dialogs/generic_dialog.dart';
 import 'package:app4/dialogs/loading_screen.dart';
+import 'package:app4/models.dart';
 import 'package:app4/strings.dart';
+import 'package:app4/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
@@ -65,9 +68,19 @@ class MyHomePage extends StatelessWidget {
                 optionsBuilder: () => {ok: true},
               );
             }
+            //if we are logged in and don't have any notes fetched, fetch then now
+            if (appState.isLoading == false &&
+                appState.loginError == null &&
+                appState.loginHandle == const LoginHandle.fooBar() &&
+                appState.fetchNotes == null) {
+              context.read<AppBloc>().add(const LoadNotesAction());
+            }
           },
           builder: (context, appState) {
-            return Container();
+            final notes = appState.fetchNotes;
+            if (notes == null) {
+              return LoginView();
+            }
           },
         ),
       ),

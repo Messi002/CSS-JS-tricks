@@ -6,7 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class LoginView extends HookWidget {
   final OnLoginTapped onLoginTapped;
-  const LoginView(this.onLoginTapped, {super.key});
+  const LoginView(this.onLoginTapped, {super.key, required Null Function(dynamic email, dynamic password) onLoginTapped});
 
   @override
   Widget build(BuildContext context) {
