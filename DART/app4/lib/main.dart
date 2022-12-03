@@ -1,6 +1,8 @@
 import 'package:app4/apis/login_api.dart';
 import 'package:app4/apis/notes_api.dart';
 import 'package:app4/bloc/app_state.dart';
+import 'package:app4/dialogs/loading_screen.dart';
+import 'package:app4/strings.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
 
@@ -32,10 +34,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
-
-
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
 
@@ -44,17 +42,23 @@ class MyHomePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => AppBloc(
         loginApi: LoginApi(),
-        noteApi : NotesApi(),
+        noteApi: NotesApi(),
       ),
-      child : Scaffold(appBar: AppBar(title: const Text('Home Page')),
-      body: BlocConsumer<AppBloc, AppState>(
-        listener: (context, appState) {
-          // TODO: implement listener
-        },
-        builder: (context, appState) {
-          return Container();
-        },
-      ),
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Home Page')),
+        body: BlocConsumer<AppBloc, AppState>(
+          listener: (context, appState) {
+            //loading state
+            if (appState.isLoading) {
+              LoadingScreen.instance().show(context: context, text: pleaseWait);
+            } else {
+              LoadingScreen.instance().hide();
+            }
+          },
+          builder: (context, appState) {
+            return Container();
+          },
+        ),
       ),
     );
   }
