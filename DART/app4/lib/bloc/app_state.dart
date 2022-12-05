@@ -39,17 +39,24 @@ class AppState {
   }
 
   @override
-  bool operator ==(covariant AppState other) =>
-      isLoading == other.isLoading &&
-      loginError == other.loginError &&
-      loginHandle == other.loginHandle &&
-      (fetchNotes?.isEqualTo(other) ?? true);
+  bool operator ==(covariant AppState other) {
+    final otherPropertiesAreEqual = isLoading == other.isLoading &&
+        loginError == other.loginError &&
+        loginHandle == other.loginHandle;
+
+    if (fetchNotes == null && other.fetchNotes == null) {
+      return otherPropertiesAreEqual;
+    } else {
+      return otherPropertiesAreEqual &&
+          (fetchNotes?.isEqualTo(other.fetchNotes) ?? false);
+    }
+  }
 
   @override
-  int get hashCode {
-    return isLoading.hashCode ^
-        loginError.hashCode ^
-        loginHandle.hashCode ^
-        fetchNotes.hashCode;
-  }
+  int get hashCode => Object.hash(
+    isLoading,
+    loginError,
+    loginHandle,
+    fetchNotes,
+  );
 }
