@@ -5,6 +5,13 @@ import 'package:app4/models.dart';
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:collection/collection.dart';
 
+extension UnorderedEquality on Object {
+  bool isEqualTo(other) => const DeepCollectionEquality.unordered().equals(
+        this,
+        other,
+      );
+}
+
 @immutable
 class AppState {
   final bool isLoading;
@@ -32,14 +39,11 @@ class AppState {
   }
 
   @override
-  bool operator ==(covariant AppState other) {
-    if (identical(this, other)) return true;
-
-    return other.isLoading == isLoading &&
-        other.loginError == loginError &&
-        other.loginHandle == loginHandle &&
-        other.fetchNotes == fetchNotes;
-  }
+  bool operator ==(covariant AppState other) =>
+      isLoading == other.isLoading &&
+      loginError == other.loginError &&
+      loginHandle == other.loginHandle &&
+      (fetchNotes?.isEqualTo(other) ?? true);
 
   @override
   int get hashCode {
@@ -48,9 +52,4 @@ class AppState {
         loginHandle.hashCode ^
         fetchNotes.hashCode;
   }
-}
-
-extension UnorderedEquality on Object {
-  bool isEqualTo(other) =>
-      const DeepCollectionEquality.unordered().equals(this, other,);
 }
