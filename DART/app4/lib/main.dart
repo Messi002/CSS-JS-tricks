@@ -6,6 +6,7 @@ import 'package:app4/dialogs/generic_dialog.dart';
 import 'package:app4/dialogs/loading_screen.dart';
 import 'package:app4/models.dart';
 import 'package:app4/strings.dart';
+import 'package:app4/views/iterable_list_view.dart';
 import 'package:app4/views/login_view.dart';
 import 'package:flutter/material.dart';
 import 'dart:developer' as devtools show log;
@@ -79,7 +80,15 @@ class MyHomePage extends StatelessWidget {
           builder: (context, appState) {
             final notes = appState.fetchNotes;
             if (notes == null) {
-              return LoginView();
+              return LoginView(
+                onLoginTapped: (String email, String password) {
+                  context
+                      .read<AppBloc>()
+                      .add( LoginAction(email: email, password: password));
+                },
+              );
+            } else {
+              return notes.toListView();
             }
           },
         ),

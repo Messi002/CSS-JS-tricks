@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:app4/models.dart';
 import 'package:flutter/foundation.dart' show immutable;
+import 'package:collection/collection.dart';
 
 @immutable
 class AppState {
@@ -49,3 +50,7 @@ class AppState {
   }
 }
 
+extension UnorderedEquality on Object {
+  bool isEqualTo(other) =>
+      const DeepCollectionEquality.unordered().equals(this, other,);
+}

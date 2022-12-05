@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension ToListView<T> on Iterable<T> {
-  dynamic toListView() => IterableListView(iterable: this);
+  Widget toListView() => IterableListView(iterable: this);
 }
 
 class IterableListView<T> extends StatelessWidget {
