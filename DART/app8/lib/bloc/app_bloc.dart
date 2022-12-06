@@ -14,7 +14,22 @@ extension RandomElement<T> on Iterable<T> {
 }
 
 class AppBloc extends Bloc<AppEvent, AppState> {
+  String _pickRandomUrl(Iterable<String> allUrls) => allUrls.getRandomElement();
   AppBloc({
+    required Iterable<String> urls,
+    Duration? waitBeforeLoading,
     AppBlocRandomUrlPicker? urlPicker,
-  }) : super(const AppState.empty());
+  }) : super(const AppState.empty()) {
+    on<LoadNextUrlEvent>((event, emit) async {
+      //start loading
+      emit(const AppState(isLoading: true, data: null, error: null));
+      final url = (urlPicker ?? _pickRandomUrl)(urls);
+
+      try {
+        dad 
+      } catch (e) {
+        print(e); 
+      }
+    });
+  }
 }
