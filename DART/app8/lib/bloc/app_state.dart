@@ -15,8 +15,16 @@ class AppState {
     required this.error,
   });
 
+//initial app state
   const AppState.empty()
       : isLoading = false,
         data = null,
         error = null;
+
+  @override
+  String toString() => {
+    'isLoading' : isLoading,
+    'hasData' : data != null,
+    'error' : error,
+  }.toString();
 }
