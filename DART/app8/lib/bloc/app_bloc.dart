@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:app8/bloc/app_state.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc_events.dart';
@@ -29,6 +30,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         if (waitBeforeLoading != null) {
           await Future.delayed(waitBeforeLoading);
         }
+        final bundle = NetworkAssetBundle(Uri.parse(url));
+        final data = (await bundle.load(url)).buffer.asUint8List();
       } catch (e) {
         emit(AppState(
           isLoading: false,
