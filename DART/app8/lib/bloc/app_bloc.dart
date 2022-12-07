@@ -26,9 +26,15 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       final url = (urlPicker ?? _pickRandomUrl)(urls);
 
       try {
-        dad 
+        if (waitBeforeLoading != null) {
+          await Future.delayed(waitBeforeLoading);
+        }
       } catch (e) {
-        print(e); 
+        emit(AppState(
+          isLoading: false,
+          data: null,
+          error: e,
+        ));
       }
     });
   }
