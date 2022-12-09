@@ -19,7 +19,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   AppBloc({
     required Iterable<String> urls,
     Duration? waitBeforeLoading,
-
+    AppBlocRandomUrlPicker? urlPicker,
+  }) : super(const AppState.empty()) {
+    on<LoadNextUrlEvent>((event, emit) async {
+      //start loading
+      emit(const AppState(isLoading: true, data: null, error: null));
+      final url = (urlPicker ?? _pickRandomUrl)(urls);
 
       try {
         if (waitBeforeLoading != null) {
