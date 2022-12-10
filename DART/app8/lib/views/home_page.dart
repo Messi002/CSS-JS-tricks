@@ -27,7 +27,11 @@ class HomePage extends StatelessWidget {
             ),
           ],
           child: Column(
-       
+            mainAxisSize: MainAxisSize.max,
+            children: const [
+              AppBlocView<TopBloc>(),
+              AppBlocView<BottomBloc>(),
+            ],
           ),
         ),
       ),
