@@ -1,3 +1,4 @@
+import 'package:app8/views/home_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -17,16 +18,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home:const HomePage(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
