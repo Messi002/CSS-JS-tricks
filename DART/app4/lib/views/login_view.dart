@@ -10,14 +10,7 @@ class LoginView extends HookWidget {
   final OnLoginTapped onLoginTapped;
   const LoginView({
     required this.onLoginTapped,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    final emailController = useTextEditingController();
-  
-  }
-}
 
 
 //flutter hooks
