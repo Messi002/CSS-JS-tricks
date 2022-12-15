@@ -14,7 +14,7 @@ class LoginAction implements AppAction {
   const LoginAction({
     required this.email,
     required this.password,
-    required this.name,
+    
   });
 }
 
