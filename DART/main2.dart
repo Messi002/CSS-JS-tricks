@@ -135,19 +135,7 @@ import 'dart:isolate';
 ///Array methods: .first, .last, .add, .remove, .indexOf.
 ///use isEmpty not isNotEmpty
 ///
-extension on ProgrammingLanguages {
-  bool get IsStronglyType {
-    switch (this) {
-      case ProgrammingLanguages.dart:
-      case ProgrammingLanguages.swift:
-        return true;
-      case ProgrammingLanguages.javascript:
-        return false;
-      default:
-        throw ArgumentError('Invalid language', 'Language not accepted');
-    }
-  }
-}
+
 
 extension on String {
   String get encoded {
