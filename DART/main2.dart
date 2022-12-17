@@ -9,23 +9,6 @@ import 'dart:isolate';
 //   windy,
 // }
 
-// void main(List<String> args) {
-//   print('Weather Conditions');
-//   print(Weather.cloudy.index);
-
-//   const weather = Weather.rainy;
-
-//   switch (weather) {
-//     case Weather.cloudy:
-//       print('It is cloudy today');
-//       break;
-//     case Weather.rainy:
-//       print('It is rainy today');
-//       break;
-//     case Weather.sunny:
-//       print('It is sunny today');
-//       break;
-//     case Weather.windy:
 //       print('Leave out the umbrella');
 //       break;
 //     default:
