@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "260106532614",
+    "project_id": "bloc-photo-library-f8a82",
+    "storage_bucket": "bloc-photo-library-f8a82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260106532614:android:653d79c0086db2e6bd9087",
+        "android_client_info": {
+          "package_name": "com.example.app5"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "260106532614-jvugnu0tmp8vvrrb0q9qdvo1n4o3tmjp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.app5",
+            "certificate_hash": "9737027e32e2c654e683307416439da828142d85"
+          }
+        },
+        {
+          "client_id": "260106532614-dleptrsr1ti32h6er50e79krdvf320oc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANFjEOPCCW2Q1QohMD2td0F3HpaEnG0Lw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "260106532614-dleptrsr1ti32h6er50e79krdvf320oc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
