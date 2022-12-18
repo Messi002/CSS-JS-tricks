@@ -1,0 +1,7 @@
+There are 4 types of operators in dart: 
+-Unary_prefix
+--,++(mutates and returns new value), !(doesn't mutate the old value and returns a new value),
+~(unary_bitwise_complement_prefix_operator; it flips 0s to 1s)
+-Unary_postfix
+-Binary_infix
+-Compound_assignment
