@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
+import 'package:flutter/foundation.dart' show immutable;
+import 'package:flutter/rendering.dart';
 
 part 'app_event.dart';
 part 'app_state.dart';
