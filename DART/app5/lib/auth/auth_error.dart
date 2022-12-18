@@ -95,7 +95,7 @@ class AuthErrorInvalidEmail extends AuthError {
 
 @immutable
 class AuthErrorEmailAlreadyInUse extends AuthError {
-  const AuthErrorInvalidEmail()
+  const AuthErrorEmailAlreadyInUse()
       : super(
           dialogTitle: 'Email already in use',
           dialogText:
