@@ -1,4 +1,3 @@
-import 'package:operators/operators.dart' as operators;
 
 void main(List<String> arguments) {
   // late final int value = getValue();
@@ -13,6 +12,8 @@ void main(List<String> arguments) {
   final intDivided = age1 ~/ age2;
   print(intDivided);
 
+ final inDivided = age1 % age2;
+  print(inDivided);
   ///Unary_prefix
   var age3 = 30;
 
