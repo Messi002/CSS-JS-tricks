@@ -2,7 +2,15 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:firebase_auth/firebase_auth.dart' show FirebaseAuthException;
 
-const Map<String, AuthError> authErrorMapping = {};
+const Map<String, AuthError> authErrorMapping = {
+  'user-not-found' : AuthErrorUserNotFound(),
+  'weak-password' : AuthErrorWeakPassword(),
+  'invalid-email' : AuthErrorInvalidEmail(),
+  'operation-not-allowed' : AuthErrorOperationNotAllowed(),
+  'email-already-in-use' : AuthErrorEmailAlreadyInUse(),
+  'requires-recent-login' : AuthErrorRequiresRecentLogin(),
+  'no-current-user' : AuthErrorNoCurrentUser(),
+};
 
 @immutable
 abstract class AuthError {
@@ -52,8 +60,8 @@ class AuthErrorRequiresRecentLogin extends AuthError {
 
 @immutable
 ///This error occurs when a particular sign-in provider(email_password for this case) hasn't been enabled
-class AuthErrorOperationAllowed extends AuthError {
-  const AuthErrorOperationAllowed()
+class AuthErrorOperationNotAllowed extends AuthError {
+  const AuthErrorOperationNotAllowed()
       : super(
           dialogTitle: 'Operation not allowed!',
           dialogText:
@@ -62,6 +70,7 @@ class AuthErrorOperationAllowed extends AuthError {
 }
 
 
+//user-not-found : FirebaseAuthenticationError
 @immutable
 ///This error occurs when a user tries to login when the user hasn't been registered yet
 class AuthErrorUserNotFound extends AuthError {
