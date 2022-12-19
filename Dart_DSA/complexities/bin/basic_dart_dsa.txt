@@ -1,0 +1,8 @@
+As with any data structure, there are certain notable traits that you should be aware 
+of. The first of these is the notion of 
+- Order
+- Random access   
+- Insertion location
+- Capacity
+
+It is way faster searching through a Map rather than a List
