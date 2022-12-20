@@ -16,6 +16,36 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(const AppStateLoggedOut(
           isLoading: false,
         )) {
+    ///Delete User account
+    on<AppEventDeleteAccount>((event, emit) async {
+//you can grab the current user through firebaseAuth or using state.user...
+      final user = FirebaseAuth.instance.currentUser;
+//log user out if we don't have an actual user in the app state
+      if (user == null) {
+        emit(const AppStateLoggedOut(isLoading: false));
+        return;
+      }
+//Emitting a loading state...
+      emit(AppStateLoggedIn(
+        isLoading: true,
+        user: user,
+        images: state.images ?? [],
+      ));
+//delete user folder
+try {
+  
+}on FirebaseAuthException catch (e) {
+   emit(AppStateLoggedIn(
+        isLoading: true,
+        user: user,
+        images: state.images ?? [],
+        authError: AuthError.from(e)
+      ));
+}on FirebaseException{
+
+}
+    });
+
     //handle uploading images
     on<AppEventUploadImage>((event, emit) async {
       final user = state.user;
@@ -37,7 +67,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       await uploadImage(file: file, userId: user.uid);
 //After uploading file is complete, grab the latest files
       final images = await _getImages(user.uid);
-      
+      emit(AppStateLoggedIn(isLoading: false, user: user, images: images));
     });
   }
 
