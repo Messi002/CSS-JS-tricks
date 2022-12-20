@@ -32,18 +32,23 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         images: state.images ?? [],
       ));
 //delete user folder
-try {
-  
-}on FirebaseAuthException catch (e) {
-   emit(AppStateLoggedIn(
-        isLoading: true,
-        user: user,
-        images: state.images ?? [],
-        authError: AuthError.from(e)
-      ));
-}on FirebaseException{
-
-}
+      try {
+        //delete the said folder
+        final folder = await FirebaseStorage.instance.ref(user.uid).listAll();
+        for (var elt in folder.items) {
+          await elt.delete().catchError((_) {});
+        }
+      } on FirebaseAuthException catch (e) {
+        emit(AppStateLoggedIn(
+            isLoading: true,
+            user: user,
+            images: state.images ?? [],
+            authError: AuthError.from(e)));
+      } on FirebaseException {
+//we might not be able to delete the folder
+//log the user out
+        emit(const AppStateLoggedOut(isLoading: false));
+      }
     });
 
     //handle uploading images
