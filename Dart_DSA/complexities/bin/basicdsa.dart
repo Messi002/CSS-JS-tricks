@@ -8,8 +8,8 @@ class Stack<E> {
   E pop() => _storage.removeLast();
 
   E get peek => _storage.last;
-bool get isEmpty => _storage.isEmpty;
-bool get isNotEmpty => !isEmpty;
+  bool get isEmpty => _storage.isEmpty;
+  bool get isNotEmpty => !isEmpty;
 
   @override
   String toString() {
@@ -36,11 +36,32 @@ void main(List<String> args) {
 // smokeStack.pop();
 // print(smokeStack);
 //-------------------------------
+  final open = '('.codeUnitAt(0);
+  print('this is ( $open');
+  final text = 'helloworld('.codeUnits;
+  print('$text');
+  String sentence = 'helloworld))';
+  bool stackState = checkBalanceParen(sentence);
+  print('Me: Are the parentheses in the string balanced?'
+      '\nComputer: ${stackState ? 'Yes' : 'No'}');
 }
 
 bool checkBalanceParen(String sentence) {
-  final stack = Stack();
- for (var i = 0; i < sentence.length; i++) {
-   if
- }
+  final stack = Stack<String>();
+  for (var i = 0; i < sentence.length; i++) {
+    if (sentence[i] == '(') {
+      stack.push(sentence[i]);
+    }
+    if (sentence[i] == ')') {
+      if (stack.isEmpty) {
+        stack.push(sentence[i]);
+      } else if (stack.peek == ')') {
+        continue;
+      } else {
+        stack.pop();
+      }
+    }
+  }
+
+  return stack.isEmpty;
 }
