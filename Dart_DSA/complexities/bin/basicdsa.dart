@@ -36,16 +36,14 @@ void main(List<String> args) {
 // smokeStack.pop();
 // print(smokeStack);
 //-------------------------------
-  final open = '('.codeUnitAt(0);
-  print('this is ( $open');
-  final text = 'helloworld('.codeUnits;
-  print('$text');
-  String sentence = 'helloworld))';
-  bool stackState = checkBalanceParen(sentence);
+
+  String sentence = 'helloworld)';
+  // bool stackState = checkBalanceParen(sentence);
+  bool stackState = checkParentheses(sentence);
   print('Me: Are the parentheses in the string balanced?'
       '\nComputer: ${stackState ? 'Yes' : 'No'}');
 }
-
+///My solution
 bool checkBalanceParen(String sentence) {
   final stack = Stack<String>();
   for (var i = 0; i < sentence.length; i++) {
@@ -63,5 +61,24 @@ bool checkBalanceParen(String sentence) {
     }
   }
 
+  return stack.isEmpty;
+}
+
+///The best way
+bool checkParentheses(String text) {
+  var stack = Stack<int>();
+  final open = '('.codeUnitAt(0);
+  final close = ')'.codeUnitAt(0);
+  for (int codeUnit in text.codeUnits) {
+    if (codeUnit == open) {
+      stack.push(codeUnit);
+    } else if (codeUnit == close) {
+      if (stack.isEmpty) {
+        return false;
+      } else {
+        stack.pop();
+      }
+    }
+  }
   return stack.isEmpty;
 }
