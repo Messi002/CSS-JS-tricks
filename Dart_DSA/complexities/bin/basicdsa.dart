@@ -7,6 +7,10 @@ class Stack<E> {
 
   E pop() => _storage.removeLast();
 
+  E get peek => _storage.last;
+bool get isEmpty => _storage.isEmpty;
+bool get isNotEmpty => !isEmpty;
+
   @override
   String toString() {
     return '---Top---\n'
@@ -26,10 +30,17 @@ void main(List<String> args) {
   // final elt = stack.pop();
   // print('Popped Elt: $elt');
 // -----------------------------
-  List list = ['S', 'M', 'O', 'K', 'E'];
-  final smokeStack = Stack.of(list);
-print(smokeStack);
-smokeStack.pop();
-print(smokeStack);
+//   List list = ['S', 'M', 'O', 'K', 'E'];
+//   final smokeStack = Stack.of(list);
+// print(smokeStack);
+// smokeStack.pop();
+// print(smokeStack);
+//-------------------------------
+}
 
+bool checkBalanceParen(String sentence) {
+  final stack = Stack();
+ for (var i = 0; i < sentence.length; i++) {
+   if
+ }
 }
