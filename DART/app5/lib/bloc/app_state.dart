@@ -5,11 +5,24 @@ part of 'app_bloc.dart';
 abstract class AppState {
   final bool isLoading;
   final AuthError? authError;
-  
+
   const AppState({
     required this.isLoading,
     this.authError,
   });
 }
 
-class AppInitial extends AppState {}
+class AppStateLoggedIn extends AppState {
+  final User user;
+  final Iterable<Reference> images;
+
+  const AppStateLoggedIn({
+    required bool isLoading,
+    required this.user,
+    required this.images,
+    required AuthError? authError,
+  }) : super(
+          isLoading: isLoading,
+          authError: authError,
+        );
+}
