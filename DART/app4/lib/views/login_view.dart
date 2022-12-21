@@ -15,7 +15,7 @@ class LoginView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final emailController = useTextEditingController();
-  
+    return Container();
   }
 }
 
