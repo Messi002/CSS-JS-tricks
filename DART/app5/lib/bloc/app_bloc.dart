@@ -38,6 +38,17 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         for (var elt in folder.items) {
           await elt.delete().catchError((_) {});
         }
+        //delete folder itself
+        await FirebaseStorage.instance
+            .ref(user.uid)
+            .delete()
+            .catchError((_) {});
+        //delete the user
+        await user.delete();
+        //log user out
+        await FirebaseAuth.instance.signOut();
+    //log user out as well on the UI
+        emit(const AppStateLoggedOut(isLoading: false));
       } on FirebaseAuthException catch (e) {
         emit(AppStateLoggedIn(
             isLoading: true,
