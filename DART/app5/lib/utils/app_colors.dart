@@ -68,10 +68,6 @@ class AppColors {
 
   static const Color semanticColor100 = Color(0xFFFFAD7F);
 
-  //Gradient Color
-  static const Color gradientColor1 = Color(0xFFF2B908);
-
-  static const Color gradientColor2 = Color(0xFFF8D33C);
 
 
   
