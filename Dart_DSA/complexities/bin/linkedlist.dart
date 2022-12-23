@@ -27,6 +27,16 @@ class LinkedList<T> {
     tail ??= head;
   }
 
+  void append(T value) {
+    if (isEmpty) {
+      push(value);
+      return;
+    }
+    tail?.next = Node(value: value);
+
+    tail = tail?.next;
+  }
+
   @override
   String toString() {
     if (isEmpty) return 'empty linked_list';
@@ -46,9 +56,13 @@ void main(List<String> args) {
 
   final linkedlist = LinkedList<int>();
 
-  linkedlist.push(3);
-  linkedlist.push(3);
-  linkedlist.push(3);
+  // linkedlist.push(3);
+  // linkedlist.push(2);
+  // linkedlist.push(1);
+
+  linkedlist.append(1);
+  linkedlist.append(2);
+  linkedlist.append(3);
 
   print(linkedlist);
 }
