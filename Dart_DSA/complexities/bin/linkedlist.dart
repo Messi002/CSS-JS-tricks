@@ -79,7 +79,16 @@ class Linkedlist<E> {
   //Removes at the end of inkedlist
   E? removeLat() {
     if (head?.next == null) return pop();
-    
+
+    var current = head;
+    while (current!.next != tail) {
+      current = current.next;
+    }
+
+    final value = current.value;
+    tail = current;
+    tail?.next = null;
+    return value;
   }
 
   @override
