@@ -91,5 +91,6 @@ void main(List<String> args) {
   print('Before: $list');
   var middleNode = list.nodeAt(0)!;
   list.insertAfter(middleNode, 42);
+  list.pop();
   print('After: $list');
 }
