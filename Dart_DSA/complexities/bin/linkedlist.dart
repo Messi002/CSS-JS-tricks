@@ -48,7 +48,7 @@ class Linkedlist<E> {
 
     while (currentNode != null && currentIndex < index) {
       currentNode = currentNode.next;
-      currentIndex + 1;
+      currentIndex += 1;
     }
 
     return currentNode;
@@ -64,7 +64,17 @@ class Linkedlist<E> {
     return node.next!;
   }
 
+  //Remove value from front of node
+  E? pop() {
+    final value = head?.value;
+    head = head?.next;
 
+    if (isEmpty) {
+      tail = null;
+    }
+
+    return value;
+  }
 
   @override
   String toString() {
@@ -75,19 +85,11 @@ class Linkedlist<E> {
 
 void main(List<String> args) {
   final list = Linkedlist<int>();
-
   list.push(3);
   list.push(2);
   list.push(1);
-
-  // list.append(1);
-  // list.append(2);
-  // list.append(3);
-
   print('Before: $list');
-var middleNode = list.nodeAt(1)!;
-list.insertAfter(middleNode, 42);
-print('After: $list');
-
-  print(list);
+  var middleNode = list.nodeAt(0)!;
+  list.insertAfter(middleNode, 42);
+  print('After: $list');
 }
