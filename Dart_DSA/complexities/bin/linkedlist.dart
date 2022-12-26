@@ -76,6 +76,12 @@ class Linkedlist<E> {
     return value;
   }
 
+  //Removes at the end of inkedlist
+  E? removeLat() {
+    if (head?.next == null) return pop();
+    
+  }
+
   @override
   String toString() {
     if (isEmpty) return 'empty list';
