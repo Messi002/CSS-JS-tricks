@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class Node<T> {
   T value;
   Node<T>? next;
@@ -14,55 +15,35 @@ class Node<T> {
   }
 }
 
-class LinkedList<T> {
-  Node<T>? head;
-  Node<T>? tail;
+class Linkedlist<E> {
+  Node<E>? head;
+  Node<E>? tail;
 
-  LinkedList({this.head, this.tail});
+  Linkedlist({
+    this.head,
+    this.tail,
+  });
 
   bool get isEmpty => head == null;
 
-  void push(T value) {
+  void push(E value) {
     head = Node(value: value, next: head);
     tail ??= head;
   }
 
-  void append(T value) {
-    if (isEmpty) {
-      push(value);
-      return;
-    }
-    tail?.next = Node(value: value);
-
-    tail = tail?.next;
-  }
-
   @override
   String toString() {
-    if (isEmpty) return 'empty linked_list';
+    if (isEmpty) return 'empty list';
     return head.toString();
   }
 }
 
 void main(List<String> args) {
-  // final node1 = Node(value: 1);
-  // final node2 = Node(value: 2);
-  // final node3 = Node(value: 3);
+  final list = Linkedlist<int>();
 
-  // node1.next = node2;
-  // node2.next = node3;
+  list.push(3);
+  list.push(2);
+  list.push(1);
 
-  // print(node1);
-
-  final linkedlist = LinkedList<int>();
-
-  // linkedlist.push(3);
-  // linkedlist.push(2);
-  // linkedlist.push(1);
-
-  linkedlist.append(1);
-  linkedlist.append(2);
-  linkedlist.append(3);
-
-  print(linkedlist);
+  print(list);
 }
