@@ -16,6 +16,12 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(const AppStateLoggedOut(
           isLoading: false,
         )) {
+    //go to registration view
+    on<AppEventGoToRegistration>(
+      (event, emit) {
+        emit(const AppStateIsInRegistrationView(isLoading: false));
+      },
+    );
     //log in the user
     on<AppEventLogIn>(
       (event, emit) async {
@@ -33,17 +39,17 @@ class AppBloc extends Bloc<AppEvent, AppState> {
 
           final user = userCredential.user!;
           final images = await _getImages(user.uid);
-          emit( AppStateLoggedIn(
-              isLoading: false, user: user, images: images));
+          emit(AppStateLoggedIn(isLoading: false, user: user, images: images));
         } on FirebaseAuthException catch (e) {
           emit(AppStateLoggedOut(
               isLoading: false, authError: AuthError.from(e)));
         }
       },
     );
-//got to log out screen
+//go to log in screen
     on<AppEventGoToLogin>(
       (event, emit) {
+        debugPrint('app event go to login screen called');
         emit(const AppStateLoggedOut(isLoading: false));
       },
     );
