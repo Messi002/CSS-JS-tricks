@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:io';
 
 import 'package:app5/auth/auth_error.dart';
@@ -17,8 +18,24 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           isLoading: false,
         )) {
     on<AppEventRegister>(
-      (event, emit) async{
-        
+      (event, emit) async {
+        emit(
+          const AppStateIsInRegistrationView(
+            isLoading: true,
+          ),
+        );
+        final email = event.email;
+        final password = event.password;
+
+        try {
+          //create user
+          UserCredential credentials = await FirebaseAuth.instance
+              .createUserWithEmailAndPassword(email: email, password: password);
+          final userId = credentials.user!.uid;
+        } on FirebaseAuthException catch (e) {
+          emit(AppStateIsInRegistrationView(
+              isLoading: false, authError: AuthError.from(e)));
+        }
       },
     );
 
