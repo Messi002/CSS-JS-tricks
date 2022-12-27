@@ -4,9 +4,9 @@ import 'package:flutter/material.dart' show BuildContext;
 Future<bool> showDeleteAccountDialog(BuildContext context) {
   return showGenericDialog<bool>(
       context: context,
-      title: 'Delete Account',
+      title: 'Log Out',
       content:
-          "Are you sure you want to delete your account? You can not undo this operation!",
+          "Are you sure you want to log out?",
       optionsBuilder: () => {'Cancel' : false,
-      'Delete Account' : true},).then((value) => value ?? false);
+      'Log Out' : true},).then((value) => value ?? false);
 }
