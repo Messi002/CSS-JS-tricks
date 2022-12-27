@@ -16,7 +16,11 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(const AppStateLoggedOut(
           isLoading: false,
         )) {
-//log out
+    //log in the user
+    on<AppEventLogIn>(
+      (event, emit) {},
+    );
+//got to log out screen
     on<AppEventGoToLogin>(
       (event, emit) {
         emit(const AppStateLoggedOut(isLoading: false));
