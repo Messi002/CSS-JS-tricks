@@ -31,7 +31,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
           //create user
           UserCredential credentials = await FirebaseAuth.instance
               .createUserWithEmailAndPassword(email: email, password: password);
-          final userId = credentials.user!.uid;
+         
+
+          emit( AppStateLoggedIn(isLoading: false, user: credentials.user!, images: const []));
         } on FirebaseAuthException catch (e) {
           emit(AppStateIsInRegistrationView(
               isLoading: false, authError: AuthError.from(e)));
