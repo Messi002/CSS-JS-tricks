@@ -16,6 +16,13 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       : super(const AppStateLoggedOut(
           isLoading: false,
         )) {
+//Log the use out
+    on<AppEventLogOut>((event, emit) async{
+      
+
+
+    });
+
     ///Delete User account
     on<AppEventDeleteAccount>((event, emit) async {
 //you can grab the current user through firebaseAuth or using state.user...
@@ -47,7 +54,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
         await user.delete();
         //log user out
         await FirebaseAuth.instance.signOut();
-    //log user out as well on the UI
+        //log user out as well on the UI
         emit(const AppStateLoggedOut(isLoading: false));
       } on FirebaseAuthException catch (e) {
         emit(AppStateLoggedIn(

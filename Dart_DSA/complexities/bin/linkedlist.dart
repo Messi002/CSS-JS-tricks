@@ -77,7 +77,7 @@ class Linkedlist<E> {
   }
 
   //Removes at the end of inkedlist
-  E? removeLat() {
+  E? removeLast() {
     if (head?.next == null) return pop();
 
     var current = head;
@@ -107,5 +107,6 @@ void main(List<String> args) {
   var middleNode = list.nodeAt(0)!;
   list.insertAfter(middleNode, 42);
   list.pop();
+  list.removeLast();
   print('After: $list');
 }
