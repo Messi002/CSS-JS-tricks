@@ -170,11 +170,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       final file = File(event.filePathToUpload);
 
       await uploadImage(file: file, userId: user.uid);
-//After uploading file is complete, grab the latest files
-      final images = await _getImages(user.uid);
-      emit(AppStateLoggedIn(isLoading: false, user: user, images: images));
-    });
-  }
+
 
   Future<Iterable<Reference>> _getImages(String userId) =>
       FirebaseStorage.instance
