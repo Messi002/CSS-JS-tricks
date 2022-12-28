@@ -8,15 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class RegisterView extends HookWidget {
   const RegisterView({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    final emailController = useTextEditingController(
-      text: 'rostandmessi2@gmail.com'.ifDebugging,
-    );
-
-    final passwordController = useTextEditingController(
-      text: 'messi123456'.ifDebugging,
-    );
+ 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Register'),
