@@ -39,7 +39,7 @@ class LoginView extends HookWidget {
                 hintText: 'Enter your password',
               ),
               obscureText: true,
-              obscuringCharacter: '🎯',
+              obscuringCharacter: '*',
               keyboardAppearance: Brightness.dark,
             ),
             TextButton(
