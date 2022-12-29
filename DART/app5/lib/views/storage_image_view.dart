@@ -12,6 +12,30 @@ class StorageImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<Uint8List>(builder: builder);
+    return FutureBuilder<Uint8List?>(
+        future: image.getData(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+            case ConnectionState.active:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            case ConnectionState.done:
+              if (snapshot.hasData) {
+                final data = snapshot.data!;
+                return Image.memory(data, fit: BoxFit.cover);
+              } else if (snapshot.hasError) {
+                return const Center(
+                  child: Text('Error images be fetched.'),
+                );
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+          }
+        });
   }
 }
