@@ -53,17 +53,7 @@ class MyHomePage extends StatelessWidget {
         appBar: AppBar(title: const Text('Home Page')),
         body: BlocConsumer<AppBloc, AppState>(
           listener: (context, appState) {
-            //loading state
-            if (appState.isLoading) {
-              LoadingScreen.instance().show(context: context, text: pleaseWait);
-            } else {
-              LoadingScreen.instance().hide();
-            }
-            //showing errors
-            final loginError = appState.loginError;
-            if (loginError != null) {
-              showGenericDialog(
-                context: context,
+        
                 title: loginErrorDialogTitle,
                 content: loginErrorDialogContent,
                 optionsBuilder: () => {ok: true},
