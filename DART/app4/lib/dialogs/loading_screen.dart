@@ -7,7 +7,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class LoadingScreen {
-  
+  //creating a singleton
+  LoadingScreen._sharedInstance();
+  // ignore: prefer_const_constructors
+  static late final LoadingScreen _shared = LoadingScreen._sharedInstance();
+  factory LoadingScreen.instance() => _shared;
+
+  LoadingScreenController? _controller;
+
+  void show({
+    required BuildContext context,
+    required String text,
+  }) {
+    if (_controller?.update(text) ?? false) {
+      return;
     } else {
       _controller = _showOverlay(
         context: context,
