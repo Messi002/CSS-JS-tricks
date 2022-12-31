@@ -59,7 +59,18 @@ class LoadingScreen {
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
-    
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: <Widget>[
+                      const SizedBox(height: 10),
+                      const CircularProgressIndicator(),
                       const SizedBox(height: 20),
                       StreamBuilder(
                         stream: _text.stream,
@@ -78,23 +89,5 @@ class LoadingScreen {
                   ),
                 ),
               ),
-            ),
-          ),
-        );
-      },
-    );
-    state?.insert(overlay);
-
-    return LoadingScreenController(
-      close: () {
-        _text.close();
-        overlay.remove();
-        return true;
-      },
-      update: (text) {
-        _text.add(text);
-        return true;
-      },
-    );
-  }
+    
 }
