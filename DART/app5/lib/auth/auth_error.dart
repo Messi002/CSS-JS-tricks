@@ -93,6 +93,16 @@ class AuthErrorWeakPassword extends AuthError {
 }
 
 @immutable
+class AuthErrorInvalidEmail extends AuthError {
+  const AuthErrorInvalidEmail()
+      : super(
+          dialogTitle: 'Invalid email',
+          dialogText:
+              'Please double check your email and try again',
+        );
+}
+
+@immutable
 class AuthErrorEmailAlreadyInUse extends AuthError {
   const AuthErrorEmailAlreadyInUse()
       : super(
