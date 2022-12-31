@@ -17,15 +17,6 @@ class AppEventUploadImage implements AppEvent {
   });
 }
 
-@immutable
-class AppEventDeleteAccount implements AppEvent {
-  const AppEventDeleteAccount();
-}
-
-@immutable
-class AppEventLogOut implements AppEvent {
-  const AppEventLogOut();
-}
 
 @immutable
 class AppEventInitialize implements AppEvent {
