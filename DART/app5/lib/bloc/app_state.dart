@@ -1,7 +1,16 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'app_bloc.dart';
 
-
+extension GetUser on AppState {
+  User? get user {
+    final cls = this;
+    if (cls is AppStateLoggedIn) {
+      return cls.user;
+    } else {
+      return null;
+    }
+  }
+}
 
 ///This is to be able to grab images
 ///when the instance used is AppStateLoggedIn only else 
