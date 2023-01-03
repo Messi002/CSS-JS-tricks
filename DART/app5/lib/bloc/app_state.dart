@@ -15,7 +15,16 @@ extension GetUser on AppState {
 ///This is to be able to grab images
 ///when the instance used is AppStateLoggedIn only else 
 ///we receive a null...
-
+extension GetImage on AppState {
+  Iterable<Reference>? get images {
+    final cls = this;
+    if (cls is AppStateLoggedIn) {
+      return cls.images;
+    } else {
+      return null;
+    }
+  }
+}
 
 @immutable
 abstract class AppState {
