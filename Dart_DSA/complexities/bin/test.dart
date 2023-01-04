@@ -26,5 +26,8 @@ void main() {
   //   return;
   // });
 
- 
+  final value2 = locale.where((element) => element['name'] == value1).toList();
+  final value3 = value2.single;
+  print(value3['locale']);
+  // print("${value2[0]['locale']}");
 }
