@@ -4,7 +4,14 @@
 // print(runes);
 // }
 
-
+void main() {
+  final locale = const <Map<String, dynamic>>[
+    {'name': '🇬🇧 English', 'locale': 'locale1'},
+    {'name': '🇫🇷 French', 'locale': 'locale2'},
+    {'name': '🇩🇪 German', 'locale': 'locale3'},
+    {'name': '🇵🇹 Portuguese', 'locale': 'locale4'},
+    {'name': '🇪🇸 Spanish', 'locale': 'locale5'}
+  ];
 
   // final value = locale.map((item) => item['name'].toString());
   final value = locale.where((x) => x['locale'] == locale[2]['locale']);
