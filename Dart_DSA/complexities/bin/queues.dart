@@ -1,33 +1,25 @@
 abstract class Queue<E> {
   bool enqueue(E element);
   E? dequeue();
-  bool? get isEmpty;
+  bool get isEmpty;
   E? get peek;
 }
 
 class QueueList<E> implements Queue<E> {
   final _list = <E>[];
 
-
   @override
-  E? dequeue() {
-    // TODO: implement dequeue
-    throw UnimplementedError();
-  }
+  E? dequeue() => (isEmpty) ? null : _list.removeAt(0);
 
   @override
   bool enqueue(E element) {
-    // TODO: implement enqueue
-    throw UnimplementedError();
+    _list.add(element);
+    return true;
   }
 
+  @override
+  bool get isEmpty => _list.isEmpty;
 
-  
   @override
-  // TODO: implement isEmpty
-  bool? get isEmpty => _list.isEmpty;
-  
-  @override
-  // TODO: implement peek
-  E? get peek => (isEmpty ?? false) ? null : _list.first ;
+  E? get peek => (isEmpty) ? null : _list.first;
 }
