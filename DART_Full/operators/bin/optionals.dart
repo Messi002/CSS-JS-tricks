@@ -16,7 +16,15 @@ void main(List<String> args) {
   // print(firstName ?? 'No names found');
 
   //Flat map
-  final fullNames = firstName.flatMap((f) => lastName.flatMap((l) => '$f $l')) ?? 'Either firstName or lastName or Both are null';
+  final fullNames = firstName.flatMap(
+        (f) => lastName.flatMap(
+          (l) => '$f $l',
+        ),
+      ) ??
+      'Either firstName or lastName or Both are null';
+
+//Providing optionals default values in dart
+  print(getFullNames("firstName", "null"));
 }
 
 String getFullName(
@@ -39,6 +47,34 @@ extension FlatMap<T> on T? {
       return null;
     } else {
       return callback(shadow);
+    }
+  }
+}
+
+//Providing optionals default values in dart
+String getFullNames(
+  String? firstName, 
+  String? lastName,
+) => '${firstName.orDefault} ${lastName.orDefault}';
+
+
+extension DefaultValues<T> on T? {
+  T get orDefault {
+    final shadow = this;
+    if (shadow != null) {
+      return shadow;
+    }
+    switch (T) {
+      case String:
+        return 'X' as T;
+      case int:
+        return 0 as T;
+      case double:
+        return 0.0 as T;
+      case bool:
+        return false as T;
+      default:
+        throw Exception('No default value for type $T');
     }
   }
 }
