@@ -2,3 +2,5 @@ List<String?>? can be read as both the List OR its contents can be null
 
 Avoid using the null check operator except for a valid reason, use it instead this way
 e.g. firstName ?? 'No names found';
+
+Flat maps do unwrap and mapping at the same time...

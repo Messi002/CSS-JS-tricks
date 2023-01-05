@@ -1,4 +1,5 @@
 void main(List<String> args) {
+  String? firstName;
   String? lastName;
   String? nullName;
   // lastName ??= 'Bar';
@@ -11,19 +12,33 @@ void main(List<String> args) {
 
 //For container variables like Lists
   List<String?>? names;
-  final String? firstName = names?.first;
-  print(firstName ?? 'No names found');
+  // final String? firstName = names?.first;
+  // print(firstName ?? 'No names found');
+
+  //Flat map
+  final fullNames = firstName.flatMap((f) => lastName.flatMap((l) => '$f $l')) ?? 'Either firstName or lastName or Both are null';
 }
 
 String getFullName(
   String? firstName,
   String? lastName,
 ) =>
-    withAll([firstName, lastName], (names) => names.join(' ')) ??
-    'Empty';
+    withAll([firstName, lastName], (names) => names.join(' ')) ?? 'Empty';
 
 T? withAll<T>(
   List<T?> optionals,
   T Function(List<T>) callback,
 ) =>
     optionals.any((e) => e == null) ? null : callback(optionals.cast<T>());
+
+//FlatMaps in dart
+extension FlatMap<T> on T? {
+  R? flatMap<R>(R? Function(T) callback) {
+    final shadow = this;
+    if (shadow == null) {
+      return null;
+    } else {
+      return callback(shadow);
+    }
+  }
+}
