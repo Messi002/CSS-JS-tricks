@@ -1,14 +1,13 @@
 abstract class Queue<E> {
   bool enqueue(E element);
   E? dequeue();
-  bool? isEmpty;
-  E? peek();
+  bool? get isEmpty;
+  E? get peek;
 }
 
 class QueueList<E> implements Queue<E> {
   final _list = <E>[];
-  @override
-  bool? isEmpty;
+
 
   @override
   E? dequeue() {
@@ -22,9 +21,13 @@ class QueueList<E> implements Queue<E> {
     throw UnimplementedError();
   }
 
+
+  
   @override
-  E? peek() {
-    // TODO: implement peek
-    throw UnimplementedError();
-  }
+  // TODO: implement isEmpty
+  bool? get isEmpty => _list.isEmpty;
+  
+  @override
+  // TODO: implement peek
+  E? get peek => (isEmpty ?? false) ? null : _list.first ;
 }
