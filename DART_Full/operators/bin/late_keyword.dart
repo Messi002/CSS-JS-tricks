@@ -55,3 +55,5 @@ class Person1 {
   late final String lastName;
   late String fullNames = '$firstName $lastName';
 }
+
+//do not add late variables in the constructor...
