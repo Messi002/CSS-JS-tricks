@@ -8,7 +8,9 @@ void main(List<String> args) {
   // describe(
   //     something: null); //here the return type isn't used but null is printed
   describe(something: 'Hello, Dart!'); //here the string passed is used...
-  print(performOperation(10, 20, add));
+  // print(performOperation(10, 20, add));
+  final foo = doSomethingHuge(10, 30);
+  print(foo());
 }
 
 //An optional value having a default value
@@ -49,3 +51,6 @@ int add([int a = 3, int b = 1]) => a + b;
 //function
 int performOperation(int a, int b, int Function(int, int) operation) =>
     operation(a, b);
+
+//A function returning a function
+int Function() doSomethingHuge(int a, int b) => () => a + b;
