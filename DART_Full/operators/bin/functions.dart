@@ -4,10 +4,11 @@
 //named parameters always need to have a default value or can be made nullable(optional)
 
 void main(List<String> args) {
-  describe();
-  describe(
-      something: null); //here the return type isn't used but null is printed
+  // describe();
+  // describe(
+  //     something: null); //here the return type isn't used but null is printed
   describe(something: 'Hello, Dart!'); //here the string passed is used...
+  print(performOperation(10, 20, add));
 }
 
 //An optional value having a default value
@@ -38,3 +39,13 @@ void makeUpperCase([
 //Matching different styles
 void describeFully(String firstName, {String? lastName = 'Bar'}) =>
     print('Hello $firstName $lastName');
+
+//Arrow symbol
+int minus([int a = 3, int b = 1]) => a - b;
+int add([int a = 3, int b = 1]) => a + b;
+
+// A Function being a first class citizen means it can be passed to other
+// functions. Any thing that is describeable as a data type can be passed to a
+//function
+int performOperation(int a, int b, int Function(int, int) operation) =>
+    operation(a, b);
