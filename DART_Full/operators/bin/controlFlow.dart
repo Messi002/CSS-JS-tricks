@@ -12,39 +12,58 @@
 //Break: Breaks completely out of the loop
 
 //Grabbing an index from the modern for loop
+import 'dart:io';
+
 void main(List<String> args) {
-  final names = ['Paul, "Geroge', "Easy"];
-  int counter = 0;
-  for (var number in Iterable.generate(10)) {
-    print(number);
-  }
+  // final names = ['Paul, "Geroge', "Easy"];
+  // int counter = 0;
+  // for (var number in Iterable.generate(10)) {
+  //   print(number);
+  // }
 
   //while loop
-  while (counter < names.length) {
-    print(names);
-    counter++;
-  }
+  // while (counter < names.length) {
+  //   print(names);
+  //   counter++;
+  // }
   // or
-  int countera = -1;
-  while (++countera < names.length) {}
+  // int countera = -1;
+  // while (++countera < names.length) {}
 
 //D0-While executes first the body before checking on the condition
-  do {
-    print(names[counter++]);
-  } while (counter < names.length);
+  // do {
+  //   print(names[counter++]);
+  // } while (counter < names.length);
 
-  //
-  const info = {
-    'name' : 'John',
-    'age' : 30,
-    'height' : 1.8,
-    'isMarried' : false,
-    'address' : {
-      'street' : 'main street',
-      'city' : 'Yaounde',
-      'country' : 'Cameroon'
+  //looping over maps since dart doesn't have tuples
+  // const info = {
+  //   'name': 'John',
+  //   'age': 30,
+  //   'height': 1.8,
+  //   'isMarried': false,
+  //   'address': {
+  //     'street': 'main street',
+  //     'city': 'Yaounde',
+  //     'country': 'Cameroon'
+  //   }
+  // };
+
+  // for (var entry in info.entries) {
+  //   print('${entry.key} : ${entry.value}');
+  // }
+
+  //Mixing all what has been taught
+  do {
+    stdout.write('Enter your age or type "exit": ');
+    final input = stdin.readLineSync();
+    print(input);
+
+    if (input == 'exit') {
+      break;
+    } else if((input?.length ?? 0) == 0){
+
     }
-  };
+  } while (true);
 }
 
 //While loop evaluates just the condition and if that condition is met, then the
