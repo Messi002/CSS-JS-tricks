@@ -56,12 +56,30 @@ void main(List<String> args) {
   do {
     stdout.write('Enter your age or type "exit": ');
     final input = stdin.readLineSync();
-    print(input);
 
     if (input == 'exit') {
       break;
-    } else if((input?.length ?? 0) == 0){
+    } else if ((input?.length ?? 0) == 0 || input == null) {
+      stdout.writeln('Invalid age! Please Try Again...');
+      continue;
+    }
 
+    final age = int.tryParse(input);
+
+    if (age == null) {
+      stdout.writeln('Invalid age! Please Try Again...');
+      continue;
+    }
+
+    switch (age) {
+      case 10:
+        stdout.writeln('You are 10 years old...');
+        break;
+      case 15:
+        stdout.writeln('You are young... super');
+        break;
+      default:
+        stdout.writeln('You are $age years old... isn\'t that awesome, sure it is');
     }
   } while (true);
 }
