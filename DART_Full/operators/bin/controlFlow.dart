@@ -79,7 +79,7 @@ void main(List<String> args) {
         stdout.writeln('You are young... super');
         break;
       default:
-        stdout.writeln('You are $age years old... isn\'t that awesome, sure it is');
+        stdout.writeln('You are $age years old, isn\'t that awesome, sure it is...');
     }
   } while (true);
 }
