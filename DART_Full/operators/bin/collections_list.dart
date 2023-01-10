@@ -28,23 +28,19 @@ void main(List<String> args) {
   print('===================');
   //sublist
   names.sublist(1).forEach(print);
- 
 
   print('===================');
+  names.map((str) => str.toUpperCase()).forEach(print);
 
   print('===================');
+  final numbers = [1, 2, 3, 4, 5];
+  final sum =
+      numbers.fold(0, (previousValue, thisValue) => previousValue + thisValue);
+  print(sum);
 
-  print('===================');
+  final result = names.fold(
+      '', (previousValue, str) => '$previousValue ${str.toUpperCase()}');
+  print(result);
 
-  print('===================');
 
-  print('===================');
-
-  print('===================');
-
-  print('===================');
-
-  print('===================');
-
-  print('===================');
 }
