@@ -22,4 +22,29 @@ void main(List<String> args) {
   }
 
   print('===================');
+  //List are collections and are zero-based i.e. first item has the index of zero
+  print(names[0]);
+  print(names[1]);
+  print('===================');
+  //sublist
+  names.sublist(1).forEach(print);
+ 
+
+  print('===================');
+
+  print('===================');
+
+  print('===================');
+
+  print('===================');
+
+  print('===================');
+
+  print('===================');
+
+  print('===================');
+
+  print('===================');
+
+  print('===================');
 }
