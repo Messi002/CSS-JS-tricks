@@ -21,7 +21,7 @@ void main(List<String> args) {
   final uniqueNames = {...names2}; //This is the spread_operator
   print(uniqueNames);
 
-  // print('===================');
+  print('===================');
   final ages1 = {20, 30, 40};
   final ages2 = {20, 30, 40};
 
@@ -29,8 +29,7 @@ void main(List<String> args) {
     print('Ages are equal');
   } else {
     print('Ages are not equal');
-
-  }
+  } //42"32
 
   // print('===================');
 
