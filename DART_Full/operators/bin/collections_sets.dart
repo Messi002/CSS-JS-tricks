@@ -1,5 +1,5 @@
 //download the collection package for sets i.e. dart pub add collection
-// import 'package:collection/collection.dart';
+import 'package:collection/collection.dart';
 
 void main(List<String> args) {
   final names = {
@@ -22,17 +22,24 @@ void main(List<String> args) {
   print(uniqueNames);
 
   print('===================');
+  //Sets and Lists with the same value aren't the same.
   final ages1 = {20, 30, 40};
   final ages2 = {20, 30, 40};
 
-  if (ages1 == ages2) {
+  // if (ages1 == ages2) {
+  //   print('Ages are equal');
+  // } else {
+  //   print('Ages are not equal');
+  // } 
+
+  print('===================');
+//This function comes from the collection package
+//even if the ordering is not the same, irrespective of the index(deep comparison)
+  if (SetEquality().equals(ages1, ages2)) {
     print('Ages are equal');
   } else {
     print('Ages are not equal');
-  } //42"32
-
-  // print('===================');
-
+  } 
   // print('===================');
 
   // print('===================');
