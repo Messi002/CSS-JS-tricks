@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 void main(List<String> args) {
   final info = {
     'name': 'John',
@@ -28,5 +30,8 @@ void main(List<String> args) {
   }
 //If you try to retrieve the value of a key which isn't present it will return null
 //not crash actually
- 
+  print('===================');
+  //unmodifiedale_mapview
+  final info2 = UnmodifiableMapView(info);
+  //info.addAll can be used to add to a map
 }
