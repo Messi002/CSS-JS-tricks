@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 void main(List<String> args) {
   final names = ['Foo', 'Bar', 'Baz', 'Qux'];
 
@@ -41,6 +43,14 @@ void main(List<String> args) {
   final result = names.fold(
       '', (previousValue, str) => '$previousValue ${str.toUpperCase()}');
   print(result);
-
-
+  print('===================');
+  const names2 = ['John', 'Jane', 'Jack', 'Jilli'];
+  //for List which can't be modified use this from the collection package
+  //if you tried adding to the list again then you get an exception
+  final readOnlyList = UnmodifiableListView(names2);
+  print('===================');
+  print('===================');
+  print('===================');
+  print('===================');
+  print('===================');
 }
