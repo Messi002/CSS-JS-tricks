@@ -40,11 +40,5 @@ void main(List<String> args) {
   } else {
     print('Ages are not equal');
   } 
-  // print('===================');
 
-  // print('===================');
-
-  // print('===================');
-
-  // print('===================');
 }
