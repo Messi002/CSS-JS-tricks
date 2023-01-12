@@ -63,3 +63,6 @@ void addToArrayRight() {
 
 //if a map is made const which of occurs means that nothing new can't be added to it
 //that can be changed by using a spread operator and then ..addAll()
+
+
+//SET_COMPREHENSION
