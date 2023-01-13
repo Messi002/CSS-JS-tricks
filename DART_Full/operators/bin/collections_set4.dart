@@ -49,7 +49,7 @@ void main(List<String> args) {
     'John Backer',
   ];
 
-  final namesAndLengths = {for (final name in fullNames) name: name.length};
+  final namesAndLengths = {for (final name in fullNames) name: name.length,};
 
   print(namesAndLengths);
 }
