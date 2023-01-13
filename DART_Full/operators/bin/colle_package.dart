@@ -38,7 +38,40 @@ void testCanonicalizedMap() {
 }
 
 void testCombinedIterableView() {
-  final one = [1, 2, 3];
-  final two = [10, 20, 30];
-  final three = [40, 50, 60];
+  //This is like combining all the iterables into one
+  final Iterable<int> one = [1, 2, 3];
+  final List<int> two = [10, 20, 30];
+  final Iterable<int> three = [40, 50, 60];
+
+  var combined = CombinedIterableView([
+    one,
+    two,
+    three,
+  ]);
+  two.add(50);
+  print(combined);
+}
+
+//Combinedlistview is a view of a list of lists and it is unmodifiable
+void testCombinedListView() {}
+
+void testMergedMap() {
+  final info1 = {
+    'name': 'John 1',
+    'age': 30,
+    'sex': 'male',
+  };
+
+  final info2 = {
+    'name': 'John 2',
+    'age': 31,
+    'sex': 'male',
+    'address': 'New York',
+  };
+//Used to combine two maps together...
+  final mergedMap = mergeMaps(info1, info2);
+  //if the two dictionaries have the same value then we can provide a logical for selecting the values 
+  //of the first, since by default it selects the values of the second dictonaries...
+
+  //like so:   final mergedMap = mergeMaps(info1, info2, value:(one, two) => one);
 }
