@@ -4,6 +4,8 @@
 //   }
 // }
 
+
+//************FOR_SNYCHRONOUS_CODE */
 // Iterable<String> getNames() sync* {
 //   print('producing Bob');
 //   yield 'Bob';
@@ -29,6 +31,7 @@
 //**************************************** */
 
 void main(List<String> args) {
+  /*******DIVE_DEEP_INTO_SPREAD_OPERATOR */
   addToArrayRight();
 }
 
@@ -64,5 +67,3 @@ void addToArrayRight() {
 //if a map is made const which of occurs means that nothing new can't be added to it
 //that can be changed by using a spread operator and then ..addAll()
 
-
-//SET_COMPREHENSION
