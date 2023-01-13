@@ -29,6 +29,7 @@ void testCanonicalizedMap() {
   };
 
   final canonMap = CanonicalizedMap.from(info, (key) {
+    //return key.split('').first;
     return key.length;
   });
   //If a key is freshly added to the canonMap map then it overrides any other
@@ -37,5 +38,7 @@ void testCanonicalizedMap() {
 }
 
 void testCombinedIterableView() {
-  
+  final one = [1, 2, 3];
+  final two = [10, 20, 30];
+  final three = [40, 50, 60];
 }
