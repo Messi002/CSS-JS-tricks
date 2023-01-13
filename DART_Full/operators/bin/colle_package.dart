@@ -3,7 +3,8 @@ import 'package:collection/collection.dart';
 
 void main(List<String> args) {
   // testBoolList();
-  testCanonicalizedMap();
+  // testCanonicalizedMap();
+  testCombinedIterableView();
 }
 
 //This is used when working with so many booleans
@@ -16,6 +17,9 @@ void testBoolList() {
 }
 
 //Canonicalized-map
+//It is useful when you wish to create your own maps and
+//define the parameters for the keys, not necessarily having
+//thesame hashcode, and compared using equality operator
 void testCanonicalizedMap() {
   final info = {
     'name': 'John',
@@ -25,9 +29,13 @@ void testCanonicalizedMap() {
   };
 
   final canonMap = CanonicalizedMap.from(info, (key) {
-   return key.length;
+    return key.length;
   });
-  //If a key is freshly added to the canonMap map then it overrides any other 
+  //If a key is freshly added to the canonMap map then it overrides any other
   //key with which it shares the same length
   print(canonMap);
+}
+
+void testCombinedIterableView() {
+  
 }

@@ -54,4 +54,6 @@ class Dog {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Dog && name == other.name && age == other.age;
+
+
 }
