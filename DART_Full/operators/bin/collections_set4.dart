@@ -27,14 +27,30 @@ void main(List<String> args) {
   final allNumbers = Iterable.generate(100);
   final evenNumbers = [
     for (final number in allNumbers)
-      {
-        if (number % 2 == 0) {number}
-      }
+      if (number % 2 == 0) number
   ];
 
   print(evenNumbers);
+  print('-------------------------');
+
   //if it was to be done using a functional way then we need the
   //where function i.e.
   final evenNumbersFunctional = allNumbers.where((number) => number % 2 == 0);
+
+//When doing list comprehension we are producing list but when doing functional_comprehension we
+//are producing iterables...
+
+//*************************** */
+
+//Map Comprehension
+  const fullNames = [
+    'Alice Jones',
+    'Austin Gareth',
+    'John Backer',
+  ];
+
+  final namesAndLengths = {for (final name in fullNames) name: name.length};
+
+  print(namesAndLengths);
 }
 //1:46:26
