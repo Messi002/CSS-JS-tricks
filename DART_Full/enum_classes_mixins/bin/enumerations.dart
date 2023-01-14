@@ -1,6 +1,5 @@
 //enumerations allow you to create similar objects in one sturcture
 
-import 'dart:html';
 
 void main(List<String> args) {
   final woof = Animal(name: 'Woof', type: AnimalType.dog);
