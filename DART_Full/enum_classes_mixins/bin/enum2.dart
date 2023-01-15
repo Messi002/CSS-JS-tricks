@@ -21,6 +21,11 @@ void main(List<String> args) {
   AnimalType1.cat
     ..jump()
     ..run();
+  print('-----------');
+  print(TeslaCars.values);
+  //whenever we want to call something and we see that it returns something like void
+  //we use the spread-operator and and add the next method on it like below
+  print([...TeslaCars.values]..sort());
 }
 
 mixin canJump {
@@ -56,8 +61,16 @@ extension Jump on AnimalType1 {
 }
 
 //*******************ENUMS_COMPARISON */
-class TeslaCars {
+enum TeslaCars implements Comparable<TeslaCars> {
+  modelY(weightInKg: 2.2),
+  modelS(weightInKg: 2.2),
+  model3(weightInKg: 2.2),
+  modelX(weightInKg: 2.2);
+
   final double weightInKg;
 
   const TeslaCars({required this.weightInKg});
+
+  @override
+  int compareTo(TeslaCars other) => weightInKg.compareTo(other.weightInKg);
 }
