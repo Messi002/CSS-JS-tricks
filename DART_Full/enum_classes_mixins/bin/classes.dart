@@ -1,11 +1,12 @@
 //What is a constructor? It is a function usually with the name of its class itself
 //whose job is to create an instance of that class
 
+void main(List<String> args) {
+  const person = Person.baz();
 
-
-
-
-
+  print(person.age);
+  print(person.name);
+}
 
 class Person {
   final String name;
@@ -25,10 +26,7 @@ class Person {
   const Person.bar(this.age) : name = 'Bar';
 
   //For making them optional... do it this way
-   const Person.baz(
-    String? name,
-    int? age
-   )
+  const Person.baz({String? name, int? age})
       : name = name ?? 'Baz',
         age = age ?? 15;
 }
