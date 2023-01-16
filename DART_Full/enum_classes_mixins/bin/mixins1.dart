@@ -20,3 +20,30 @@ mixin CanRun on Has2Feet {
 class Human extends Has2Feet with CanRun {
   const Human();
 }
+
+//--------------------------------------------------
+//Mixin bringing in hash code (VERY USEFUL)
+enum PetType { cat, dog }
+
+mixin Pet {
+  String get name;
+  int get age;
+  PetType get type;
+
+  @override
+  String toString() => 'Pet is $type, name = $name, age = $age';
+
+  @override
+  int get hashCode => Object.hash(name, age, type);
+
+  // @override
+  // bool operator ==(Object other) =>
+  //     identical(this, other) ||
+  //     other is Pet &&
+  //         other.name == name &&
+  //         other.age == age &&
+  //         other.type == type;
+
+  @override
+  bool operator ==(Object other) => other.hashCode == hashCode; //As far as the other hashcode is equal to out hashcode, we are the same
+}
