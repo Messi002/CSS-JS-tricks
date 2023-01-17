@@ -43,3 +43,10 @@ extension Times<T> on Iterable<T> {
     }
   }
 }
+
+
+//--------------------------
+//An operator between two optionals
+//The reason why shadowing is done on optional extensions is that 
+//Dart has this something called type promotion meaning that if you say if(this != null)
+//doesn't understand that so well
