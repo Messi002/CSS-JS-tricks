@@ -8,6 +8,12 @@ void main(List<String> args) {
 
   final person1 = Person(id: uuid1, name: 'John Doe', age: 25);
   final person2 = Person(id: uuid2, name: 'Angela Gilt', age: 20);
+
+  if (person1 == person2) {
+    print('Person 1 and Pesron 2 are equal');
+  } else {
+    print('Person 1 and Person 2 are not equal');
+  }
 }
 
 mixin HasIdentifier {
