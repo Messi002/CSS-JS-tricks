@@ -10,3 +10,12 @@ class FamilyMember {
   @override
   String toString() => 'Family member (name = $name)';
 }
+
+class Family {
+  final List<FamilyMember> members;
+
+  Family({required this.members});
+
+  @override
+  String toString() => 'Family (members = $members)';
+}
