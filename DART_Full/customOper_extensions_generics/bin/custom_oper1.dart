@@ -39,6 +39,8 @@ extension ToFamily on FamilyMember {
 }
 
 //-------------------------------------
+// Yield* keyword is used for ‘returning’ recursive(or any iterable/stream with the same type) generator:
+// Yield is a keyword that ‘returns’ single value to the sequence, but does not stop the generator function.
 extension Times<T> on Iterable<T> {
   Iterable<T> operator *(int times) sync* {
     for (var i = 0; i < times; i++) {
