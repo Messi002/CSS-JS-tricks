@@ -11,6 +11,9 @@ void main(List<String> args) {
   print('----------------');
   const names = ['Seth', 'Kathy', 'Ethan', 'Megan'];
   print(names * 2);
+  print('-----------------');
+  final sum = addValues(1,29);
+  print(sum);
 }
 
 class FamilyMember {
@@ -57,10 +60,10 @@ extension NullableAdd<T extends num> on T? {
       return thisShadow;
     } else if (thisShadow == null && other != null) {
       return other;
-    } else if (thisShadow == null && other == null) {
-      return 0 as T;
-    } else {
+    } else if (thisShadow != null && other != null){
       return thisShadow + other as T;
+    } else  {
+      return 0 as T;
     }
   }
 }
