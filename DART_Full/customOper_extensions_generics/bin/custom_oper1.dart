@@ -64,3 +64,5 @@ extension NullableAdd<T extends num> on T? {
     }
   }
 }
+
+int addValues([int? a, int? b]) => a + b;
