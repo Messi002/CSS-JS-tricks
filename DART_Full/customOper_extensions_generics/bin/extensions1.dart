@@ -1,3 +1,5 @@
+const json = {'name': 'Mark', 'age': 40};
+
 void main(List<String> args) {
   print(30.timesFour);
   print("----------------------");
@@ -15,9 +17,14 @@ void main(List<String> args) {
   print(10.to(1, inclusive: false));
   print("----------------------");
   print([1, 2, 3].containsDuplicates);
-  print([1, 2, 3,4,1].containsDuplicates);
+  print([1, 2, 3, 4, 1].containsDuplicates);
   print(['Foo', 'Bar', 'Baz'].containsDuplicates);
   print(['Foo', 'Bar', 'Baz', 'Bar'].containsDuplicates);
+  print("----------------------");
+  final String? ageAsString = json.find<int>('age', (int age) => age.toString());
+  final String helloName = json.find('name', (String name) => 'Hello $name')!;
+  print(ageAsString);
+  print(helloName);
 }
 
 //Introduction...
@@ -45,4 +52,16 @@ extension on int {
 //For creating and telling us whether an iterable contains duplicates
 extension on Iterable {
   bool get containsDuplicates => toSet().length != length;
+}
+
+//Mapping the value of a key in a map
+extension Find<K, V, R> on Map<K, V> {
+  R? find<T>(K key, R? Function(T value) cast) {
+    final value = this[key];
+    if (value != null && value is T) {
+      return cast(value as T);
+    } else {
+      return null;
+    }
+  }
 }
