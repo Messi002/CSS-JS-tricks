@@ -21,10 +21,14 @@ void main(List<String> args) {
   print(['Foo', 'Bar', 'Baz'].containsDuplicates);
   print(['Foo', 'Bar', 'Baz', 'Bar'].containsDuplicates);
   print("----------------------");
-  final String? ageAsString = json.find<int>('age', (int age) => age.toString());
+  final String? ageAsString =
+      json.find<int>('age', (int age) => age.toString());
   final String helloName = json.find('name', (String name) => 'Hello $name')!;
   print(ageAsString);
   print(helloName);
+  print("----------------------");
+  print(AnimalType.cat.nameContainsUpperCaseLetters);
+  print(AnimalType.goldFish.nameContainsUpperCaseLetters);
 }
 
 //Introduction...
@@ -65,3 +69,12 @@ extension Find<K, V, R> on Map<K, V> {
     }
   }
 }
+
+//Extension on all enumerations...
+enum AnimalType { cat, dog, goldFish }
+
+extension on Enum {
+  bool get nameContainsUpperCaseLetters => name.contains(RegExp(r'[A-Z]'));
+}
+
+
