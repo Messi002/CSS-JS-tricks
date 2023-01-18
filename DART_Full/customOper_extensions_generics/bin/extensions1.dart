@@ -9,12 +9,15 @@ void main(List<String> args) {
   print(value1);
   print(value2);
   print("----------------------");
-
-  final value4 = [
-    for (var i = 0; i < 10; i++) i,
-  ];
-
-  for (var i = 0; i < 10; i++) {}
+  print(1.to(10));
+  print(1.to(10, inclusive: false));
+  print(10.to(1));
+  print(10.to(1, inclusive: false));
+  print("----------------------");
+  print([1, 2, 3].containsDuplicates);
+  print([1, 2, 3,4,1].containsDuplicates);
+  print(['Foo', 'Bar', 'Baz'].containsDuplicates);
+  print(['Foo', 'Bar', 'Baz', 'Bar'].containsDuplicates);
 }
 
 //Introduction...
@@ -37,4 +40,9 @@ extension on int {
   Iterable<int> to(int end, {bool inclusive = true}) => end > this
       ? [for (var i = this; i < end; i++) i, if (inclusive) end]
       : [for (var i = this; i > end; i--) i, if (inclusive) end];
+}
+
+//For creating and telling us whether an iterable contains duplicates
+extension on Iterable {
+  bool get containsDuplicates => toSet().length != length;
 }
