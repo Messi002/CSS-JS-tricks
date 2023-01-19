@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math' show Random;
 
 void main(List<String> args) {
@@ -6,6 +7,7 @@ void main(List<String> args) {
   print('-----------------------');
   const jack = Person(name: 'Jack Dowe', age: 28);
   print(ShortDescription(jack).description);
+  print(LongDescription(jack).description);
   print('-----------------------');
 }
 
@@ -49,5 +51,5 @@ extension ShortDescription on Person {
 
 //long description
 extension LongDescription on Person {
-  String get description => '$name is $age old';
+  String get description => '$name is $age years old';
 }
