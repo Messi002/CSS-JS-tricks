@@ -23,6 +23,15 @@ void main(List<String> args) {
   final allValues = [momAndDad, brotherAndSisterWithMyFish];
   describe(allValues);
   print('--------------------');
+  const one = KeyValue(1, 2);
+  print(one);
+  print('--------------------');
+  final JSON<String> json = {
+    'name': 'Jone',
+    'address' : '123 Main St.',
+  };
+  print(json);
+  print('--------------------');
 }
 
 //Introduction
@@ -78,3 +87,9 @@ class Fish with CanBreathe {
     print('breathing...');
   }
 }
+
+//Creating unconstrained generic
+typedef KeyValue<K, V> = MapEntry<K, V>;
+
+//Constraining generic
+typedef JSON<T> = Map<String, T>;
