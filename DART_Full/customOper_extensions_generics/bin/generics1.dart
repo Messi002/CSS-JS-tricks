@@ -14,8 +14,18 @@ void main(List<String> args) {
   print(doVariablesMatch(1, 'Foo'));
   print(doVariablesMatch('Foo', 'Bar'));
   print('--------------------');
+  final momAndDad = {'mom': Person(), 'dad': Person()};
+  final brotherAndSisterWithMyFish = {
+    'brother': Person(),
+    'sister': Person(),
+    'fishy': Fish()
+  };
+  final allValues = [momAndDad, brotherAndSisterWithMyFish];
+  describe(allValues);
+  print('--------------------');
 }
 
+//Introduction
 T eitherIntOrDouble<T extends num>() {
   switch (T) {
     case int:
@@ -27,10 +37,44 @@ T eitherIntOrDouble<T extends num>() {
   }
 }
 
-//Checking the types of two variables
+//Checking the types of two variables; possible to compare two generics
 
 //method1
 // bool doVariablesMatch(Object a, Object b) => a.runtimeType == b.runtimeType;
 
 //method2
 bool doVariablesMatch<L, R>(L a, R b) => L == R;
+
+//Type definitions which are generics also; generic type definitions
+typedef BreathingThings<T extends CanBreathe> = Map<String, T>;
+
+void describe(Iterable<BreathingThings> values) {
+  for (var map in values) {
+    for (var keyAndValue in map.entries) {
+      print('Will call breathe on ${keyAndValue.key}');
+      keyAndValue.value.breathe();
+    }
+  }
+}
+
+mixin CanBreathe {
+  void breathe();
+}
+
+class Person with CanBreathe {
+  const Person();
+
+  @override
+  void breathe() {
+    print('breathing...');
+  }
+}
+
+class Fish with CanBreathe {
+  const Fish();
+
+  @override
+  void breathe() {
+    print('breathing...');
+  }
+}
