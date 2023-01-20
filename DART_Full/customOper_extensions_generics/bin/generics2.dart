@@ -4,6 +4,12 @@ void main(List<String> args) {
   print(person.height);
   print(dog.height);
   print('-------------------');
+  final tuple = Tuple(1, 2);
+  final swapped = tuple.swap();
+  print(tuple);
+  print(swapped);
+  print(swapped.sum);
+  print('-------------------');
 }
 
 //Generic mixins and Generic typedefs
@@ -29,7 +35,7 @@ class Dog with HasHeightInt {
   Dog({required this.height});
 }
 
-//Generic extensions
+//Generic extensions on classes
 
 class Tuple<L, R> {
   final L left;
@@ -39,4 +45,12 @@ class Tuple<L, R> {
 
   @override
   String toString() => 'Tuple left = $left, right = $right';
+}
+
+extension<L, R> on Tuple<L, R> {
+  Tuple<R, L> swap() => Tuple(right, left);
+}
+
+extension<L extends num, R extends num> on Tuple<L, R> {
+  num get sum => left + right;
 }
