@@ -10,6 +10,11 @@ void main(List<String> args) {
   print(['2.4', '3.5'].toInt() == 6);
   print([4, 5].toInt() == 9);
   print('----------------------');
+  final person = personThing.mapIfOfType(
+        (Person p) => p.name,
+      ) ??
+      'Unknown name';
+  print(person);
   print('----------------------');
 }
 
@@ -60,4 +65,25 @@ class Person extends Thing {
   final int age;
 
   const Person({required String name, required this.age}) : super(name: name);
+}
+
+class Animal extends Thing {
+  final String species;
+
+  const Animal({required String name, required this.species})
+      : super(name: name);
+}
+
+const Thing personThing = Person(name: 'Dowe', age: 25);
+const Thing animalThing = Animal(name: 'fishy', species: 'fish');
+
+extension<T> on T {
+  R? mapIfOfType<E, R>(R Function(E) f) {
+    final shadow = this;
+    if (shadow is E) {
+      return f(shadow);
+    } else {
+      return null;
+    }
+  }
 }
