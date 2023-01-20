@@ -6,11 +6,10 @@ void main(List<String> args) {
   print((2.2).toInt() == 2);
   print((2.0).toInt() == 2);
   print('3'.toInt() == 3);
-  print(['4','5'].toInt() == 9);
-  print(['2.4','3.5'].toInt() == 6);
-  print([4,5].toInt() == 9);
-
-  
+  print(['4', '5'].toInt() == 9);
+  print(['2.4', '3.5'].toInt() == 6);
+  print([4, 5].toInt() == 9);
+  print('----------------------');
   print('----------------------');
 }
 
@@ -47,4 +46,18 @@ extension ToInt on Object {
         .map((e) => (double.tryParse(e.toString()) ?? 0.0).round())
         .reduce((lhs, rhs) => lhs + rhs);
   }
+}
+
+//Create a generic on any data type and try to map that data type
+
+abstract class Thing {
+  final String name;
+
+  const Thing({required this.name});
+}
+
+class Person extends Thing {
+  final int age;
+
+  const Person({required String name, required this.age}) : super(name: name);
 }
