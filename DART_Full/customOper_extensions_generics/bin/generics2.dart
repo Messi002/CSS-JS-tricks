@@ -28,3 +28,15 @@ class Dog with HasHeightInt {
 
   Dog({required this.height});
 }
+
+//Generic extensions
+
+class Tuple<L, R> {
+  final L left;
+  final R right;
+
+  const Tuple(this.left, this.right);
+
+  @override
+  String toString() => 'Tuple left = $left, right = $right';
+}
