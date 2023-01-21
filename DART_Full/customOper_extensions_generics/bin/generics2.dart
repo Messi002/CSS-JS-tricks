@@ -8,6 +8,32 @@ void main(List<String> args) {
   final swapped = tuple.swap();
   print(tuple);
   print(swapped);
+  print(swapped.sum);
+  print('-------------------');
+}
+
+//Generic mixins and Generic typedefs
+mixin HasHeight<H extends num> {
+  H get height;
+}
+
+//HasHeightDouble or HasHeightInt are actually mixins since they hold on to mixins
+typedef HasHeightDouble = HasHeight<double>;
+typedef HasHeightInt = HasHeight<int>;
+
+class Person with HasHeightDouble {
+  @override
+  final double height;
+
+  const Person({required this.height});
+}
+
+class Dog with HasHeightInt {
+  @override
+  final int height;
+
+  Dog({required this.height});
+}
 
 //Generic extensions on classes
 
