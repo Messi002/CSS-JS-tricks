@@ -58,6 +58,17 @@ extension on Iterable {
   bool get containsDuplicates => toSet().length != length;
 }
 
+//Mapping the value of a key in a map
+extension Find<K, V, R> on Map<K, V> {
+  R? find<T>(K key, R? Function(T value) cast) {
+    final value = this[key];
+    if (value != null && value is T) {
+      return cast(value as T);
+    } else {
+      return null;
+    }
+  }
+}
 
 //Extension on all enumerations...
 enum AnimalType { cat, dog, goldFish }
