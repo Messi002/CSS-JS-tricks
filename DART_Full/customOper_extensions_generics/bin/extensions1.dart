@@ -19,17 +19,6 @@ void main(List<String> args) {
   print([1, 2, 3].containsDuplicates);
   print([1, 2, 3, 4, 1].containsDuplicates);
   print(['Foo', 'Bar', 'Baz'].containsDuplicates);
-  print(['Foo', 'Bar', 'Baz', 'Bar'].containsDuplicates);
-  print("----------------------");
-  final String? ageAsString =
-      json.find<int>('age', (int age) => age.toString());
-  final String helloName = json.find('name', (String name) => 'Hello $name')!;
-  print(ageAsString);
-  print(helloName);
-  print("----------------------");
-  print(AnimalType.cat.nameContainsUpperCaseLetters);
-  print(AnimalType.goldFish.nameContainsUpperCaseLetters);
-}
 
 //Introduction...
 extension on int {
