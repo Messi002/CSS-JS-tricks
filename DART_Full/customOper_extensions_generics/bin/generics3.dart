@@ -93,3 +93,11 @@ extension<T> on T {
   }
 }
 
+//Generic function pointers
+T divide<T extends num>(T lhs, T rhs) {
+  if (lhs is int && rhs is int) {
+    return lhs ~/ rhs as T;
+  } else {
+    return lhs / rhs as T;
+  }
+}
