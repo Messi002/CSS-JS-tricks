@@ -13,8 +13,13 @@ void main(List<String> args) {
   final person = personThing.mapIfOfType(
         (Person p) => p.name,
       ) ??
-      'Unknown name';
+      'Unknown person name';
   print(person);
+  print('----------------------');
+  const integers1 = [100, 5, 2];
+  const doubles1 = [33.2, 53.2, 1.9];
+  print(integers1.reduce(divide));
+  print(doubles1.reduce(divide));
   print('----------------------');
 }
 
@@ -87,3 +92,4 @@ extension<T> on T {
     }
   }
 }
+
