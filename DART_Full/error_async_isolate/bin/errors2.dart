@@ -2,7 +2,7 @@
 
 void main(List<String> args) {
   try {
-    tryCreatingPesron(age: 0);
+    tryCreatingPesron(age: 10);
     print('----------------');
     tryCreatingPesron(age: -1);
     print('----------------');
@@ -17,6 +17,8 @@ void tryCreatingPesron({int age = 0}) {
   try {
     print(Person(age: age).age);
   } on InvalidAgeException {
+    //With rethrow the line with the error crahses the whole application 
+    //and the other lines below it don't get executed
     rethrow;
   }
 }

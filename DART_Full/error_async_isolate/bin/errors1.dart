@@ -1,5 +1,6 @@
 //Exceptions are meant to be caught  e.g. data from a user and passing it to the class and the class can't accept it
-//while errors are not not meant to be caught e.g. a clearly defined range 0-100 and the user inputs 300 that's an error
+//while errors are not not meant to be caught they are programmers error...
+//   e.g. a clearly defined range 0-100 and the user inputs 300 that's an error
 
 void main(List<String> args) {
   tryCreatingPesron(age: 0);

@@ -2,7 +2,9 @@
 void main(List<String> args) async {
   final db = Database();
   try {
-    await db.open();
+    // await db.open();
+    await db.getData();
+    await db.close();
   } on DatabaseNotOpenException {
     print('We forgot to open the database');
   }
