@@ -23,12 +23,22 @@ class Person {
 
   Person({required this.age}) {
     if (age < 0) {
-      throw Exception("Age can't be negative");
+      // throw Exception("Age can't be negative");
+      throw InvalidAgeException(age: age, message: 'Age cannot be negative...');
     } else if (age > 140) {
-      print("Age can't be above 140");
+      // print("Age can't be above 140");
+      throw InvalidAgeException(age: age, message: 'Age cannot be above 140');
     }
   }
 }
 
+//custom exception classes
+class InvalidAgeException implements Exception {
+  final int age;
+  final String message;
 
-//custom exception classes  
+  InvalidAgeException({required this.age, required this.message});
+
+  @override
+  String toString() => 'InvalidAgeException: $message, $age';
+}
