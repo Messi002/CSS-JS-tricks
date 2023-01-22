@@ -13,8 +13,11 @@ void main(List<String> args) {
 void tryCreatingPesron({int age = 0}) {
   try {
     print(Person(age: age).age);
-  } catch (e) {
-    print(e);
+  } //catch (e) {
+  //   print(e);
+  // }
+  on InvalidAgeException catch (e, stackTrace) {
+    print('Exception:$e, stackTrace: $stackTrace');
   }
 }
 
@@ -24,10 +27,10 @@ class Person {
   Person({required this.age}) {
     if (age < 0) {
       // throw Exception("Age can't be negative");
-      throw InvalidAgeException(age: age, message: 'Age cannot be negative...');
+      throw InvalidAgeException(age: age, message: 'Age cannot be negative.');
     } else if (age > 140) {
       // print("Age can't be above 140");
-      throw InvalidAgeException(age: age, message: 'Age cannot be above 140');
+      throw InvalidAgeException(age: age, message: 'Age cannot be above 140.');
     }
   }
 }
@@ -40,5 +43,5 @@ class InvalidAgeException implements Exception {
   InvalidAgeException({required this.age, required this.message});
 
   @override
-  String toString() => 'InvalidAgeException: $message, $age';
+  String toString() => 'InvalidAgeException(age: $age, message: $message)';
 }
