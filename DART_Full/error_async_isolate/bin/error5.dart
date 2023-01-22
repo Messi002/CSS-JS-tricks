@@ -7,11 +7,16 @@ void main(List<String> args) {
   try {
     person.age = -1;
     print(person);
-  } catch (e) {
+
+  } 
+  //If a second parameter is passed here, it is considered
+  //as the stackTrace by Dart and that can be printed
+  catch (e) {
     print(e);
   } finally {
     print('finally blocked reached');
   }
+  
 }
 
 class Person {
