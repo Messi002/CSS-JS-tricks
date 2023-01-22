@@ -9,6 +9,7 @@ void main(List<String> args) async {
   //finally block is always executed
    finally {
     await db.close();
+    print('Database closed...');
   }
 }
 
