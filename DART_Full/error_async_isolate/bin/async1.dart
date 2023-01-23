@@ -6,6 +6,21 @@ void main(List<String> args) async {
   print(await getName());
   print(await getAddress());
   print(await getCity());
+  print('------------');
+  try {
+    print(await getFullName(firstName: 'Jone', lastName: 'Woods'));
+    print(await getFullName(firstName: '', lastName: 'Woods'));
+  } on FirstOrLastNameMissingException {
+    print('First or Last name is missing...');
+  }
+  print('------------');
+  // final length = await calculateLength(await getFullNames());
+  // print(length);
+  //OR
+  final length = await getFullNames().then((value) => calculateLength(value));
+  print(length);
+  print('------------');
+  print('------------');
 }
 
 Future<String> getName() async => 'John Doe';
@@ -25,10 +40,17 @@ Future<String> getFullName({
   if (firstName.isEmpty || lastName.isEmpty) {
     throw const FirstOrLastNameMissingException();
   } else {
-   return Future.value('$firstName $lastName');
+    return Future.value('$firstName $lastName');
   }
 }
 
 class FirstOrLastNameMissingException implements Exception {
   const FirstOrLastNameMissingException();
 }
+
+//Future chaining... i.e. future withing a future
+Future<String> getFullNames() =>
+    Future.delayed(const Duration(seconds: 1), () => 'John Doe');
+
+Future<int> calculateLength(String value) =>
+    Future.delayed(const Duration(seconds: 1), () => value.length);
