@@ -7,11 +7,19 @@ void main(List<String> args) async {
   }
   print('-------------');
   await for (var character
-      in getNames().asyncExpand( (name) => getCharacters(name))) {
+      in getNames().asyncExpand((name) => getCharacters(name))) {
     print(character);
   }
   print('-------------');
-
+  int sum = 0;
+  await for (var number in getAllNumbers()) {
+    sum += number;
+  }
+  print(sum);
+  //Or you can use the reduce function to get the sum....
+  final sum1 = getAllNumbers().reduce((a, b) => a + b);
+  print('This is coming from sum2 $sum1');
+  print('-------------');
 }
 
 //37: 03
@@ -35,4 +43,13 @@ Stream<String> getNames() async* {
   yield 'John';
   await Future.delayed(const Duration(milliseconds: 200));
   yield 'Doe';
+}
+
+//To add
+Stream<int> getAllNumbers() async* {
+  yield 10;
+  yield 20;
+  yield 30;
+  yield 40;
+  yield 50;
 }
