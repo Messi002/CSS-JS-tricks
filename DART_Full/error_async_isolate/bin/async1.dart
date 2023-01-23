@@ -16,3 +16,19 @@ Future<String> getCity() async {
   await Future.delayed(const Duration(seconds: 2));
   return 'New York';
 }
+
+//Future error handling...
+Future<String> getFullName({
+  required String firstName,
+  required String lastName,
+}) {
+  if (firstName.isEmpty || lastName.isEmpty) {
+    throw const FirstOrLastNameMissingException();
+  } else {
+   return Future.value('$firstName $lastName');
+  }
+}
+
+class FirstOrLastNameMissingException implements Exception {
+  const FirstOrLastNameMissingException();
+}
