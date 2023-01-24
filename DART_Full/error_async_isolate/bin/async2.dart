@@ -15,11 +15,19 @@ void main(List<String> args) async {
   await for (var number in getAllNumbers()) {
     sum += number;
   }
-  print(sum);
+  // print(sum);
   //Or you can use the reduce function to get the sum....
-  final sum1 = await getAllNumbers().reduce(add);
-  print('This is coming from sum2 $sum1');
+  // final sum1 = await getAllNumbers().reduce(add);
+  // print('This is coming from sum2 $sum1');
+
   print('-------------');
+  await for (var number in numbers()) {
+    print(number);
+  }
+
+  await for (var number in numbers(end: 10, f: evenNumbersOnly)) {
+    print(number);
+  }
   print('-------------');
 }
 
@@ -75,4 +83,11 @@ Stream<int> numbers({
       yield i;
     }
   }
+}
+
+//asynchronous generators using yield*
+Stream<String> maleNames() async* {
+  yield 'John';
+  yield 'Peter';
+  yield 'Paul';
 }
