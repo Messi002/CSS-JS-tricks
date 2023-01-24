@@ -91,3 +91,14 @@ Stream<String> maleNames() async* {
   yield 'Peter';
   yield 'Paul';
 }
+
+Stream<String> femaleNames() async* {
+  yield 'Jane';
+  yield 'Mary';
+  yield 'Lucia';
+}
+
+Stream<String> allNames() async* {
+  yield* maleNames();
+  yield* femaleNames();
+}
