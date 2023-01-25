@@ -37,15 +37,6 @@ class Dog with HasHeightInt {
 
 //Generic extensions on classes
 
-class Tuple<L, R> {
-  final L left;
-  final R right;
-
-  const Tuple(this.left, this.right);
-
-  @override
-  String toString() => 'Tuple left = $left, right = $right';
-}
 
 extension<L, R> on Tuple<L, R> {
   Tuple<R, L> swap() => Tuple(right, left);
