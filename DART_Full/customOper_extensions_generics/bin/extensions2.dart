@@ -5,11 +5,7 @@ void main(List<String> args) {
   print(add.callWithRandomValues());
   print(subtract.callWithRandomValues());
   print('-----------------------');
-  const jack = Person(name: 'Jack Dowe', age: 28);
-  print(ShortDescription(jack).description);
-  print(LongDescription(jack).description);
-  print('-----------------------');
-}
+
 
 //Extensions on typedef
 //Typedef means that we are actually creating our own data type like int, double, String and so on...

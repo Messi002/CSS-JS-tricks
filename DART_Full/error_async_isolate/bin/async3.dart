@@ -37,4 +37,9 @@ extension on Stream<String> {
   Stream<String> get capitalizedUsingMap => map((name) => name.toUpperCase());
 }
 
-
+class ToUpperCase extends StreamTransformerBase<String, String> {
+  @override
+  Stream<String> bind(Stream<String> stream) {
+    return stream.map((name) => name.toUpperCase());
+  }
+}
