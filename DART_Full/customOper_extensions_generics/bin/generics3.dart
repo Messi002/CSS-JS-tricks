@@ -82,16 +82,7 @@ class Animal extends Thing {
 const Thing personThing = Person(name: 'Dowe', age: 25);
 const Thing animalThing = Animal(name: 'fishy', species: 'fish');
 
-extension<T> on T {
-  R? mapIfOfType<E, R>(R Function(E) f) {
-    final shadow = this;
-    if (shadow is E) {
-      return f(shadow);
-    } else {
-      return null;
-    }
-  }
-}
+
 
 //Generic function pointers
 T divide<T extends num>(T lhs, T rhs) {
