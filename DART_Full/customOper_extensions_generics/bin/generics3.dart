@@ -41,26 +41,15 @@ void sort([bool ascending = true]) {
 
 //function to convert any object to an integer like, list of doubles to int
 
-extension ToInt on Object {
-  int toInt() {
-    final list = [
-      if (this is Iterable<Object>)
-        ...this as Iterable<Object>
-      else if (this is int)
-        [this as int]
-      else
-        (double.tryParse(toString()) ?? 0.0).round()
-    ];
 
-    return list
-        .map((e) => (double.tryParse(e.toString()) ?? 0.0).round())
-        .reduce((lhs, rhs) => lhs + rhs);
-  }
-}
 
 //Create a generic on any data type and try to map that data type
 
+abstract class Thing {
+  final String name;
 
+  const Thing({required this.name});
+}
 
 class Person extends Thing {
   final int age;
