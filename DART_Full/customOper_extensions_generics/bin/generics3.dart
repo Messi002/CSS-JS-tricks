@@ -60,11 +60,7 @@ extension ToInt on Object {
 
 //Create a generic on any data type and try to map that data type
 
-abstract class Thing {
-  final String name;
 
-  const Thing({required this.name});
-}
 
 class Person extends Thing {
   final int age;
