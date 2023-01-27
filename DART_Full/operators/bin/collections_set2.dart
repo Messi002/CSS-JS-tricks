@@ -4,7 +4,17 @@
 //we see that only one person instance is left but if a person and dog instance are in the
 //set then both of them are left in the set.
 
+void main(List<String> args) {
+  final person = Person(name: 'Foo', age: 10);
+  // final person1 = Person(name: 'Foo', age: 10);
+  final dog = Dog(name: 'Foo', age: 10);
 
+  print(person.hashCode);
+  print(dog.hashCode);
+
+  final beings = {person, dog};
+  print(beings);
+}
 
 class Person {
   final String name;
