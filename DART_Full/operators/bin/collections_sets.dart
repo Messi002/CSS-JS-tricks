@@ -32,6 +32,13 @@ void main(List<String> args) {
   //   print('Ages are not equal');
   // } 
 
-
+  print('===================');
+//This function comes from the collection package
+//even if the ordering is not the same, irrespective of the index(deep comparison)
+  if (SetEquality().equals(ages1, ages2)) {
+    print('Ages are equal');
+  } else {
+    print('Ages are not equal');
+  } 
 
 }
