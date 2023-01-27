@@ -18,13 +18,7 @@ void main(List<String> args) {
     'Baz',
   ];
 
-  final uniqueNames = {...names2}; //This is the spread_operator
-  print(uniqueNames);
 
-  print('===================');
-  //Sets and Lists with the same value aren't the same.
-  final ages1 = {20, 30, 40};
-  final ages2 = {20, 30, 40};
 
   // if (ages1 == ages2) {
   //   print('Ages are equal');
