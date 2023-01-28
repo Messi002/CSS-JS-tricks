@@ -59,5 +59,11 @@ void addToArrayRight() {
   //or another way could be
   final allNamesRightAnotherWay = [...names1]..addAll(names2);
 
+  print(names1);
+  print(names2);
+  print(allNamesRight);
+}
 
+//if a map is made const which of occurs means that nothing new can't be added to it
+//that can be changed by using a spread operator and then ..addAll()
 
