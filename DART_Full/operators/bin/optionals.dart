@@ -51,7 +51,11 @@ extension FlatMap<T> on T? {
   }
 }
 
-
+//Providing optionals default values in dart
+String getFullNames(
+  String? firstName, 
+  String? lastName,
+) => '${firstName.orDefault} ${lastName.orDefault}';
 
 
 extension DefaultValues<T> on T? {
