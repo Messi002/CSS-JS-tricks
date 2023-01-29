@@ -40,14 +40,7 @@ void addToArrayWrong() {
   final names2 = ['Foo2', 'Bar2', 'Baz2'];
 
 //This is wrong because you aren't copying the content of names1 but rather
-//assignin it to allNamesWrong reason why it is altered
-  final allNamesWrong = names1;
-  allNamesWrong.addAll(names2);
 
-  print(names1);
-  print(names2);
-  print(allNamesWrong);
-}
 
 void addToArrayRight() {
   final names1 = ['Foo1', 'Bar1', 'Baz1'];
