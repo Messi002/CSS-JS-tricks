@@ -50,10 +50,5 @@ class Dog {
 }
 
 ///late variables depend on late final variables
-class Person1 {
-  late final String firstName;
-  late final String lastName;
-  late String fullNames = '$firstName $lastName';
-}
 
 //do not add late variables in the constructor...
