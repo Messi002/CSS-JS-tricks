@@ -1,4 +1,23 @@
+// void main(List<String> args) {
+//   for (var name in getNames()) {
+//     print(name);
+//   }
+// }
 
+
+//************FOR_SNYCHRONOUS_CODE */
+// Iterable<String> getNames() sync* {
+//   print('producing Bob');
+//   yield 'Bob';
+//   print('producing Alice');
+//   yield 'Alice';
+//   print('producing John');
+//   yield 'John';
+//   print('producing template_names');
+//   //the yield with an asterik(*) is used for injecting another
+//   //return value into already a synchronous code
+//   yield* templateNames();
+// }
 
 // Iterable<String> templateNames() sync* {
 //   print('producing Foo');
