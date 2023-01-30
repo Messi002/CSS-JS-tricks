@@ -21,14 +21,7 @@ void main(List<String> args) {
   //   print(number);
   // }
 
-  //while loop
-  // while (counter < names.length) {
-  //   print(names);
-  //   counter++;
-  // }
-  // or
-  // int countera = -1;
-  // while (++countera < names.length) {}
+
 
 //D0-While executes first the body before checking on the condition
   // do {
