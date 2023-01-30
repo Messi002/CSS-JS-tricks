@@ -1,17 +1,6 @@
 //Control flow statements are used to change the flow of the application
 //E.g. if, else ifs,
 
-//traditional for loops(counting from start to end, counting from end to start,
-//skipping some values by i +=2) using an array
-
-//Modern for loop
-//for(name in names) => print(name);
-
-//Continue : meaning goes back to the execution of the for loop
-
-//Break: Breaks completely out of the loop
-
-//Grabbing an index from the modern for loop
 import 'dart:io';
 
 void main(List<String> args) {
