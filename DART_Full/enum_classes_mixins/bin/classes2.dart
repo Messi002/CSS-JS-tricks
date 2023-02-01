@@ -55,23 +55,7 @@ class Person {
   Person({required this.firstName, required this.lastName});
 }
 
-//---------------------------------
-//METHODS IN CLASSES
 
-//----------------------
-//SETTERS
-class Car {
-  int _speed = 0;
-
-  int get speed => _speed;
-
-  set speed(int newSpeed) {
-    if (newSpeed < 0) {
-      throw Exception('Speed cannot be negative');
-    } else {
-      _speed = newSpeed;
-    }
-  }
 
   void drive({required int speed}) {
     //This is how we set setters
