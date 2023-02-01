@@ -73,11 +73,6 @@ class Car {
     }
   }
 
-  void drive({required int speed}) {
-    //This is how we set setters
-    this.speed = speed;
-    print('Accelerating to $speed km/h');
-  }
 
   void stop() {
     speed = 0;
