@@ -12,12 +12,7 @@
 //   }
 // }
 
-// class Person {
-//   final String name;
-//   final Car car;
 
-//   Person({required this.name, required this.car});
-// }
 
 // enum Car {
 //   teslaModelX(
