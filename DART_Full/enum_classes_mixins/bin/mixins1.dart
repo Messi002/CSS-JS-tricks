@@ -2,15 +2,6 @@ import 'dart:mirrors';
 
 //Limiting mixins to particular datatypes only
 
-void main(List<String> args) {
-  //To access it, we do it this way
-  Human().run();
-  print('----------------------');
-  final cats = <Cat>{
-    Cat(age: 2, name: 'Kitty 1'),
-    Cat(age: 3, name: 'Kitty 2'),
-    Cat(age: 2, name: 'Kitty 1'),
-  };
 
   cats.forEach(print);
   print('----------------------');
