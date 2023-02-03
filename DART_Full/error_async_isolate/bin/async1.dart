@@ -17,7 +17,7 @@ void main(List<String> args) async {
   // final length = await calculateLength(await getFullNames());
   // print(length);
   //OR
-  final length = await getFullNames().then((value) => calculateLength(value));
+  final length = await getFullNames().then((value) => calculatedLength(value));
   print(length);
   print('------------');
   print('------------');
@@ -52,5 +52,5 @@ class FirstOrLastNameMissingException implements Exception {
 Future<String> getFullNames() =>
     Future.delayed(const Duration(seconds: 1), () => 'John Doe');
 
-Future<int> calculateLength(String value) =>
+Future<int> calculatedLength(String value) =>
     Future.delayed(const Duration(seconds: 1), () => value.length);

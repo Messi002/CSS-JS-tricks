@@ -1,4 +1,4 @@
-//Stream_controllers
+//Stream_controllers are read and write while a stream is read-only
 
 import 'dart:async';
 
@@ -18,9 +18,12 @@ void main(List<String> args) async {
     print(name1);
   }
   print('--------------------');
-   await for (var name2 in names.capitalizedUsingMap) {
+  await for (var name2 in names.capitalizedUsingMap) {
     print(name2);
   }
+  print('--------------------');
+  final allNames = await getNames().toList();
+  print(allNames);
   print('--------------------');
 }
 
@@ -42,4 +45,11 @@ class ToUpperCase extends StreamTransformerBase<String, String> {
   Stream<String> bind(Stream<String> stream) {
     return stream.map((name) => name.toUpperCase());
   }
+}
+
+//A future out of a stream using a function called toList...
+Stream<String> getNames() async* {
+  yield 'Austin';
+  yield 'Gareth';
+  yield 'Aram';
 }

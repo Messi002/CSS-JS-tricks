@@ -22,10 +22,10 @@ void main(List<String> args) async {
 
   print('-------------');
   await for (var number in numbers()) {
-    print(number);
+    // print(number);
   }
 
-  await for (var number in numbers(end: 10, f: evenNumbersOnly)) {
+  await for (var number in numbers(end: 6,f: evenNumbersOnly)) {
     print(number);
   }
   print('-------------');
@@ -75,9 +75,8 @@ Stream<int> numbers({
   int end = 4,
   isIncluded? f,
 }) async* {
-  for (var i = start;
-      i < end;
-      i++ //OR f?.call(i) == true
+  for (
+    var i = start; i < end; i++ //OR f?.call(i) == true
       ) {
     if (f == null || f(i)) {
       yield i;
