@@ -17,7 +17,7 @@ void main(List<String> args) async {
     // print(name);
   }
   print('-----------');
-  broadcastStreamExample();
+  await broadcastStreamExample();
   print('-----------');
   print('-----------');
 }
@@ -62,6 +62,9 @@ Future<void> broadcastStreamExample() async {
   controller.close();
 
   controller.onCancel = () {
+    print('OnCancel');
+    sub1.cancel();
+    sub2.cancel();
     sub1.cancel();
     sub2.cancel();
   };
