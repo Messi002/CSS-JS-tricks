@@ -1,7 +1,23 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
+import 'dart:io';
+import 'dart:isolate';
 
 void main(List<String> args) async {}
+
+void _parseJsonIsolateEntry(SendPort sp) async {
+  final client = HttpClient();
+  final uri = Uri.parse('https://jsonplaceholder.typicode.com/todos/');
+
+  final todos = await client
+      .getUrl(uri)
+      .then((req) => req.close())
+      .then((res) => res.transform(utf8.decoder).join())
+      .then((json) => jsonDecode(json) as List<dynamic>)
+      .then((value) => value.map((e) => Todo.fromJson(e)));
+
+  sp.send(todos);
+}
 
 class Todo {
   final int userId;
@@ -15,7 +31,6 @@ class Todo {
     required this.title,
     required this.isCompleted,
   });
-
 
   Todo copyWith({
     int? userId,
@@ -40,14 +55,11 @@ class Todo {
     };
   }
 
-   Todo.fromJson(Map<String, dynamic> json) :
-      userId = json['userId'] ,
-      id= json['id'] as int,
-      title= json['title'] as String,
-      isCompleted= json['isCompleted'] as bool;
-  
-
- 
+  Todo.fromJson(Map<String, dynamic> json)
+      : userId = json['userId'],
+        id = json['id'] as int,
+        title = json['title'] as String,
+        isCompleted = json['isCompleted'] as bool;
 
   @override
   String toString() {
@@ -57,19 +69,18 @@ class Todo {
   @override
   bool operator ==(covariant Todo other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.userId == userId &&
-      other.id == id &&
-      other.title == title &&
-      other.isCompleted == isCompleted;
+
+    return other.userId == userId &&
+        other.id == id &&
+        other.title == title &&
+        other.isCompleted == isCompleted;
   }
 
   @override
   int get hashCode {
     return userId.hashCode ^
-      id.hashCode ^
-      title.hashCode ^
-      isCompleted.hashCode;
+        id.hashCode ^
+        title.hashCode ^
+        isCompleted.hashCode;
   }
 }
