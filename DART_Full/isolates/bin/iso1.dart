@@ -4,7 +4,7 @@ import 'dart:io';
 
 void main(List<String> args) async {
   do {
-    stdout.write('Say something to me...');
+    stdout.write('Say something:  ');
     final line = stdin.readLineSync(encoding: utf8);
     switch (line?.trim().toLowerCase()) {
       case null:
@@ -21,8 +21,9 @@ void main(List<String> args) async {
 const messagesAndResponse = {
   '': 'Ask me a question like "How are you?"',
   'Hello': 'Hi',
+  'OK': 'Nice one',
   'How are you doing?': 'Fine!',
-  'What are you doing?': 'Learning about isolates in Dart!',
+  'What are you doing?' :  'Learning about isolates in Dart!',
   'Are you having fun?': 'Yeah sure!',
 };
 
@@ -43,7 +44,7 @@ Future<String> getMessage(String forGreeting) async {
 
 void _communicator(SendPort sp) async {
   final rp = ReceivePort();
-  sp.send(rp);
+  sp.send(rp.sendPort);
 
   final messages = rp.takeWhile((element) => element is String).cast<String>();
   await for (final message in messages) {
